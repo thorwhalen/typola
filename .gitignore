@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.ipynb_checkpoints
+.venv/
+.vscode/
+.idea/
+.DS_Store
+
+# semix data cache (downloaded CLDF datasets)
+data_cache/
