@@ -17,7 +17,23 @@ You can use any layer on its own. The prep layer is just pandas — no probabili
 pip install -e .
 # with optional bayesian extras (ba + spyn):
 pip install -e '.[bayesian]'
+# with web UI backend:
+pip install -e '.[web]'
 ```
+
+## Web UI
+
+A React probability-console frontend (zodal + shadcn) ships in `webapp/`:
+
+```bash
+# 1. Start the API (from repo root):
+python -m webapp.api.main
+# 2. Start the UI:
+cd webapp/ui && npm install && npm run dev
+# open http://127.0.0.1:5173
+```
+
+See `webapp/README.md` for details.
 
 ## 60-second tour
 
