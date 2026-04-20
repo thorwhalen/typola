@@ -101,7 +101,7 @@ def _code_summaries_for(tp, pid: str) -> list[CodeSummary]:
 # ---------------------------------------------------------------------------
 
 
-@app.get("/api/typologies")
+@app.get("/typologies")
 def list_typologies() -> list[TypologySummary]:
     out = []
     for name in list_sources():
@@ -127,7 +127,7 @@ def list_typologies() -> list[TypologySummary]:
     return out
 
 
-@app.get("/api/typologies/{name}/parameters")
+@app.get("/typologies/{name}/parameters")
 def list_parameters(name: str) -> list[ParameterSummary]:
     tp = get_typology(name)
     params = tp.parameters
@@ -145,7 +145,7 @@ def list_parameters(name: str) -> list[ParameterSummary]:
     return out
 
 
-@app.get("/api/typologies/{name}/parameters/{pid}/codes")
+@app.get("/typologies/{name}/parameters/{pid}/codes")
 def list_codes(name: str, pid: str) -> list[CodeSummary]:
     tp = get_typology(name)
     if pid not in tp.parameters.index:
@@ -153,7 +153,7 @@ def list_codes(name: str, pid: str) -> list[CodeSummary]:
     return _code_summaries_for(tp, pid)
 
 
-@app.get("/api/typologies/{name}/languages/columns")
+@app.get("/typologies/{name}/languages/columns")
 def list_language_columns(name: str) -> list[LanguageColumn]:
     tp = get_typology(name)
     out = []
@@ -180,7 +180,7 @@ def list_language_columns(name: str) -> list[LanguageColumn]:
     return out
 
 
-@app.get("/api/typologies/{name}/languages/values")
+@app.get("/typologies/{name}/languages/values")
 def list_column_values(name: str, column: str, limit: int = 500) -> list[str]:
     tp = get_typology(name)
     if column not in tp.languages.columns:
@@ -194,7 +194,7 @@ def list_column_values(name: str, column: str, limit: int = 500) -> list[str]:
 # ---------------------------------------------------------------------------
 
 
-@app.post("/api/query")
+@app.post("/query")
 def do_query(req: QueryRequest) -> QueryResult:
     tp = get_typology(req.typology)
     estimator = _resolve_estimator(req.estimator, req.typology, req.target)
@@ -283,7 +283,7 @@ def do_query(req: QueryRequest) -> QueryResult:
 # ---------------------------------------------------------------------------
 
 
-@app.post("/api/compare-estimators")
+@app.post("/compare-estimators")
 def do_compare(req: CompareEstimatorsRequest) -> CompareEstimatorsResult:
     tp = get_typology(req.typology)
     ests = [_resolve_estimator(s, req.typology, req.target) for s in req.estimators]
@@ -341,7 +341,7 @@ def do_compare(req: CompareEstimatorsRequest) -> CompareEstimatorsResult:
     )
 
 
-@app.post("/api/cross-validate")
+@app.post("/cross-validate")
 def do_cv(req: CrossValidateRequest) -> CrossValidateResult:
     tp = get_typology(req.typology)
     ests = [_resolve_estimator(s, req.typology, req.target) for s in req.estimators]
@@ -390,7 +390,7 @@ def do_cv(req: CrossValidateRequest) -> CrossValidateResult:
 # ---------------------------------------------------------------------------
 
 
-@app.post("/api/rank-associations")
+@app.post("/rank-associations")
 def do_rank(req: RankAssociationsRequest) -> RankAssociationsResult:
     tp = get_typology(req.typology)
     est = _resolve_estimator(req.estimator, req.typology, req.target)

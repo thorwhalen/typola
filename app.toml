@@ -1,0 +1,22 @@
+# How to enlace semix.
+#
+# This file describes how to serve the app, not where to deploy it.
+# The deployment platform decides URL prefix and build env; semix itself
+# knows nothing about either.
+#
+# See: https://github.com/i2mint/enlace
+#
+# Standard enlace keys (discovery):
+entry_point  = "webapp/api/main.py"
+app_attr     = "app"
+frontend_dir = "webapp/ui/dist"
+
+# Proposed, not yet part of enlace: a [build] section describing how to
+# produce the frontend from source. Deployment tools (tw_platform) read
+# this today; enlace may adopt it later. See enlace issue on build support.
+[build]
+cwd     = "webapp/ui"
+install = ["npm", "install", "--no-audit", "--no-fund", "--no-progress"]
+build   = ["npm", "run", "build"]
+# Env vars the build honours. Platform deployer injects values.
+env_vars = ["VITE_API_BASE", "VITE_PUBLIC_BASE"]
