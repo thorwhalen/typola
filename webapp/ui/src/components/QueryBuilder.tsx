@@ -72,7 +72,7 @@ export function QueryBuilder({ isPending, onRun, onError, setPendingFlag }: Prop
       <div className="px-4 py-4">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-muted-foreground" />
-          <h2 className="text-sm font-semibold">Ask semix</h2>
+          <h2 className="text-sm font-semibold">Ask typola</h2>
         </div>
         <p className="mt-1 text-xs text-muted-foreground">
           Build a probability question. Press{" "}

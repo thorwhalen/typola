@@ -4,9 +4,9 @@ from __future__ import annotations
 import pandas as pd
 import pytest
 
-from semix import estimators, query
-from semix.models import Conditional, Distribution
-from semix.query import (
+from typola import estimators, query
+from typola.models import Conditional, Distribution
+from typola.query import (
     compare_conditions,
     compare_estimators,
     cross_validate_estimators,

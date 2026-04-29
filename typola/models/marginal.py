@@ -1,11 +1,12 @@
 """Marginal distribution over a parameter's support, under a condition."""
+
 from __future__ import annotations
 
 from typing import Any, Mapping, Optional
 
-from semix.estimators import Estimator, jeffreys
-from semix.models.distribution import Distribution
-from semix.prep.canonical import Typology
+from typola.estimators import Estimator, jeffreys
+from typola.models.distribution import Distribution
+from typola.prep.canonical import Typology
 
 
 class Marginal:
@@ -18,15 +19,15 @@ class Marginal:
 
     Example
     -------
-    >>> from semix import load, estimators
-    >>> from semix.models import Marginal
-    >>> wals = load("wals")
-    >>> dist = Marginal(
+    >>> from typola import load, estimators            # doctest: +SKIP
+    >>> from typola.models import Marginal             # doctest: +SKIP
+    >>> wals = load("wals")                            # doctest: +SKIP
+    >>> dist = Marginal(                               # doctest: +SKIP
     ...     wals, "81A",
     ...     condition={"Family": "Austronesian"},
     ...     estimator=estimators.laplace(0.5),
     ... ).distribution
-    >>> dist.top_k(3)
+    >>> dist.top_k(3)                                  # doctest: +SKIP
     """
 
     def __init__(
@@ -42,7 +43,9 @@ class Marginal:
         self.typology = typology
         self.parameter = parameter
         self.condition = dict(condition) if condition else {}
-        self.parameter_conditions = dict(parameter_conditions) if parameter_conditions else {}
+        self.parameter_conditions = (
+            dict(parameter_conditions) if parameter_conditions else {}
+        )
         self.estimator = estimator or jeffreys()
         self.drop_missing = drop_missing
 

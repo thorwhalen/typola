@@ -19,14 +19,15 @@ All are pure callables that accept ``np.ndarray`` **or** ``pd.Series`` and
 preserve the index of a Series. They all have a ``.name`` attribute and a
 ``.params`` dict so runs are self-describing.
 """
-from semix.estimators.base import (
+
+from typola.estimators.base import (
     Estimator,
     normalize,
     kl_divergence,
     log_likelihood,
     held_out_score,
 )
-from semix.estimators.smoothing import (
+from typola.estimators.smoothing import (
     mle,
     laplace,
     jeffreys,

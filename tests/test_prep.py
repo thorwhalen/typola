@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from semix import Typology
+from typola import Typology
 
 
 def test_toy_typology_repr(toy_typology):

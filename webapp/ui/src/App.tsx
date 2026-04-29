@@ -1,9 +1,9 @@
 /**
- * semix — probability console.
+ * typola — probability console.
  *
  * Layout:
  *   ┌──────────────────────────────────────────────────────────────┐
- *   │  semix   [typology picker]                    [theme] [GH]   │
+ *   │  typola   [typology picker]                    [theme] [GH]   │
  *   ├──────────────────┬─────────────────────────┬─────────────────┤
  *   │                  │                         │                  │
  *   │  Query builder   │   Results stream        │  History        │
@@ -126,7 +126,7 @@ export default function App() {
         <div className="flex items-center gap-4">
           <a href="/" className="flex items-center gap-2">
             <span className="inline-block h-5 w-5 rounded-md bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-amber-400" />
-            <span className="text-sm font-semibold tracking-tight">semix</span>
+            <span className="text-sm font-semibold tracking-tight">typola</span>
             <span className="ml-1 rounded-full bg-muted px-2 py-0.5 text-[10px] font-medium uppercase text-muted-foreground">
               probability console
             </span>
@@ -149,10 +149,10 @@ export default function App() {
             size="icon"
             className="h-8 w-8"
             asChild
-            title="semix on GitHub"
+            title="typola on GitHub"
           >
             <a
-              href="https://github.com/thorwhalen/semix"
+              href="https://github.com/thorwhalen/typola"
               target="_blank"
               rel="noopener noreferrer"
             >

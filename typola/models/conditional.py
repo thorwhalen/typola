@@ -1,4 +1,5 @@
 """Conditional distribution: P(target parameter | given parameter)."""
+
 from __future__ import annotations
 
 from typing import Any, Mapping, Optional
@@ -6,9 +7,9 @@ from typing import Any, Mapping, Optional
 import numpy as np
 import pandas as pd
 
-from semix.estimators import Estimator, jeffreys
-from semix.models.distribution import Distribution
-from semix.prep.canonical import Typology
+from typola.estimators import Estimator, jeffreys
+from typola.models.distribution import Distribution
+from typola.prep.canonical import Typology
 
 
 class Conditional:
@@ -22,13 +23,13 @@ class Conditional:
 
     Example
     -------
-    >>> from semix import load, estimators
-    >>> from semix.models import Conditional
-    >>> wals = load("wals")
-    >>> cpt = Conditional(wals, target="83A", given="82A",
+    >>> from typola import load, estimators            # doctest: +SKIP
+    >>> from typola.models import Conditional          # doctest: +SKIP
+    >>> wals = load("wals")                            # doctest: +SKIP
+    >>> cpt = Conditional(wals, target="83A", given="82A",  # doctest: +SKIP
     ...                   estimator=estimators.laplace(0.5))
-    >>> cpt.as_matrix().head()         # rows = 82A codes, cols = 83A codes
-    >>> cpt.p_given("82A-1").top_k(3)  # distribution over 83A when 82A=82A-1
+    >>> cpt.as_matrix().head()         # rows = 82A codes, cols = 83A codes  # doctest: +SKIP
+    >>> cpt.p_given("82A-1").top_k(3)  # distribution over 83A when 82A=82A-1  # doctest: +SKIP
     """
 
     def __init__(
@@ -46,7 +47,9 @@ class Conditional:
         self.target = target
         self.given = given
         self.condition = dict(condition) if condition else {}
-        self.parameter_conditions = dict(parameter_conditions) if parameter_conditions else {}
+        self.parameter_conditions = (
+            dict(parameter_conditions) if parameter_conditions else {}
+        )
         self.estimator = estimator or jeffreys()
         self.drop_missing = drop_missing
 

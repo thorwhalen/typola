@@ -5,6 +5,7 @@ and a params dict. Making it a small dataclass-like object (rather than
 a bare function) lets us carry configuration, log runs reproducibly, and
 build an evaluation harness that compares strategies.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field

@@ -1,10 +1,10 @@
-# semix — probability console (webapp)
+# typola — probability console (webapp)
 
 A two-process web app for exploring probabilities over typology data.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  semix   [typology picker]                     [theme] [GH]    │
+│  typola   [typology picker]                     [theme] [GH]    │
 ├──────────────────┬──────────────────────────┬──────────────────┤
 │  Query builder   │  Results stream          │  History         │
 │  (left)          │  (center, drill by clicking any row)        │
@@ -22,8 +22,8 @@ From the repo root:
 pip install -e '.[web]'
 
 # Point at local CLDF copies (optional; downloads on first run if omitted)
-export SEMIX_TYPOLOGY_WALS_PATH=/path/to/wals-master
-export SEMIX_TYPOLOGY_GRAMBANK_PATH=/path/to/grambank-1.0.3
+export TYPOLA_TYPOLOGY_WALS_PATH=/path/to/wals-master
+export TYPOLA_TYPOLOGY_GRAMBANK_PATH=/path/to/grambank-1.0.3
 
 python -m webapp.api.main
 # serving on http://127.0.0.1:8765
@@ -60,13 +60,13 @@ The Vite dev server proxies `/api/*` to the backend at `:8765`.
   - **Compare estimators** — side-by-side P(value) under Jeffreys / Laplace(α) / empirical Bayes / MLE / uniform.
   - **Cross-validate** — 5-fold held-out log-likelihood, perplexity, KL to empirical. Tells you *which* estimator is actually best for this question.
   - **Rank associations** — top mutual-information parameters to the target; click to open as a CPT.
-  - **Copy as Python** — copies a snippet that reproduces the query with `semix.query(...)`.
+  - **Copy as Python** — copies a snippet that reproduces the query with `typola.query(...)`.
 
 **History sidebar (right, zodal-backed)** — persistent list of every query you've asked, across sessions. Stored via `zodal-store-localstorage`. Rendering is schema-driven: column widths, sort, searchable fields all come from the `QueryRun` zod schema + `defineCollection(...)` affordances.
 
 ## Architecture
 
-- **Backend** (`webapp/api/`) — FastAPI over the existing `semix` package.
+- **Backend** (`webapp/api/`) — FastAPI over the existing `typola` package.
   - `/api/typologies` — list WALS / Grambank / etc.
   - `/api/typologies/{name}/parameters` — list parameters
   - `/api/typologies/{name}/parameters/{id}/codes` — list possible values
@@ -124,7 +124,7 @@ export const queryRunCollection = defineCollection(QueryRunRecord, {
 });
 
 const provider = createLocalStorageProvider({
-  storageKey: "semix.history.v1",
+  storageKey: "typola.history.v1",
   idField: "id",
   searchFields: ["title", "target_id", "target_name", "typology", "given_id"],
 });

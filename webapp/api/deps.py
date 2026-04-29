@@ -1,20 +1,21 @@
 """Dependencies: typology cache + estimator factory.
 
 The typology is loaded once per process and memoized. Tests can override the
-path via the SEMIX_TYPOLOGY_<NAME>_PATH env vars.
+path via the TYPOLA_TYPOLOGY_<NAME>_PATH env vars.
 """
+
 from __future__ import annotations
 
 import os
 from functools import lru_cache
 
-from semix import Typology, estimators, load, load_from_cldf_dir
+from typola import Typology, estimators, load, load_from_cldf_dir
 
 from webapp.api.schemas import EstimatorSpec
 
 
 def _local_override(name: str) -> str | None:
-    return os.environ.get(f"SEMIX_TYPOLOGY_{name.upper()}_PATH")
+    return os.environ.get(f"TYPOLA_TYPOLOGY_{name.upper()}_PATH")
 
 
 @lru_cache(maxsize=8)
@@ -27,7 +28,7 @@ def get_typology(name: str) -> Typology:
 
 
 def build_estimator(spec: EstimatorSpec):
-    """Construct a semix Estimator from a serializable EstimatorSpec."""
+    """Construct a typola Estimator from a serializable EstimatorSpec."""
     name = spec.name
     params = spec.params or {}
     if name == "mle":

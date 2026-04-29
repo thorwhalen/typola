@@ -1,16 +1,91 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-*.egg-info/
-.pytest_cache/
-.coverage
-htmlcov/
-dist/
-build/
-*.ipynb_checkpoints
-.venv/
-.vscode/
-.idea/
+*$py.class
+
 .DS_Store
 
-# semix data cache (downloaded CLDF datasets)
+# C extensions
+*.so
+
+# TLS certificates
+*.pem
+certs/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+_build
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Editors
+.vscode/
+.idea/
+.spyderproject
+.spyproject
+.ropeproject
+
+# mypy
+.mypy_cache/
+
+# Node / frontend
+node_modules/
+
+# typola data cache (downloaded CLDF datasets)
 data_cache/

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from semix.prep import CountsStore, TypologyStore
+from typola.prep import CountsStore, TypologyStore
 
 
 def test_typology_store_lists_registered_sources():

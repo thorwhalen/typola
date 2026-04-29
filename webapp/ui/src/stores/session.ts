@@ -58,7 +58,7 @@ export const useSession = create<SessionState>()(
       clearHistory: () => set({ history: [] }),
     }),
     {
-      name: "semix.session.v1",
+      name: "typola.session.v1",
       partialize: (s) => ({ typology: s.typology, history: s.history }),
     },
   ),

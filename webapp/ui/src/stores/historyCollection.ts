@@ -83,7 +83,7 @@ export const queryRunCollection = defineCollection(QueryRunRecord, {
 // ---- provider + zustand slice ----------------------------------------------
 
 const provider = createLocalStorageProvider<QueryRunRecord>({
-  storageKey: "semix.history.v1",
+  storageKey: "typola.history.v1",
   idField: "id",
   searchFields: ["title", "target_id", "target_name", "typology", "given_id"],
 });

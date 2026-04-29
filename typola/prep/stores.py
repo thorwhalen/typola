@@ -2,18 +2,19 @@
 
 The `Typology` object already holds everything in memory, so these stores
 are thin facades that give you a uniform mapping interface over typologies
-and their derived artifacts. Useful when you want to compose semix with
+and their derived artifacts. Useful when you want to compose typola with
 other dol-based pipelines.
 """
+
 from __future__ import annotations
 
 from typing import Any, Iterator, Mapping, Optional
 
 import pandas as pd
 
-from semix.prep.canonical import Typology
-from semix.prep.loaders import load
-from semix.sources.base import list_sources
+from typola.prep.canonical import Typology
+from typola.prep.loaders import load
+from typola.sources.base import list_sources
 
 
 class TypologyStore(Mapping[str, Typology]):
@@ -21,14 +22,14 @@ class TypologyStore(Mapping[str, Typology]):
 
     Typologies are loaded on first access and cached in memory for the
     lifetime of the store. Unknown names raise `KeyError` — register new
-    ones via `semix.sources.register_source(...)`.
+    ones via `typola.sources.register_source(...)`.
 
     Example
     -------
-    >>> ts = TypologyStore()
-    >>> sorted(ts)           # ['grambank', 'wals']
-    >>> ts['wals']           # → Typology (downloads on first call)
-    >>> 'wals' in ts
+    >>> ts = TypologyStore()                           # doctest: +SKIP
+    >>> sorted(ts)           # ['grambank', 'wals']    # doctest: +SKIP
+    >>> ts['wals']           # → Typology (downloads on first call)  # doctest: +SKIP
+    >>> 'wals' in ts                                   # doctest: +SKIP
     """
 
     def __init__(self, *, local_paths: Optional[Mapping[str, str]] = None):

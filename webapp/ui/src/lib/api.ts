@@ -6,7 +6,7 @@
  * (default `/api`). This lets the same SPA be mounted at any URL prefix:
  *
  *   - Local dev (Vite proxies):        VITE_API_BASE unset → `/api`
- *   - Enlace at /api/{name}:           VITE_API_BASE=/api/semix
+ *   - Enlace at /api/{name}:           VITE_API_BASE=/api/typola
  *   - Standalone under custom prefix:  VITE_API_BASE=/whatever
  *
  * No deployment path is hard-coded in the app.

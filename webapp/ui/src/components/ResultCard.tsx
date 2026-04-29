@@ -425,7 +425,7 @@ function ExtraPanel({
 
 function copyAsPython(req: QueryRequest) {
   const lines = [
-    `from semix import load, query, estimators`,
+    `from typola import load, query, estimators`,
     ``,
     `tp = load(${JSON.stringify(req.typology)})`,
   ];

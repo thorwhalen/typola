@@ -1,5 +1,6 @@
 """High-level query and drill-down helpers over a `Typology`."""
-from semix.query.api import (
+
+from typola.query.api import (
     query,
     compare_estimators,
     cross_validate_estimators,

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from semix import estimators, query
+from typola import estimators, query
 
 
 def test_parameter_condition_filters_toy(toy_typology):
