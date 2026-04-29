@@ -4,6 +4,7 @@ A `Typology` is four pandas DataFrames plus a little metadata.
 The four-table structure mirrors the CLDF StructureDataset spec, which is
 the common ground between WALS, Grambank, APiCS, SAILS, and many others.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -249,7 +250,9 @@ class Typology:
         merged = la.merge(lb, on="Language_ID", how="inner")
         if drop_missing:
             merged = merged.dropna()
-            merged = merged[(merged["A"].astype(str) != "?") & (merged["B"].astype(str) != "?")]
+            merged = merged[
+                (merged["A"].astype(str) != "?") & (merged["B"].astype(str) != "?")
+            ]
 
         if len(merged) == 0:
             # No overlap: return an all-zero matrix with the right shape.

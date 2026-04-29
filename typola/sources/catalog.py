@@ -12,6 +12,7 @@ same loader should work once you pass a download URL):
 - PHOIBLE (phonological inventories)
 - Lexibank cross-linguistic lexical databases
 """
+
 from typola.sources.base import SourceSpec, register_source
 
 # ---------------------------------------------------------------------------

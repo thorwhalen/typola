@@ -5,6 +5,7 @@ probabilistic modeling code. The output of `load(...)` is a plain
 `Typology` (four pandas DataFrames) that can be analyzed with any
 tool you like.
 """
+
 from typola.prep.canonical import Typology
 from typola.prep.loaders import load, load_from_cldf_dir, available_sources
 from typola.prep.cldf import read_cldf_structure_dataset

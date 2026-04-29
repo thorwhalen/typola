@@ -9,6 +9,7 @@ Runs:
 Run with:
     python misc/example_bakeoff.py
 """
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -25,7 +26,9 @@ from typola.query import (
 
 # Use local WALS copy (from the dig4el project) for reproducibility.
 # Falls back to download if not present.
-LOCAL_WALS = Path("/Users/thorwhalen/Dropbox/py/proj/etc/dig4el/external_data/wals-master")
+LOCAL_WALS = Path(
+    "/Users/thorwhalen/Dropbox/py/proj/etc/dig4el/external_data/wals-master"
+)
 
 
 def _section(title: str) -> None:
@@ -39,6 +42,7 @@ def main() -> None:
         wals = load_from_cldf_dir(LOCAL_WALS, name="wals")
     else:
         from typola import load
+
         wals = load("wals")
     print(wals)
 
@@ -46,14 +50,17 @@ def main() -> None:
     _section("Global P(81A = Order of Subject and Verb), Jeffreys")
     d = query(wals, target="81A", estimator=estimators.jeffreys())
     print(d.to_frame().to_string())
-    print(f"\nEntropy: {d.entropy():.3f} bits  (normalized: {d.normalized_entropy():.3f})")
+    print(
+        f"\nEntropy: {d.entropy():.3f} bits  (normalized: {d.normalized_entropy():.3f})"
+    )
     print(f"Mode:    {d.mode()}  ({d.support_labels[d.mode()]})")
 
     # ---- 2. Estimator comparison on a small subset ------------------------
     _section("P(81A | Austronesian) under several estimators")
     global_counts = wals.counts("81A").values
     frame = compare_estimators(
-        wals, target="81A",
+        wals,
+        target="81A",
         condition={"Family": "Austronesian"},
         estimators=[
             estimators.mle(),
@@ -69,7 +76,8 @@ def main() -> None:
     # ---- 3. Cross-validated comparison ------------------------------------
     _section("5-fold CV log-likelihood (Austronesian subset, higher = better)")
     df = cross_validate_estimators(
-        wals, target="81A",
+        wals,
+        target="81A",
         estimators=[
             estimators.mle(),
             estimators.laplace(0.1),
@@ -87,7 +95,8 @@ def main() -> None:
     # ---- 4. What varies most across families? -----------------------------
     _section("P(81A) across language families")
     frame = compare_conditions(
-        wals, target="81A",
+        wals,
+        target="81A",
         conditions={
             "Austronesian": {"Family": "Austronesian"},
             "Indo-European": {"Family": "Indo-European"},
@@ -101,7 +110,9 @@ def main() -> None:
 
     # ---- 5. Top parameters informative about 81A --------------------------
     _section("Top 8 parameters most informative about 81A (MI)")
-    df = rank_associations(wals, target="81A", top_k=8, estimator=estimators.laplace(0.5))
+    df = rank_associations(
+        wals, target="81A", top_k=8, estimator=estimators.laplace(0.5)
+    )
     print(df.round(3).to_string())
 
     # ---- 6. Drill down: combine language and parameter conditions ----------
@@ -115,7 +126,8 @@ def main() -> None:
     ]
     for label, cond, pcond in cases:
         d = query(
-            wals, target="81A",
+            wals,
+            target="81A",
             condition=cond or None,
             parameter_conditions=pcond or None,
             estimator=estimators.laplace(0.5),

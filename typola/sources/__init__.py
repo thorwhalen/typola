@@ -6,6 +6,7 @@ under `typola.data_dir.cache_dir()`.
 
 Add your own sources with `register_source(SourceSpec(...))`.
 """
+
 from typola.sources.base import SourceSpec, list_sources, register_source, get_source
 from typola.sources.catalog import WALS, GRAMBANK  # register canonical sources
 

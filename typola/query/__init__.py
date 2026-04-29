@@ -1,4 +1,5 @@
 """High-level query and drill-down helpers over a `Typology`."""
+
 from typola.query.api import (
     query,
     compare_estimators,

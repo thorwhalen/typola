@@ -19,6 +19,7 @@ All are pure callables that accept ``np.ndarray`` **or** ``pd.Series`` and
 preserve the index of a Series. They all have a ``.name`` attribute and a
 ``.params`` dict so runs are self-describing.
 """
+
 from typola.estimators.base import (
     Estimator,
     normalize,

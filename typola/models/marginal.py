@@ -1,4 +1,5 @@
 """Marginal distribution over a parameter's support, under a condition."""
+
 from __future__ import annotations
 
 from typing import Any, Mapping, Optional
@@ -42,7 +43,9 @@ class Marginal:
         self.typology = typology
         self.parameter = parameter
         self.condition = dict(condition) if condition else {}
-        self.parameter_conditions = dict(parameter_conditions) if parameter_conditions else {}
+        self.parameter_conditions = (
+            dict(parameter_conditions) if parameter_conditions else {}
+        )
         self.estimator = estimator or jeffreys()
         self.drop_missing = drop_missing
 

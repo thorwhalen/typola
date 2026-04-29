@@ -8,6 +8,7 @@ Beyond individual queries, this module provides a small comparison layer so
 you can (a) try several estimators on the same question and (b) rank
 parameters by how informative they are about a target.
 """
+
 from __future__ import annotations
 
 from typing import Any, Iterable, Mapping, Optional, Union
@@ -66,7 +67,8 @@ def query(
 
     if given is None:
         return Marginal(
-            typology, target,
+            typology,
+            target,
             condition=condition,
             parameter_conditions=parameter_conditions,
             estimator=estimator,
@@ -74,7 +76,9 @@ def query(
         ).distribution
 
     cpt = Conditional(
-        typology, target=target, given=given,
+        typology,
+        target=target,
+        given=given,
         condition=condition,
         parameter_conditions=parameter_conditions,
         estimator=estimator,
@@ -107,7 +111,9 @@ def compare_estimators(
         raise ValueError("compare_estimators requires at least one estimator")
     labels = _unique_labels(estimators)
     # Reference distribution for labels & counts
-    first = Marginal(typology, target, condition=condition, estimator=estimators[0]).distribution
+    first = Marginal(
+        typology, target, condition=condition, estimator=estimators[0]
+    ).distribution
     frame = first.to_frame().copy()
     frame = frame.rename(columns={"probability": labels[0]})
     for est, lbl in zip(estimators[1:], labels[1:]):
@@ -164,13 +170,17 @@ def cross_validate_estimators(
     rows = []
     for i, test_idx in enumerate(folds):
         test_pairs = [lang_code_pairs[j] for j in test_idx]
-        train_pairs = [lang_code_pairs[j] for j in order if j not in set(test_idx.tolist())]
+        train_pairs = [
+            lang_code_pairs[j] for j in order if j not in set(test_idx.tolist())
+        ]
         c_train = _counts(train_pairs).to_numpy()
         c_test = _counts(test_pairs).to_numpy()
         for est in estimators:
             score = held_out_score(est, c_train, c_test)
             score["fold"] = i
-            score["name"] = repr(est)  # include params so distinct configs don't collapse
+            score["name"] = repr(
+                est
+            )  # include params so distinct configs don't collapse
             rows.append(score)
     df = pd.DataFrame(rows)
     return (
@@ -208,8 +218,11 @@ def rank_associations(
             continue
         try:
             cpt = Conditional(
-                typology, target=target_id, given=pid,
-                condition=condition, estimator=estimator,
+                typology,
+                target=target_id,
+                given=pid,
+                condition=condition,
+                estimator=estimator,
             )
         except Exception:
             continue
@@ -225,7 +238,11 @@ def rank_associations(
             }
         )
     df = pd.DataFrame(rows)
-    return df.sort_values("mutual_information", ascending=False).head(top_k).reset_index(drop=True)
+    return (
+        df.sort_values("mutual_information", ascending=False)
+        .head(top_k)
+        .reset_index(drop=True)
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -249,7 +266,12 @@ def compare_conditions(
     estimator = estimator or jeffreys()
     # global baseline
     base = Marginal(typology, target, estimator=estimator).distribution
-    frame = base.to_frame().copy().rename(columns={"probability": "overall"}).drop(columns="count")
+    frame = (
+        base.to_frame()
+        .copy()
+        .rename(columns={"probability": "overall"})
+        .drop(columns="count")
+    )
     for label, cond in conditions.items():
         d = Marginal(typology, target, condition=cond, estimator=estimator).distribution
         frame[label] = d.probabilities.reindex(frame.index)

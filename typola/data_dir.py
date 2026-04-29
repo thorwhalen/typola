@@ -3,6 +3,7 @@
 Follows XDG on Linux, Application Support on macOS, and %LOCALAPPDATA% on
 Windows. The user can override with ``TYPOLA_DATA_DIR``.
 """
+
 from __future__ import annotations
 
 import os
@@ -20,7 +21,10 @@ def data_dir() -> Path:
     elif sys.platform == "darwin":
         p = Path.home() / "Library" / "Application Support" / _APP
     elif os.name == "nt":
-        p = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local")) / _APP
+        p = (
+            Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
+            / _APP
+        )
     else:
         xdg = os.environ.get("XDG_DATA_HOME")
         p = Path(xdg).expanduser() if xdg else Path.home() / ".local" / "share" / _APP

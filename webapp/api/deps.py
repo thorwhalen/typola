@@ -3,6 +3,7 @@
 The typology is loaded once per process and memoized. Tests can override the
 path via the TYPOLA_TYPOLOGY_<NAME>_PATH env vars.
 """
+
 from __future__ import annotations
 
 import os

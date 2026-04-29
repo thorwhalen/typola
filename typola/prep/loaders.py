@@ -3,6 +3,7 @@
 The data-prep layer never imports the probabilistic-model layer, so
 you can use this module in isolation as a CLDF-to-pandas toolkit.
 """
+
 from __future__ import annotations
 
 from pathlib import Path

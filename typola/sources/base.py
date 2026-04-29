@@ -3,6 +3,7 @@
 A source is a handle for one typology dataset — enough metadata to
 download it, cite it, and load it, but no data.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -121,9 +122,7 @@ def register_source(spec: SourceSpec) -> SourceSpec:
 def get_source(name: str) -> SourceSpec:
     key = name.lower()
     if key not in _REGISTRY:
-        raise KeyError(
-            f"Unknown source {name!r}. Known: {sorted(_REGISTRY.keys())}"
-        )
+        raise KeyError(f"Unknown source {name!r}. Known: {sorted(_REGISTRY.keys())}")
     return _REGISTRY[key]
 
 

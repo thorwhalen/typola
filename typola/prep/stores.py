@@ -5,6 +5,7 @@ are thin facades that give you a uniform mapping interface over typologies
 and their derived artifacts. Useful when you want to compose typola with
 other dol-based pipelines.
 """
+
 from __future__ import annotations
 
 from typing import Any, Iterator, Mapping, Optional

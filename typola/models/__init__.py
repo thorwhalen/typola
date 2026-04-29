@@ -10,6 +10,7 @@ Components
 - `Conditional`  — builds a CPT: for every value of a "given" parameter,
   a `Distribution` over a "target" parameter.
 """
+
 from typola.models.distribution import Distribution
 from typola.models.marginal import Marginal
 from typola.models.conditional import Conditional

@@ -12,6 +12,7 @@ StructureDataset directory has these CSV tables:
 This module is deliberately stdlib-and-pandas only (no ``pycldf`` dependency),
 so it stays light and portable.
 """
+
 from __future__ import annotations
 
 import json
@@ -45,7 +46,9 @@ def read_cldf_structure_dataset(
         Bibliographic citation string.
     """
     cldf_dir = _resolve_cldf_dir(Path(path))
-    tables = {t: pd.read_csv(cldf_dir / f"{t}.csv", low_memory=False) for t in CLDF_TABLES}
+    tables = {
+        t: pd.read_csv(cldf_dir / f"{t}.csv", low_memory=False) for t in CLDF_TABLES
+    }
 
     # Index each table by its primary key (when present).
     for t in ("languages", "parameters", "codes"):

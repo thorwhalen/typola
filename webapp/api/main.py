@@ -8,6 +8,7 @@ Or from a script::
 
     python -m webapp.api.main
 """
+
 from __future__ import annotations
 
 import os
@@ -158,7 +159,16 @@ def list_language_columns(name: str) -> list[LanguageColumn]:
     tp = get_typology(name)
     out = []
     # cap dense free-text columns from the UI
-    skip = {"Latitude", "Longitude", "Source", "Parent_ID", "ISO639P3code", "GenusIcon", "ISO_codes", "Country_ID"}
+    skip = {
+        "Latitude",
+        "Longitude",
+        "Source",
+        "Parent_ID",
+        "ISO639P3code",
+        "GenusIcon",
+        "ISO_codes",
+        "Country_ID",
+    }
     for col in tp.languages.columns:
         if col in skip:
             continue
@@ -166,12 +176,13 @@ def list_language_columns(name: str) -> list[LanguageColumn]:
         nunique = int(series.nunique(dropna=True))
         if nunique == 0 or nunique == len(series):
             continue  # useless as a filter
-        samples = (
-            series.dropna().astype(str).value_counts().head(8).index.tolist()
-        )
+        samples = series.dropna().astype(str).value_counts().head(8).index.tolist()
         out.append(
             LanguageColumn(
-                name=col, dtype=str(series.dtype), n_unique=nunique, sample_values=samples
+                name=col,
+                dtype=str(series.dtype),
+                n_unique=nunique,
+                sample_values=samples,
             )
         )
     # Put the familiar columns first.
@@ -220,7 +231,9 @@ def do_query(req: QueryRequest) -> QueryResult:
         row_ids = [r.id for r in rows]
         col_ids = [c.id for c in cols]
         mat_ordered = mat.reindex(index=row_ids, columns=col_ids).fillna(0.0)
-        count_ordered = counts_mat.reindex(index=row_ids, columns=col_ids).fillna(0).astype(int)
+        count_ordered = (
+            counts_mat.reindex(index=row_ids, columns=col_ids).fillna(0).astype(int)
+        )
         return ConditionalResult(
             target_id=cpt.target_id,
             target_name=str(tp.parameters.loc[cpt.target_id].get("Name", "")),
@@ -270,7 +283,9 @@ def do_query(req: QueryRequest) -> QueryResult:
         entropy_bits=dist.entropy(),
         normalized_entropy=dist.normalized_entropy(),
         mode_id=str(dist.mode()),
-        mode_name=str(labels.get(dist.mode(), "")) if labels is not None else str(dist.mode()),
+        mode_name=str(labels.get(dist.mode(), ""))
+        if labels is not None
+        else str(dist.mode()),
         estimator_name=dist.estimator_name,
         estimator_params=dist.metadata.get("estimator_params", {}),
         condition=dist.metadata.get("condition", {}) or {},
@@ -291,7 +306,8 @@ def do_compare(req: CompareEstimatorsRequest) -> CompareEstimatorsResult:
 
     # Reuse typola.query.compare_estimators but with our own labels (for duplicates).
     frame = compare_estimators(
-        tp, target=req.target,
+        tp,
+        target=req.target,
         condition=req.condition or None,
         estimators=ests,
     )
@@ -315,7 +331,8 @@ def do_compare(req: CompareEstimatorsRequest) -> CompareEstimatorsResult:
 
     for lbl, est in zip(labels, ests):
         m = Marginal(
-            tp, req.target,
+            tp,
+            req.target,
             condition=req.condition or None,
             parameter_conditions=req.parameter_conditions or None,
             estimator=est,
@@ -330,7 +347,9 @@ def do_compare(req: CompareEstimatorsRequest) -> CompareEstimatorsResult:
                 id=cid,
                 name=str(code_labels.get(cid, "")) if code_labels is not None else cid,
                 count=int(counts.get(cid, 0)),
-                probabilities={lbl: per_label_probs[lbl].get(cid, 0.0) for lbl in labels},
+                probabilities={
+                    lbl: per_label_probs[lbl].get(cid, 0.0) for lbl in labels
+                },
             )
         )
     return CompareEstimatorsResult(
@@ -348,7 +367,8 @@ def do_cv(req: CrossValidateRequest) -> CrossValidateResult:
     labels = [_estimator_label(s) for s in req.estimators]
 
     df = cross_validate_estimators(
-        tp, target=req.target,
+        tp,
+        target=req.target,
         estimators=ests,
         n_folds=req.n_folds,
         random_state=req.random_state,
@@ -368,8 +388,11 @@ def do_cv(req: CrossValidateRequest) -> CrossValidateResult:
     rows_out: list[CrossValidateRow] = []
     for lbl, est in zip(labels, ests):
         df1 = _cv(
-            tp, target=req.target, estimators=[est],
-            n_folds=req.n_folds, random_state=req.random_state,
+            tp,
+            target=req.target,
+            estimators=[est],
+            n_folds=req.n_folds,
+            random_state=req.random_state,
             condition=req.condition or None,
         )
         r = df1.iloc[0]
@@ -395,7 +418,8 @@ def do_rank(req: RankAssociationsRequest) -> RankAssociationsResult:
     tp = get_typology(req.typology)
     est = _resolve_estimator(req.estimator, req.typology, req.target)
     df = rank_associations(
-        tp, target=req.target,
+        tp,
+        target=req.target,
         top_k=req.top_k,
         estimator=est,
         min_observations=req.min_observations,

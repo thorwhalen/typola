@@ -14,6 +14,7 @@ Numerical notes
   fall back to the prior. Use ``uniform()`` explicitly if you want strict
   uniform fallback.
 """
+
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -173,9 +174,7 @@ class _EmpiricalBayes(Estimator):
         return posterior / total
 
 
-def empirical_bayes(
-    global_counts: ArrayLike, *, strength: float = 1.0
-) -> Estimator:
+def empirical_bayes(global_counts: ArrayLike, *, strength: float = 1.0) -> Estimator:
     """Smooth local counts toward a global empirical distribution.
 
     The prior is ``(global_counts / sum) * strength``. Think of ``strength``

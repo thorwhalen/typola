@@ -1,4 +1,5 @@
 """Conditional distribution: P(target parameter | given parameter)."""
+
 from __future__ import annotations
 
 from typing import Any, Mapping, Optional
@@ -46,7 +47,9 @@ class Conditional:
         self.target = target
         self.given = given
         self.condition = dict(condition) if condition else {}
-        self.parameter_conditions = dict(parameter_conditions) if parameter_conditions else {}
+        self.parameter_conditions = (
+            dict(parameter_conditions) if parameter_conditions else {}
+        )
         self.estimator = estimator or jeffreys()
         self.drop_missing = drop_missing
 

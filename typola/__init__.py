@@ -34,6 +34,7 @@ __all__ = [
 # layer is usable in isolation.
 try:
     from typola import estimators  # noqa: F401
+
     __all__.append("estimators")
 except ImportError:
     pass
@@ -42,6 +43,7 @@ try:
     from typola.query.api import query  # noqa: F401
     from typola.models.marginal import Marginal  # noqa: F401
     from typola.models.conditional import Conditional  # noqa: F401
+
     __all__ += ["query", "Marginal", "Conditional"]
 except ImportError:
     pass
