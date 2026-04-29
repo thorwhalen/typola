@@ -26,10 +26,10 @@ class TypologyStore(Mapping[str, Typology]):
 
     Example
     -------
-    >>> ts = TypologyStore()
-    >>> sorted(ts)           # ['grambank', 'wals']
-    >>> ts['wals']           # → Typology (downloads on first call)
-    >>> 'wals' in ts
+    >>> ts = TypologyStore()                           # doctest: +SKIP
+    >>> sorted(ts)           # ['grambank', 'wals']    # doctest: +SKIP
+    >>> ts['wals']           # → Typology (downloads on first call)  # doctest: +SKIP
+    >>> 'wals' in ts                                   # doctest: +SKIP
     """
 
     def __init__(self, *, local_paths: Optional[Mapping[str, str]] = None):

@@ -23,13 +23,13 @@ class Conditional:
 
     Example
     -------
-    >>> from typola import load, estimators
-    >>> from typola.models import Conditional
-    >>> wals = load("wals")
-    >>> cpt = Conditional(wals, target="83A", given="82A",
+    >>> from typola import load, estimators            # doctest: +SKIP
+    >>> from typola.models import Conditional          # doctest: +SKIP
+    >>> wals = load("wals")                            # doctest: +SKIP
+    >>> cpt = Conditional(wals, target="83A", given="82A",  # doctest: +SKIP
     ...                   estimator=estimators.laplace(0.5))
-    >>> cpt.as_matrix().head()         # rows = 82A codes, cols = 83A codes
-    >>> cpt.p_given("82A-1").top_k(3)  # distribution over 83A when 82A=82A-1
+    >>> cpt.as_matrix().head()         # rows = 82A codes, cols = 83A codes  # doctest: +SKIP
+    >>> cpt.p_given("82A-1").top_k(3)  # distribution over 83A when 82A=82A-1  # doctest: +SKIP
     """
 
     def __init__(

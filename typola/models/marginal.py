@@ -19,15 +19,15 @@ class Marginal:
 
     Example
     -------
-    >>> from typola import load, estimators
-    >>> from typola.models import Marginal
-    >>> wals = load("wals")
-    >>> dist = Marginal(
+    >>> from typola import load, estimators            # doctest: +SKIP
+    >>> from typola.models import Marginal             # doctest: +SKIP
+    >>> wals = load("wals")                            # doctest: +SKIP
+    >>> dist = Marginal(                               # doctest: +SKIP
     ...     wals, "81A",
     ...     condition={"Family": "Austronesian"},
     ...     estimator=estimators.laplace(0.5),
     ... ).distribution
-    >>> dist.top_k(3)
+    >>> dist.top_k(3)                                  # doctest: +SKIP
     """
 
     def __init__(
