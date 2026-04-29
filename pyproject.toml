@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "typola"
-version = "0.1.0"
+version = "0.1.1"
 description = "Probabilistic models over linguistic typology source data (WALS, Grambank, ...) with pluggable count-to-probability estimators."
 readme = "README.md"
 requires-python = ">=3.10"
