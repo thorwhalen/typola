@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from semix import estimators
+from typola import estimators
 
 
 # ---------------------------------------------------------------------------

@@ -53,7 +53,7 @@ class LanguageColumn(BaseModel):
 class EstimatorSpec(BaseModel):
     """Serializable estimator specification.
 
-    Mirrors the ``semix.estimators`` factory functions by name + params.
+    Mirrors the ``typola.estimators`` factory functions by name + params.
     """
 
     name: Literal[

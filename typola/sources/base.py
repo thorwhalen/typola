@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Optional
 
-from semix import data_dir
+from typola import data_dir
 
 
 @dataclass(frozen=True)
@@ -60,7 +60,7 @@ class SourceSpec:
         root = self.cache_root()
         if root.exists() and not force:
             if verbose:
-                print(f"[semix] {self.name}: already cached at {root}")
+                print(f"[typola] {self.name}: already cached at {root}")
             return root
         if force and root.exists():
             shutil.rmtree(root)
@@ -68,11 +68,11 @@ class SourceSpec:
 
         archive_type = self._detect_archive_type()
         if verbose:
-            print(f"[semix] {self.name}: downloading {self.url} ...")
+            print(f"[typola] {self.name}: downloading {self.url} ...")
         data = _http_get_bytes(self.url)
         if verbose:
             size_mb = len(data) / (1024 * 1024)
-            print(f"[semix] {self.name}: got {size_mb:.1f} MB, extracting...")
+            print(f"[typola] {self.name}: got {size_mb:.1f} MB, extracting...")
 
         extract_to = root / "_extracted"
         extract_to.mkdir(exist_ok=True)
@@ -88,7 +88,7 @@ class SourceSpec:
             shutil.rmtree(inner)
 
         if verbose:
-            print(f"[semix] {self.name}: ready at {extract_to}")
+            print(f"[typola] {self.name}: ready at {extract_to}")
         return extract_to
 
     def _detect_archive_type(self) -> str:

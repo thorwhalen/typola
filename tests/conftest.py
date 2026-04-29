@@ -9,11 +9,11 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from semix import load_from_cldf_dir, Typology
+from typola import load_from_cldf_dir, Typology
 
 
 # Local WALS copy bundled with the user's dig4el project — used so tests can
-# run without network. Override with SEMIX_WALS_LOCAL.
+# run without network. Override with TYPOLA_WALS_LOCAL.
 _DEFAULT_WALS = Path(
     "/Users/thorwhalen/Dropbox/py/proj/etc/dig4el/external_data/wals-master"
 )
@@ -24,13 +24,13 @@ _DEFAULT_GB = Path(
 
 @pytest.fixture(scope="session")
 def wals_local_path() -> Path | None:
-    p = Path(os.environ.get("SEMIX_WALS_LOCAL", str(_DEFAULT_WALS)))
+    p = Path(os.environ.get("TYPOLA_WALS_LOCAL", str(_DEFAULT_WALS)))
     return p if p.exists() else None
 
 
 @pytest.fixture(scope="session")
 def grambank_local_path() -> Path | None:
-    p = Path(os.environ.get("SEMIX_GRAMBANK_LOCAL", str(_DEFAULT_GB)))
+    p = Path(os.environ.get("TYPOLA_GRAMBANK_LOCAL", str(_DEFAULT_GB)))
     return p if p.exists() else None
 
 

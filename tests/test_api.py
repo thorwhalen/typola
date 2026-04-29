@@ -12,7 +12,7 @@ fastapi = pytest.importorskip("fastapi")
 def client(wals_local_path):
     if wals_local_path is None:
         pytest.skip("No local WALS copy available")
-    os.environ["SEMIX_TYPOLOGY_WALS_PATH"] = str(wals_local_path)
+    os.environ["TYPOLA_TYPOLOGY_WALS_PATH"] = str(wals_local_path)
     from fastapi.testclient import TestClient
     from webapp.api.main import app
     return TestClient(app)

@@ -4,8 +4,8 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from semix import estimators
-from semix.models import Conditional, Distribution, Marginal
+from typola import estimators
+from typola.models import Conditional, Distribution, Marginal
 
 
 # ---------- Marginal ---------------------------------------------------------

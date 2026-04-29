@@ -1,7 +1,7 @@
-# How to enlace semix.
+# How to enlace typola.
 #
 # This file describes how to serve the app, not where to deploy it.
-# The deployment platform decides URL prefix and build env; semix itself
+# The deployment platform decides URL prefix and build env; typola itself
 # knows nothing about either.
 #
 # See: https://github.com/i2mint/enlace

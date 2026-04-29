@@ -1,1 +1,1 @@
-"""FastAPI backend for semix — thin HTTP wrapper over the query layer."""
+"""FastAPI backend for typola — thin HTTP wrapper over the query layer."""

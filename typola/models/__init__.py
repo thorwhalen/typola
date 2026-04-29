@@ -10,8 +10,8 @@ Components
 - `Conditional`  — builds a CPT: for every value of a "given" parameter,
   a `Distribution` over a "target" parameter.
 """
-from semix.models.distribution import Distribution
-from semix.models.marginal import Marginal
-from semix.models.conditional import Conditional
+from typola.models.distribution import Distribution
+from typola.models.marginal import Marginal
+from typola.models.conditional import Conditional
 
 __all__ = ["Distribution", "Marginal", "Conditional"]

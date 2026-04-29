@@ -1,4 +1,4 @@
-"""FastAPI app for semix.
+"""FastAPI app for typola.
 
 Run with::
 
@@ -15,14 +15,14 @@ import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
-from semix import estimators as est_factory
-from semix import query as semix_query
-from semix.query import (
+from typola import estimators as est_factory
+from typola import query as typola_query
+from typola.query import (
     compare_estimators,
     cross_validate_estimators,
     rank_associations,
 )
-from semix.sources.base import list_sources
+from typola.sources.base import list_sources
 
 from webapp.api.deps import build_estimator, get_typology
 from webapp.api.schemas import (
@@ -48,7 +48,7 @@ from webapp.api.schemas import (
 )
 
 
-app = FastAPI(title="semix", version="0.1.0")
+app = FastAPI(title="typola", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -110,7 +110,7 @@ def list_typologies() -> list[TypologySummary]:
         except Exception:
             # source not yet cached and download failed; skip silently
             continue
-        from semix.sources.base import get_source
+        from typola.sources.base import get_source
 
         spec = get_source(name)
         out.append(
@@ -199,7 +199,7 @@ def do_query(req: QueryRequest) -> QueryResult:
     tp = get_typology(req.typology)
     estimator = _resolve_estimator(req.estimator, req.typology, req.target)
 
-    result = semix_query(
+    result = typola_query(
         tp,
         target=req.target,
         given=req.given,
@@ -289,7 +289,7 @@ def do_compare(req: CompareEstimatorsRequest) -> CompareEstimatorsResult:
     ests = [_resolve_estimator(s, req.typology, req.target) for s in req.estimators]
     labels = [_estimator_label(s) for s in req.estimators]
 
-    # Reuse semix.query.compare_estimators but with our own labels (for duplicates).
+    # Reuse typola.query.compare_estimators but with our own labels (for duplicates).
     frame = compare_estimators(
         tp, target=req.target,
         condition=req.condition or None,
@@ -298,7 +298,7 @@ def do_compare(req: CompareEstimatorsRequest) -> CompareEstimatorsResult:
     # The returned frame uses estimator.name; if labels collide, it uses repr()
     # which is verbose. We'll rebuild with our labels.
     # Recompute by running each estimator once; cheaper than you'd think.
-    from semix.models.marginal import Marginal
+    from typola.models.marginal import Marginal
 
     support_ids: list[str] = []
     base_support_rows: list[SupportItem] = []
@@ -363,7 +363,7 @@ def do_cv(req: CrossValidateRequest) -> CrossValidateResult:
         pass
     # Simplest: re-run cross_validate once per estimator with a single estimator
     # in the list so the index label matches our known label.
-    from semix.query.api import cross_validate_estimators as _cv
+    from typola.query.api import cross_validate_estimators as _cv
 
     rows_out: list[CrossValidateRow] = []
     for lbl, est in zip(labels, ests):

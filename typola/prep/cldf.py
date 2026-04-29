@@ -20,7 +20,7 @@ from typing import Optional
 
 import pandas as pd
 
-from semix.prep.canonical import Typology
+from typola.prep.canonical import Typology
 
 CLDF_TABLES = ("languages", "parameters", "codes", "values")
 

@@ -8,14 +8,14 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Optional
 
-from semix.prep.canonical import Typology
-from semix.prep.cldf import read_cldf_structure_dataset
-from semix.sources.base import SourceSpec, get_source
+from typola.prep.canonical import Typology
+from typola.prep.cldf import read_cldf_structure_dataset
+from typola.sources.base import SourceSpec, get_source
 
 
 def available_sources() -> list[str]:
     """List sources known to the registry."""
-    from semix.sources.base import list_sources
+    from typola.sources.base import list_sources
 
     return list_sources()
 

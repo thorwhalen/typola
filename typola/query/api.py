@@ -14,11 +14,11 @@ from typing import Any, Iterable, Mapping, Optional, Union
 
 import pandas as pd
 
-from semix.estimators import Estimator, jeffreys, held_out_score
-from semix.models.conditional import Conditional
-from semix.models.distribution import Distribution
-from semix.models.marginal import Marginal
-from semix.prep.canonical import Typology
+from typola.estimators import Estimator, jeffreys, held_out_score
+from typola.models.conditional import Conditional
+from typola.models.distribution import Distribution
+from typola.models.marginal import Marginal
+from typola.prep.canonical import Typology
 
 
 # ---------------------------------------------------------------------------

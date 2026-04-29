@@ -15,8 +15,8 @@ from pathlib import Path
 
 import pandas as pd
 
-from semix import estimators, load_from_cldf_dir, query
-from semix.query import (
+from typola import estimators, load_from_cldf_dir, query
+from typola.query import (
     compare_conditions,
     compare_estimators,
     cross_validate_estimators,
@@ -38,7 +38,7 @@ def main() -> None:
     if LOCAL_WALS.exists():
         wals = load_from_cldf_dir(LOCAL_WALS, name="wals")
     else:
-        from semix import load
+        from typola import load
         wals = load("wals")
     print(wals)
 

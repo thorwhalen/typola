@@ -12,5 +12,5 @@ build/
 .idea/
 .DS_Store
 
-# semix data cache (downloaded CLDF datasets)
+# typola data cache (downloaded CLDF datasets)
 data_cache/

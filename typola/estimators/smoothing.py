@@ -1,6 +1,6 @@
 """Concrete count-to-probability estimators.
 
-These implement the plug-and-play API described in ``semix.estimators``.
+These implement the plug-and-play API described in ``typola.estimators``.
 Each public function is a **factory** that returns an Estimator instance.
 Instances are callables ``counts -> probabilities``.
 
@@ -21,7 +21,7 @@ from typing import Sequence
 
 import numpy as np
 
-from semix.estimators.base import ArrayLike, Estimator, _to_array
+from typola.estimators.base import ArrayLike, Estimator, _to_array
 
 # ---------------------------------------------------------------------------
 # MLE

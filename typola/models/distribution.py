@@ -114,7 +114,7 @@ class Distribution:
 
     def kl_divergence(self, other: "Distribution", *, eps: float = 1e-12) -> float:
         """KL(self || other), requires compatible supports."""
-        from semix.estimators.base import kl_divergence
+        from typola.estimators.base import kl_divergence
 
         aligned = other.probabilities.reindex(self.probabilities.index).fillna(eps)
         return kl_divergence(self.probabilities, aligned, eps=eps)

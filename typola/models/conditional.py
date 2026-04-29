@@ -6,9 +6,9 @@ from typing import Any, Mapping, Optional
 import numpy as np
 import pandas as pd
 
-from semix.estimators import Estimator, jeffreys
-from semix.models.distribution import Distribution
-from semix.prep.canonical import Typology
+from typola.estimators import Estimator, jeffreys
+from typola.models.distribution import Distribution
+from typola.prep.canonical import Typology
 
 
 class Conditional:
@@ -22,8 +22,8 @@ class Conditional:
 
     Example
     -------
-    >>> from semix import load, estimators
-    >>> from semix.models import Conditional
+    >>> from typola import load, estimators
+    >>> from typola.models import Conditional
     >>> wals = load("wals")
     >>> cpt = Conditional(wals, target="83A", given="82A",
     ...                   estimator=estimators.laplace(0.5))

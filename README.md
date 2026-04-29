@@ -1,4 +1,4 @@
-# semix
+# typola
 
 Probabilistic models over linguistic typology source data (WALS, Grambank, …).
 
@@ -38,8 +38,8 @@ See `webapp/README.md` for details.
 ## 60-second tour
 
 ```python
-from semix import load, query, estimators
-from semix.query import compare_estimators, cross_validate_estimators, rank_associations
+from typola import load, query, estimators
+from typola.query import compare_estimators, cross_validate_estimators, rank_associations
 
 # 1. Load a typology. Downloaded & cached on first call.
 wals = load("wals")
@@ -106,7 +106,7 @@ Run `python misc/example_bakeoff.py` for the same flow in full.
 ## Architecture
 
 ```
-semix
+typola
 ├── sources/      ← source catalog (WALS, Grambank, ...) + downloader
 ├── prep/         ← CLDF → Typology → dol stores
 ├── estimators/   ← count → probability: MLE, Laplace, Jeffreys, Dirichlet, ...
@@ -114,7 +114,7 @@ semix
 └── query/        ← query(), compare_estimators(), cross_validate_estimators(), rank_associations(), compare_conditions()
 ```
 
-Each layer only depends on the ones above it in the list — so you can use the prep layer without any probabilistic code, or you can use estimators on counts from any other source (not just semix).
+Each layer only depends on the ones above it in the list — so you can use the prep layer without any probabilistic code, or you can use estimators on counts from any other source (not just typola).
 
 ## Data sources
 
@@ -128,7 +128,7 @@ Currently registered:
 Register more with:
 
 ```python
-from semix.sources import register_source, SourceSpec
+from typola.sources import register_source, SourceSpec
 register_source(SourceSpec(
     name="apics",
     url="https://github.com/cldf-datasets/apics/archive/refs/heads/master.zip",
@@ -147,7 +147,7 @@ Subclass `Estimator` or just provide any callable with a `.name` attribute:
 
 ```python
 from dataclasses import dataclass, field
-from semix.estimators import Estimator
+from typola.estimators import Estimator
 import numpy as np
 
 @dataclass(frozen=True, repr=False)

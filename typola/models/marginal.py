@@ -3,9 +3,9 @@ from __future__ import annotations
 
 from typing import Any, Mapping, Optional
 
-from semix.estimators import Estimator, jeffreys
-from semix.models.distribution import Distribution
-from semix.prep.canonical import Typology
+from typola.estimators import Estimator, jeffreys
+from typola.models.distribution import Distribution
+from typola.prep.canonical import Typology
 
 
 class Marginal:
@@ -18,8 +18,8 @@ class Marginal:
 
     Example
     -------
-    >>> from semix import load, estimators
-    >>> from semix.models import Marginal
+    >>> from typola import load, estimators
+    >>> from typola.models import Marginal
     >>> wals = load("wals")
     >>> dist = Marginal(
     ...     wals, "81A",
