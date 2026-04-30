@@ -2,6 +2,9 @@
 
 Probabilistic models over linguistic typology source data (WALS, Grambank, …).
 
+- **Live demo** (web UI): https://thorwhalen-typola.hf.space/
+- **PyPI**: https://pypi.org/project/typola/
+
 **The core idea** is separation of concerns:
 
 - **Data prep** — acquire and canonicalize. Raw CLDF datasets → pandas DataFrames, via one generic loader that works for WALS, Grambank, APiCS, and any other CLDF StructureDataset.
