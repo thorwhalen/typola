@@ -1,4 +1,5 @@
 """Tests for the FastAPI app in webapp.api.main."""
+
 from __future__ import annotations
 
 import os
@@ -15,18 +16,19 @@ def client(wals_local_path):
     os.environ["TYPOLA_TYPOLOGY_WALS_PATH"] = str(wals_local_path)
     from fastapi.testclient import TestClient
     from webapp.api.main import app
+
     return TestClient(app)
 
 
 def test_list_typologies(client):
-    r = client.get("/typologies")
+    r = client.get("/api/typologies")
     assert r.status_code == 200
     items = r.json()
     assert any(it["name"] == "wals" for it in items)
 
 
 def test_list_parameters(client):
-    r = client.get("/typologies/wals/parameters")
+    r = client.get("/api/typologies/wals/parameters")
     assert r.status_code == 200
     items = r.json()
     assert len(items) > 150
@@ -34,7 +36,7 @@ def test_list_parameters(client):
 
 
 def test_list_codes_81a(client):
-    r = client.get("/typologies/wals/parameters/81A/codes")
+    r = client.get("/api/typologies/wals/parameters/81A/codes")
     assert r.status_code == 200
     codes = r.json()
     code_names = {c["name"] for c in codes}
@@ -42,14 +44,14 @@ def test_list_codes_81a(client):
 
 
 def test_list_language_columns(client):
-    r = client.get("/typologies/wals/languages/columns")
+    r = client.get("/api/typologies/wals/languages/columns")
     cols = {c["name"] for c in r.json()}
     assert {"Family", "Macroarea", "Genus"}.issubset(cols)
 
 
 def test_query_marginal(client):
     r = client.post(
-        "/query",
+        "/api/query",
         json={"typology": "wals", "target": "81A", "estimator": {"name": "jeffreys"}},
     )
     assert r.status_code == 200
@@ -61,7 +63,7 @@ def test_query_marginal(client):
 
 def test_query_parameter_condition(client):
     r = client.post(
-        "/query",
+        "/api/query",
         json={
             "typology": "wals",
             "target": "81A",
@@ -77,7 +79,7 @@ def test_query_parameter_condition(client):
 
 def test_query_cpt(client):
     r = client.post(
-        "/query",
+        "/api/query",
         json={
             "typology": "wals",
             "target": "83A",
@@ -97,7 +99,7 @@ def test_query_cpt(client):
 
 def test_rank_associations(client):
     r = client.post(
-        "/rank-associations",
+        "/api/rank-associations",
         json={"typology": "wals", "target": "81A", "top_k": 5},
     )
     assert r.status_code == 200
@@ -108,7 +110,7 @@ def test_rank_associations(client):
 
 def test_compare_estimators(client):
     r = client.post(
-        "/compare-estimators",
+        "/api/compare-estimators",
         json={
             "typology": "wals",
             "target": "81A",

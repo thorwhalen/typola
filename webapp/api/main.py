@@ -102,7 +102,7 @@ def _code_summaries_for(tp, pid: str) -> list[CodeSummary]:
 # ---------------------------------------------------------------------------
 
 
-@app.get("/typologies")
+@app.get("/api/typologies")
 def list_typologies() -> list[TypologySummary]:
     out = []
     for name in list_sources():
@@ -128,7 +128,7 @@ def list_typologies() -> list[TypologySummary]:
     return out
 
 
-@app.get("/typologies/{name}/parameters")
+@app.get("/api/typologies/{name}/parameters")
 def list_parameters(name: str) -> list[ParameterSummary]:
     tp = get_typology(name)
     params = tp.parameters
@@ -146,7 +146,7 @@ def list_parameters(name: str) -> list[ParameterSummary]:
     return out
 
 
-@app.get("/typologies/{name}/parameters/{pid}/codes")
+@app.get("/api/typologies/{name}/parameters/{pid}/codes")
 def list_codes(name: str, pid: str) -> list[CodeSummary]:
     tp = get_typology(name)
     if pid not in tp.parameters.index:
@@ -154,7 +154,7 @@ def list_codes(name: str, pid: str) -> list[CodeSummary]:
     return _code_summaries_for(tp, pid)
 
 
-@app.get("/typologies/{name}/languages/columns")
+@app.get("/api/typologies/{name}/languages/columns")
 def list_language_columns(name: str) -> list[LanguageColumn]:
     tp = get_typology(name)
     out = []
@@ -191,7 +191,7 @@ def list_language_columns(name: str) -> list[LanguageColumn]:
     return out
 
 
-@app.get("/typologies/{name}/languages/values")
+@app.get("/api/typologies/{name}/languages/values")
 def list_column_values(name: str, column: str, limit: int = 500) -> list[str]:
     tp = get_typology(name)
     if column not in tp.languages.columns:
@@ -205,7 +205,7 @@ def list_column_values(name: str, column: str, limit: int = 500) -> list[str]:
 # ---------------------------------------------------------------------------
 
 
-@app.post("/query")
+@app.post("/api/query")
 def do_query(req: QueryRequest) -> QueryResult:
     tp = get_typology(req.typology)
     estimator = _resolve_estimator(req.estimator, req.typology, req.target)
@@ -298,7 +298,7 @@ def do_query(req: QueryRequest) -> QueryResult:
 # ---------------------------------------------------------------------------
 
 
-@app.post("/compare-estimators")
+@app.post("/api/compare-estimators")
 def do_compare(req: CompareEstimatorsRequest) -> CompareEstimatorsResult:
     tp = get_typology(req.typology)
     ests = [_resolve_estimator(s, req.typology, req.target) for s in req.estimators]
@@ -360,7 +360,7 @@ def do_compare(req: CompareEstimatorsRequest) -> CompareEstimatorsResult:
     )
 
 
-@app.post("/cross-validate")
+@app.post("/api/cross-validate")
 def do_cv(req: CrossValidateRequest) -> CrossValidateResult:
     tp = get_typology(req.typology)
     ests = [_resolve_estimator(s, req.typology, req.target) for s in req.estimators]
@@ -413,7 +413,7 @@ def do_cv(req: CrossValidateRequest) -> CrossValidateResult:
 # ---------------------------------------------------------------------------
 
 
-@app.post("/rank-associations")
+@app.post("/api/rank-associations")
 def do_rank(req: RankAssociationsRequest) -> RankAssociationsResult:
     tp = get_typology(req.typology)
     est = _resolve_estimator(req.estimator, req.typology, req.target)
@@ -439,6 +439,19 @@ def do_rank(req: RankAssociationsRequest) -> RankAssociationsResult:
             for _, r in df.iterrows()
         ],
     )
+
+
+# ---------------------------------------------------------------------------
+# static SPA (mounted last so /api/* routes match first)
+# ---------------------------------------------------------------------------
+
+from pathlib import Path
+
+from fastapi.staticfiles import StaticFiles
+
+_DIST_DIR = Path(__file__).resolve().parents[1] / "ui" / "dist"
+if _DIST_DIR.is_dir():
+    app.mount("/", StaticFiles(directory=str(_DIST_DIR), html=True), name="ui")
 
 
 # ---------------------------------------------------------------------------
