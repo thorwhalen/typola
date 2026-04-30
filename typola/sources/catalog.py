@@ -52,7 +52,7 @@ WALS = register_source(
 GRAMBANK = register_source(
     SourceSpec(
         name="grambank",
-        url="https://zenodo.org/record/7740140/files/grambank/grambank-v1.0.3.zip",
+        url="https://zenodo.org/records/7740140/files/grambank/grambank-v1.0.zip",
         citation=(
             "Skirgård, Hedvig et al. 2023. Grambank v1.0 [Data set]. Zenodo. "
             "https://doi.org/10.5281/zenodo.7740140"
