@@ -24,6 +24,7 @@ pip install -e '.[bayesian]'
 pip install -e '.[web]'
 ```
 
+
 ## Web UI
 
 A React probability-console frontend (zodal + shadcn) ships in `webapp/`:
