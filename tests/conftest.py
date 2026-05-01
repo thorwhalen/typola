@@ -1,6 +1,7 @@
 """Pytest fixtures. Provides a real WALS typology for tests when available,
 falling back to a tiny synthetic typology otherwise.
 """
+
 from __future__ import annotations
 
 import os

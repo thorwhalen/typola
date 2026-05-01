@@ -1,4 +1,5 @@
 """Tests for Marginal and Conditional models."""
+
 from __future__ import annotations
 
 import numpy as np
@@ -23,7 +24,8 @@ def test_marginal_on_toy(toy_typology):
 
 def test_marginal_with_condition(toy_typology):
     m = Marginal(
-        toy_typology, "SV_order",
+        toy_typology,
+        "SV_order",
         condition={"Family": "F1"},
         estimator=estimators.laplace(1.0),
     )
@@ -53,7 +55,8 @@ def test_marginal_no_observations_mle_errors(toy_typology):
     # Condition that matches no languages
     with pytest.raises(ValueError):
         Marginal(
-            toy_typology, "SV_order",
+            toy_typology,
+            "SV_order",
             condition={"Family": "Z"},
             estimator=estimators.mle(),
         )
@@ -61,7 +64,8 @@ def test_marginal_no_observations_mle_errors(toy_typology):
 
 def test_marginal_no_observations_laplace_ok(toy_typology):
     m = Marginal(
-        toy_typology, "SV_order",
+        toy_typology,
+        "SV_order",
         condition={"Family": "Z"},
         estimator=estimators.laplace(1.0),
     )
@@ -74,7 +78,9 @@ def test_marginal_no_observations_laplace_ok(toy_typology):
 
 
 def test_conditional_rows_sum_to_one(toy_typology):
-    cpt = Conditional(toy_typology, target="Tone", given="SV_order", estimator=estimators.laplace(0.5))
+    cpt = Conditional(
+        toy_typology, target="Tone", given="SV_order", estimator=estimators.laplace(0.5)
+    )
     mat = cpt.as_matrix()
     row_sums = mat.sum(axis=1)
     for v in row_sums:
@@ -82,7 +88,9 @@ def test_conditional_rows_sum_to_one(toy_typology):
 
 
 def test_conditional_p_given_distribution(toy_typology):
-    cpt = Conditional(toy_typology, target="Tone", given="SV_order", estimator=estimators.mle())
+    cpt = Conditional(
+        toy_typology, target="Tone", given="SV_order", estimator=estimators.mle()
+    )
     # When SV_order=P1-1 (3 langs a, b, d):
     #   a has Tone=P2-2, b=P2-3, d=P2-1 → each 1/3
     d = cpt.p_given("P1-1")
@@ -92,8 +100,9 @@ def test_conditional_p_given_distribution(toy_typology):
 
 
 def test_conditional_mutual_information_is_non_negative(toy_typology):
-    cpt = Conditional(toy_typology, target="Tone", given="SV_order",
-                      estimator=estimators.laplace(0.5))
+    cpt = Conditional(
+        toy_typology, target="Tone", given="SV_order", estimator=estimators.laplace(0.5)
+    )
     assert cpt.mutual_information() >= 0
 
 
@@ -101,8 +110,12 @@ def test_conditional_mutual_information_is_non_negative(toy_typology):
 
 
 def test_wals_marginal_austronesian_svo(wals):
-    m = Marginal(wals, "81A", condition={"Family": "Austronesian"},
-                 estimator=estimators.laplace(0.5))
+    m = Marginal(
+        wals,
+        "81A",
+        condition={"Family": "Austronesian"},
+        estimator=estimators.laplace(0.5),
+    )
     dist = m.distribution
     # Austronesian is overwhelmingly VSO/VOS/SVO, not SOV
     p = dist.probabilities
@@ -113,8 +126,9 @@ def test_wals_marginal_austronesian_svo(wals):
 
 def test_wals_conditional_word_order_informative(wals):
     # Object-Verb order (83A) is strongly correlated with SV/OV order (81A).
-    cpt = Conditional(wals, target="83A", given="81A",
-                      estimator=estimators.laplace(0.5))
+    cpt = Conditional(
+        wals, target="83A", given="81A", estimator=estimators.laplace(0.5)
+    )
     # MI should be clearly positive (these features are highly correlated)
     mi = cpt.mutual_information()
     assert mi > 0.3  # bits, generous lower bound

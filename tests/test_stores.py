@@ -1,4 +1,5 @@
 """Tests for dol-style stores."""
+
 from __future__ import annotations
 
 import pandas as pd

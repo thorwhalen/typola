@@ -1,4 +1,5 @@
 """Tests for count-to-probability estimators."""
+
 from __future__ import annotations
 
 import numpy as np
@@ -81,16 +82,12 @@ def test_jeffreys_equals_laplace_half():
 
 def test_dirichlet_jeffreys_matches_laplace_half():
     c = np.array([5, 0, 2, 3])
-    assert np.allclose(
-        estimators.dirichlet("jeffreys")(c), estimators.jeffreys()(c)
-    )
+    assert np.allclose(estimators.dirichlet("jeffreys")(c), estimators.jeffreys()(c))
 
 
 def test_dirichlet_uniform_matches_laplace_one():
     c = np.array([5, 0, 2, 3])
-    assert np.allclose(
-        estimators.dirichlet("uniform")(c), estimators.laplace(1.0)(c)
-    )
+    assert np.allclose(estimators.dirichlet("uniform")(c), estimators.laplace(1.0)(c))
 
 
 def test_dirichlet_scalar_prior():
