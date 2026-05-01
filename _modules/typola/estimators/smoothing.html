@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>typola.estimators.smoothing &mdash; typola 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=360bc84d"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            typola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola.html">typola</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/data_dir.html">typola.data_dir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/estimators.html">typola.estimators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/estimators/base.html">typola.estimators.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/estimators/smoothing.html">typola.estimators.smoothing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models.html">typola.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models/conditional.html">typola.models.conditional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models/distribution.html">typola.models.distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models/marginal.html">typola.models.marginal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep.html">typola.prep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/canonical.html">typola.prep.canonical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/cldf.html">typola.prep.cldf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/loaders.html">typola.prep.loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/stores.html">typola.prep.stores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/query.html">typola.query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/query/api.html">typola.query.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/sources.html">typola.sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/sources/base.html">typola.sources.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/sources/catalog.html">typola.sources.catalog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">typola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">typola.estimators.smoothing</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for typola.estimators.smoothing</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Concrete count-to-probability estimators.</span>
+
+<span class="sd">These implement the plug-and-play API described in ``typola.estimators``.</span>
+<span class="sd">Each public function is a **factory** that returns an Estimator instance.</span>
+<span class="sd">Instances are callables ``counts -&gt; probabilities``.</span>
+
+<span class="sd">Numerical notes</span>
+<span class="sd">---------------</span>
+<span class="sd">- All estimators are total-preserving: the output sums to 1 up to floating</span>
+<span class="sd">  point. The base class re-normalizes defensively, but implementations</span>
+<span class="sd">  already return clean normalized output.</span>
+<span class="sd">- For an all-zero count vector (e.g. a parameter with no observations in the</span>
+<span class="sd">  conditioning group), MLE raises. All Bayesian/smoothing estimators</span>
+<span class="sd">  fall back to the prior. Use ``uniform()`` explicitly if you want strict</span>
+<span class="sd">  uniform fallback.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typola.estimators.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">,</span> <span class="n">_to_array</span>
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># MLE</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_MLE</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mle&quot;</span>
+    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">total</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;MLE is undefined for an all-zero count vector. &quot;</span>
+                <span class="s2">&quot;Use laplace(...), jeffreys(), or empirical_bayes(...) instead.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">total</span>
+
+
+<div class="viewcode-block" id="mle">
+<a class="viewcode-back" href="../../../module_docs/typola/estimators/smoothing.html#typola.estimators.mle">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mle</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Estimator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Raw relative frequencies. Zero probability for unobserved events.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_MLE</span><span class="p">()</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Laplace / add-alpha</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_Laplace</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;laplace&quot;</span>
+    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;alpha&quot;</span><span class="p">])</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+        <span class="n">smoothed</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">+</span> <span class="n">alpha</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">smoothed</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">total</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># alpha=0 and all counts 0 → fall back to uniform</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">smoothed</span> <span class="o">/</span> <span class="n">total</span>
+
+
+<div class="viewcode-block" id="laplace">
+<a class="viewcode-back" href="../../../module_docs/typola/estimators/smoothing.html#typola.estimators.laplace">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">laplace</span><span class="p">(</span><span class="n">alpha</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Estimator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add-alpha smoothing.</span>
+
+<span class="sd">    alpha=1      → classic Laplace / add-one</span>
+<span class="sd">    alpha=0.5    → Jeffreys prior (equivalent to `jeffreys()`)</span>
+<span class="sd">    alpha=0      → MLE (but prefer `mle()` for clarity)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">alpha</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;alpha must be ≥ 0&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_Laplace</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;laplace&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">alpha</span><span class="p">)})</span></div>
+
+
+
+<div class="viewcode-block" id="jeffreys">
+<a class="viewcode-back" href="../../../module_docs/typola/estimators/smoothing.html#typola.estimators.jeffreys">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">jeffreys</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Estimator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Jeffreys prior: symmetric Dirichlet with alpha_i = 0.5 for all i.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_Laplace</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;jeffreys&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="uniform">
+<a class="viewcode-back" href="../../../module_docs/typola/estimators/smoothing.html#typola.estimators.uniform">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">uniform</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Estimator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ignore counts; always return the uniform distribution over the support.&quot;&quot;&quot;</span>
+
+    <span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">class</span><span class="w"> </span><span class="nc">_Uniform</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;uniform&quot;</span>
+        <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_Uniform</span><span class="p">()</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Dirichlet-Multinomial (proper Bayesian posterior mean)</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_Dirichlet</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;dirichlet&quot;</span>
+    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="n">prior</span> <span class="o">=</span> <span class="n">_resolve_prior_vector</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;prior&quot;</span><span class="p">],</span> <span class="n">k</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">))</span>
+        <span class="n">posterior</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">+</span> <span class="n">prior</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">posterior</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">total</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># everything zero → uniform</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">posterior</span> <span class="o">/</span> <span class="n">total</span>
+
+
+<div class="viewcode-block" id="dirichlet">
+<a class="viewcode-back" href="../../../module_docs/typola/estimators/smoothing.html#typola.estimators.dirichlet">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">dirichlet</span><span class="p">(</span><span class="n">prior</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">|</span> <span class="nb">float</span> <span class="o">=</span> <span class="s2">&quot;jeffreys&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Estimator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Posterior mean under a Dirichlet prior.</span>
+
+<span class="sd">    The prior vector is the expected pseudocount for each category.</span>
+<span class="sd">    Posterior mean is ``(alpha_i + n_i) / sum(alpha + n)``.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    prior :</span>
+<span class="sd">        - ``&quot;jeffreys&quot;`` (default) — all 0.5</span>
+<span class="sd">        - ``&quot;uniform&quot;`` — all 1.0 (Laplace)</span>
+<span class="sd">        - ``&quot;bayes_laplace&quot;`` — alias for ``&quot;uniform&quot;``</span>
+<span class="sd">        - a scalar — symmetric prior with that value</span>
+<span class="sd">        - a sequence — per-category pseudocounts (length must match counts at call time)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">_Dirichlet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;dirichlet&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;prior&quot;</span><span class="p">:</span> <span class="n">prior</span><span class="p">})</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Empirical Bayes — prior set from a global count vector</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_EmpiricalBayes</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;empirical_bayes&quot;</span>
+    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="n">global_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;global_counts&quot;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">global_counts</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="n">counts</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;empirical_bayes: global_counts shape </span><span class="si">{</span><span class="n">global_counts</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;does not match input counts shape </span><span class="si">{</span><span class="n">counts</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="n">strength</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;strength&quot;</span><span class="p">])</span>
+        <span class="c1"># Build prior: global empirical distribution * strength (pseudocount mass)</span>
+        <span class="n">g_sum</span> <span class="o">=</span> <span class="n">global_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">g_sum</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># no global info — fall back to uniform</span>
+            <span class="n">prior</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">strength</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">prior</span> <span class="o">=</span> <span class="p">(</span><span class="n">global_counts</span> <span class="o">/</span> <span class="n">g_sum</span><span class="p">)</span> <span class="o">*</span> <span class="n">strength</span>
+        <span class="n">posterior</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">+</span> <span class="n">prior</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">posterior</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">total</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">k</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">posterior</span> <span class="o">/</span> <span class="n">total</span>
+
+
+<div class="viewcode-block" id="empirical_bayes">
+<a class="viewcode-back" href="../../../module_docs/typola/estimators/smoothing.html#typola.estimators.empirical_bayes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">empirical_bayes</span><span class="p">(</span><span class="n">global_counts</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">strength</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Estimator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Smooth local counts toward a global empirical distribution.</span>
+
+<span class="sd">    The prior is ``(global_counts / sum) * strength``. Think of ``strength``</span>
+<span class="sd">    as the total pseudocount mass pulled from the global view.</span>
+
+<span class="sd">    Typical use: smooth family-level counts toward the overall WALS</span>
+<span class="sd">    distribution for that parameter.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    global_counts :</span>
+<span class="sd">        Count vector to use as the prior shape. Must have the same length as</span>
+<span class="sd">        the local counts when the estimator is called.</span>
+<span class="sd">    strength :</span>
+<span class="sd">        Total pseudocount mass for the prior. Higher → more shrinkage toward</span>
+<span class="sd">        the global. 0 recovers MLE (but will fail on zero-count cells — use</span>
+<span class="sd">        `laplace(1e-6)` or similar as fallback).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">_to_array</span><span class="p">(</span><span class="n">global_counts</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_EmpiricalBayes</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;empirical_bayes&quot;</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;global_counts&quot;</span><span class="p">:</span> <span class="n">g</span><span class="p">,</span> <span class="s2">&quot;strength&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">strength</span><span class="p">)},</span>
+    <span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Mixture</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="nb">repr</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">_Mixture</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;mix&quot;</span>
+    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">counts</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="n">components</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;components&quot;</span><span class="p">]</span>
+        <span class="n">total_w</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">components</span><span class="p">)</span>
+        <span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">est</span> <span class="ow">in</span> <span class="n">components</span><span class="p">:</span>
+            <span class="n">probs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">est</span><span class="p">(</span><span class="n">counts</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+            <span class="n">acc</span> <span class="o">+=</span> <span class="p">(</span><span class="n">w</span> <span class="o">/</span> <span class="n">total_w</span><span class="p">)</span> <span class="o">*</span> <span class="n">probs</span>
+        <span class="k">return</span> <span class="n">acc</span>
+
+
+<div class="viewcode-block" id="mix">
+<a class="viewcode-back" href="../../../module_docs/typola/estimators/smoothing.html#typola.estimators.mix">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">mix</span><span class="p">(</span><span class="o">*</span><span class="n">components</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Estimator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Linear combination of estimators: `mix((0.7, laplace(1)), (0.3, mle()))`.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">components</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mix() needs at least one (weight, estimator) pair&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">components</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">w</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;mixture weights must be ≥ 0&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_Mixture</span><span class="p">(</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;mix&quot;</span><span class="p">,</span>
+        <span class="n">params</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;components&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">components</span><span class="p">),</span>
+            <span class="s2">&quot;summary&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="n">w</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span> <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">components</span><span class="p">],</span>
+        <span class="p">},</span>
+    <span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># helper: resolve a prior specifier into a concrete vector</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_resolve_prior_vector</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Produce a length-k prior vector from a string / scalar / sequence.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">spec</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;jeffreys&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="s2">&quot;bayes_laplace&quot;</span><span class="p">,</span> <span class="s2">&quot;laplace&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="s2">&quot;haldane&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown prior spec </span><span class="si">{</span><span class="n">spec</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">spec</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">spec</span><span class="p">))</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">vec</span><span class="o">.</span><span class="n">ndim</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span> <span class="o">!=</span> <span class="n">k</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;prior vector must be 1D of length </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">, got shape </span><span class="si">{</span><span class="n">vec</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">vec</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;prior entries must be ≥ 0&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">vec</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

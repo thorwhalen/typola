@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>typola.estimators &mdash; typola 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=360bc84d"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="typola.estimators.base" href="estimators/base.html" />
+    <link rel="prev" title="typola.data_dir" href="data_dir.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            typola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../typola.html">typola</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_dir.html">typola.data_dir</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">typola.estimators</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#canonical-estimators">Canonical estimators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.Estimator"><code class="docutils literal notranslate"><span class="pre">Estimator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.dirichlet"><code class="docutils literal notranslate"><span class="pre">dirichlet()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.empirical_bayes"><code class="docutils literal notranslate"><span class="pre">empirical_bayes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.held_out_score"><code class="docutils literal notranslate"><span class="pre">held_out_score()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.jeffreys"><code class="docutils literal notranslate"><span class="pre">jeffreys()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.kl_divergence"><code class="docutils literal notranslate"><span class="pre">kl_divergence()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.laplace"><code class="docutils literal notranslate"><span class="pre">laplace()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.log_likelihood"><code class="docutils literal notranslate"><span class="pre">log_likelihood()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.mix"><code class="docutils literal notranslate"><span class="pre">mix()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.mle"><code class="docutils literal notranslate"><span class="pre">mle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.normalize"><code class="docutils literal notranslate"><span class="pre">normalize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.estimators.uniform"><code class="docutils literal notranslate"><span class="pre">uniform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="estimators/base.html">typola.estimators.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estimators/smoothing.html">typola.estimators.smoothing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">typola.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/conditional.html">typola.models.conditional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/distribution.html">typola.models.distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/marginal.html">typola.models.marginal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prep.html">typola.prep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prep/canonical.html">typola.prep.canonical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prep/cldf.html">typola.prep.cldf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prep/loaders.html">typola.prep.loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prep/stores.html">typola.prep.stores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query.html">typola.query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="query/api.html">typola.query.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sources.html">typola.sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sources/base.html">typola.sources.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sources/catalog.html">typola.sources.catalog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">typola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">typola.estimators</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/module_docs/typola/estimators.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-typola.estimators">
+<span id="typola-estimators"></span><h1>typola.estimators<a class="headerlink" href="#module-typola.estimators" title="Link to this heading"></a></h1>
+<p>Pluggable count-to-probability estimators.</p>
+<p>An <em>estimator</em> is a callable that converts a vector of non-negative counts
+into a probability distribution (non-negative, sums to 1). The key idea
+is that the count→probability step is swappable — so you can easily try
+several strategies and test which works best for your task.</p>
+<section id="canonical-estimators">
+<h2>Canonical estimators<a class="headerlink" href="#canonical-estimators" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><cite>mle</cite>               — raw proportions (zero probability for unobserved events)</p></li>
+<li><p><cite>laplace(alpha)</cite>    — add-alpha smoothing with a uniform pseudocount</p></li>
+<li><p><cite>jeffreys()</cite>        — Laplace with alpha=0.5 (the Jeffreys-prior Dirichlet)</p></li>
+<li><p><cite>dirichlet(prior)</cite>  — posterior mean under a configurable Dirichlet prior</p></li>
+<li><p><cite>empirical_bayes(global_counts, strength)</cite> — prior built from global counts</p></li>
+<li><p><cite>mix(*(weight, est))</cite> — linear combination of any number of estimators</p></li>
+</ul>
+<p>All are pure callables that accept <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">pd.Series</span></code> and
+preserve the index of a Series. They all have a <code class="docutils literal notranslate"><span class="pre">.name</span></code> attribute and a
+<code class="docutils literal notranslate"><span class="pre">.params</span></code> dict so runs are self-describing.</p>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="typola.estimators.Estimator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">Estimator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'estimator'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params:</span> <span class="pre">~typing.Mapping</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/typola/estimators/base.html#Estimator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.Estimator" title="Link to this definition"></a></dt>
+<dd><p>Callable that maps count vectors to probability vectors.</p>
+<p>Subclasses override <cite>_estimate(counts_array)</cite> to return a numpy
+probability vector. The base class handles pandas-Series plumbing,
+normalization checks, and the <cite>describe()</cite> / <cite>__repr__</cite> machinery.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.dirichlet">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">dirichlet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prior</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'jeffreys'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a></span></span><a class="reference internal" href="../../_modules/typola/estimators/smoothing.html#dirichlet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.dirichlet" title="Link to this definition"></a></dt>
+<dd><p>Posterior mean under a Dirichlet prior.</p>
+<p>The prior vector is the expected pseudocount for each category.
+Posterior mean is <code class="docutils literal notranslate"><span class="pre">(alpha_i</span> <span class="pre">+</span> <span class="pre">n_i)</span> <span class="pre">/</span> <span class="pre">sum(alpha</span> <span class="pre">+</span> <span class="pre">n)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>prior</strong> – <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;jeffreys&quot;</span></code> (default) — all 0.5</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;uniform&quot;</span></code> — all 1.0 (Laplace)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;bayes_laplace&quot;</span></code> — alias for <code class="docutils literal notranslate"><span class="pre">&quot;uniform&quot;</span></code></p></li>
+<li><p>a scalar — symmetric prior with that value</p></li>
+<li><p>a sequence — per-category pseudocounts (length must match counts at call time)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.empirical_bayes">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">empirical_bayes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">global_counts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a></span></span><a class="reference internal" href="../../_modules/typola/estimators/smoothing.html#empirical_bayes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.empirical_bayes" title="Link to this definition"></a></dt>
+<dd><p>Smooth local counts toward a global empirical distribution.</p>
+<p>The prior is <code class="docutils literal notranslate"><span class="pre">(global_counts</span> <span class="pre">/</span> <span class="pre">sum)</span> <span class="pre">*</span> <span class="pre">strength</span></code>. Think of <code class="docutils literal notranslate"><span class="pre">strength</span></code>
+as the total pseudocount mass pulled from the global view.</p>
+<p>Typical use: smooth family-level counts toward the overall WALS
+distribution for that parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>global_counts</strong> – Count vector to use as the prior shape. Must have the same length as
+the local counts when the estimator is called.</p></li>
+<li><p><strong>strength</strong> – Total pseudocount mass for the prior. Higher → more shrinkage toward
+the global. 0 recovers MLE (but will fail on zero-count cells — use
+<cite>laplace(1e-6)</cite> or similar as fallback).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.held_out_score">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">held_out_score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts_train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts_test</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">dict</span></span></span><a class="reference internal" href="../../_modules/typola/estimators/base.html#held_out_score"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.held_out_score" title="Link to this definition"></a></dt>
+<dd><p>Fit an estimator on <code class="docutils literal notranslate"><span class="pre">counts_train</span></code> and score it on <code class="docutils literal notranslate"><span class="pre">counts_test</span></code>.</p>
+<p>Returns a dict of metrics:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">log_likelihood</span></code>  — higher is better</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">perplexity</span></code>      — exp(-log_likelihood / N_test); lower is better</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kl_to_empirical</span></code> — KL(empirical_test || predicted); 0 is perfect</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>            — estimator’s reported name</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.jeffreys">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">jeffreys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a></span></span><a class="reference internal" href="../../_modules/typola/estimators/smoothing.html#jeffreys"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.jeffreys" title="Link to this definition"></a></dt>
+<dd><p>Jeffreys prior: symmetric Dirichlet with alpha_i = 0.5 for all i.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.kl_divergence">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">kl_divergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../../_modules/typola/estimators/base.html#kl_divergence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.kl_divergence" title="Link to this definition"></a></dt>
+<dd><p>KL(p || q) between two probability vectors.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.laplace">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">laplace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a></span></span><a class="reference internal" href="../../_modules/typola/estimators/smoothing.html#laplace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.laplace" title="Link to this definition"></a></dt>
+<dd><p>Add-alpha smoothing.</p>
+<p>alpha=1      → classic Laplace / add-one
+alpha=0.5    → Jeffreys prior (equivalent to <cite>jeffreys()</cite>)
+alpha=0      → MLE (but prefer <cite>mle()</cite> for clarity)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.log_likelihood">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">log_likelihood</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">counts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1e-12</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../../_modules/typola/estimators/base.html#log_likelihood"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.log_likelihood" title="Link to this definition"></a></dt>
+<dd><p>Log-likelihood of multinomial counts under distribution p.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">sum(counts[i]</span> <span class="pre">*</span> <span class="pre">log(p[i]))</span></code> ignoring the normalizing constant.
+Useful for comparing two estimators on the same held-out counts.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.mix">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">mix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">components</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a></span></span><a class="reference internal" href="../../_modules/typola/estimators/smoothing.html#mix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.mix" title="Link to this definition"></a></dt>
+<dd><p>Linear combination of estimators: <cite>mix((0.7, laplace(1)), (0.3, mle()))</cite>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.mle">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">mle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a></span></span><a class="reference internal" href="../../_modules/typola/estimators/smoothing.html#mle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.mle" title="Link to this definition"></a></dt>
+<dd><p>Raw relative frequencies. Zero probability for unobserved events.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.normalize">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">counts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Series</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/typola/estimators/base.html#normalize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.normalize" title="Link to this definition"></a></dt>
+<dd><p>Divide by the sum so the result sums to 1. Raises if sum is 0.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.estimators.uniform">
+<span class="sig-prename descclassname"><span class="pre">typola.estimators.</span></span><span class="sig-name descname"><span class="pre">uniform</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a></span></span><a class="reference internal" href="../../_modules/typola/estimators/smoothing.html#uniform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.estimators.uniform" title="Link to this definition"></a></dt>
+<dd><p>Ignore counts; always return the uniform distribution over the support.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_dir.html" class="btn btn-neutral float-left" title="typola.data_dir" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="estimators/base.html" class="btn btn-neutral float-right" title="typola.estimators.base" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

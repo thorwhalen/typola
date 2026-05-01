@@ -1,0 +1,4 @@
+typola.estimators
+=================
+.. automodule:: typola.estimators
+   :members:

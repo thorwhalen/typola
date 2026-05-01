@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>typola.models.marginal &mdash; typola 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=360bc84d"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            typola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola.html">typola</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/data_dir.html">typola.data_dir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/estimators.html">typola.estimators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/estimators/base.html">typola.estimators.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/estimators/smoothing.html">typola.estimators.smoothing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models.html">typola.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models/conditional.html">typola.models.conditional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models/distribution.html">typola.models.distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models/marginal.html">typola.models.marginal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep.html">typola.prep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/canonical.html">typola.prep.canonical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/cldf.html">typola.prep.cldf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/loaders.html">typola.prep.loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/stores.html">typola.prep.stores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/query.html">typola.query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/query/api.html">typola.query.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/sources.html">typola.sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/sources/base.html">typola.sources.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/sources/catalog.html">typola.sources.catalog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">typola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">typola.models.marginal</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for typola.models.marginal</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Marginal distribution over a parameter&#39;s support, under a condition.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typola.estimators</span><span class="w"> </span><span class="kn">import</span> <span class="n">Estimator</span><span class="p">,</span> <span class="n">jeffreys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typola.models.distribution</span><span class="w"> </span><span class="kn">import</span> <span class="n">Distribution</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typola.prep.canonical</span><span class="w"> </span><span class="kn">import</span> <span class="n">Typology</span>
+
+
+<div class="viewcode-block" id="Marginal">
+<a class="viewcode-back" href="../../../module_docs/typola/models/marginal.html#typola.Marginal">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Marginal</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build a `Distribution` over one parameter&#39;s values.</span>
+
+<span class="sd">    This is the entry point for ``P(parameter value | condition)``. The</span>
+<span class="sd">    condition is any filter on language metadata columns (see</span>
+<span class="sd">    `Typology.filter_languages`). The count→probability strategy is</span>
+<span class="sd">    specified by ``estimator``.</span>
+
+<span class="sd">    Example</span>
+<span class="sd">    -------</span>
+<span class="sd">    &gt;&gt;&gt; from typola import load, estimators            # doctest: +SKIP</span>
+<span class="sd">    &gt;&gt;&gt; from typola.models import Marginal             # doctest: +SKIP</span>
+<span class="sd">    &gt;&gt;&gt; wals = load(&quot;wals&quot;)                            # doctest: +SKIP</span>
+<span class="sd">    &gt;&gt;&gt; dist = Marginal(                               # doctest: +SKIP</span>
+<span class="sd">    ...     wals, &quot;81A&quot;,</span>
+<span class="sd">    ...     condition={&quot;Family&quot;: &quot;Austronesian&quot;},</span>
+<span class="sd">    ...     estimator=estimators.laplace(0.5),</span>
+<span class="sd">    ... ).distribution</span>
+<span class="sd">    &gt;&gt;&gt; dist.top_k(3)                                  # doctest: +SKIP</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">typology</span><span class="p">:</span> <span class="n">Typology</span><span class="p">,</span>
+        <span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">condition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">parameter_conditions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">estimator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Estimator</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">drop_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">typology</span> <span class="o">=</span> <span class="n">typology</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameter</span> <span class="o">=</span> <span class="n">parameter</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">condition</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span> <span class="k">if</span> <span class="n">condition</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameter_conditions</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="n">parameter_conditions</span><span class="p">)</span> <span class="k">if</span> <span class="n">parameter_conditions</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span> <span class="ow">or</span> <span class="n">jeffreys</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drop_missing</span> <span class="o">=</span> <span class="n">drop_missing</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span> <span class="o">=</span> <span class="n">typology</span><span class="o">.</span><span class="n">parameter_id</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">counts</span> <span class="o">=</span> <span class="n">typology</span><span class="o">.</span><span class="n">counts</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span><span class="p">,</span>
+            <span class="n">condition</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">,</span>
+            <span class="n">parameter_conditions</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_conditions</span><span class="p">,</span>
+            <span class="n">drop_missing</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">drop_missing</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;mle&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No observations for parameter </span><span class="si">{</span><span class="n">parameter</span><span class="si">!r}</span><span class="s2"> under condition &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="si">!r}</span><span class="s2">, and MLE is undefined. Use a smoothing &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;estimator (laplace, jeffreys, dirichlet, empirical_bayes).&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">typology</span><span class="o">.</span><span class="n">code_labels</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">distribution</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Distribution</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Distribution</span><span class="p">(</span>
+            <span class="n">probabilities</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">probabilities</span><span class="p">,</span>
+            <span class="n">counts</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">counts</span><span class="p">,</span>
+            <span class="n">support_labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">,</span>
+            <span class="n">estimator_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;typology&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">typology</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s2">&quot;parameter_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span><span class="p">,</span>
+                <span class="s2">&quot;parameter_name&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">typology</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">parameter_id</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="p">),</span>
+                <span class="s2">&quot;condition&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">,</span>
+                <span class="s2">&quot;parameter_conditions&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameter_conditions</span><span class="p">,</span>
+                <span class="s2">&quot;estimator_params&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">estimator</span><span class="o">.</span><span class="n">params</span><span class="p">),</span>
+            <span class="p">},</span>
+        <span class="p">)</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

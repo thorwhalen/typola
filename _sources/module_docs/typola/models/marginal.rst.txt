@@ -1,0 +1,4 @@
+typola.models.marginal
+======================
+.. automodule:: typola.models.marginal
+   :members:

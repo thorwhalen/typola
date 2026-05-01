@@ -1,0 +1,463 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>typola &mdash; typola 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=360bc84d"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="typola.data_dir" href="typola/data_dir.html" />
+    <link rel="prev" title="Welcome to typola’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            typola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">typola</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#typola.Conditional"><code class="docutils literal notranslate"><span class="pre">Conditional</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Conditional.as_matrix"><code class="docutils literal notranslate"><span class="pre">Conditional.as_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Conditional.mutual_information"><code class="docutils literal notranslate"><span class="pre">Conditional.mutual_information()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Conditional.p_given"><code class="docutils literal notranslate"><span class="pre">Conditional.p_given()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.Marginal"><code class="docutils literal notranslate"><span class="pre">Marginal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.Typology"><code class="docutils literal notranslate"><span class="pre">Typology</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.name"><code class="docutils literal notranslate"><span class="pre">Typology.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.languages"><code class="docutils literal notranslate"><span class="pre">Typology.languages</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.parameters"><code class="docutils literal notranslate"><span class="pre">Typology.parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.codes"><code class="docutils literal notranslate"><span class="pre">Typology.codes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.values"><code class="docutils literal notranslate"><span class="pre">Typology.values</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.citation"><code class="docutils literal notranslate"><span class="pre">Typology.citation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.metadata"><code class="docutils literal notranslate"><span class="pre">Typology.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.code_labels"><code class="docutils literal notranslate"><span class="pre">Typology.code_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.counts"><code class="docutils literal notranslate"><span class="pre">Typology.counts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.filter_languages"><code class="docutils literal notranslate"><span class="pre">Typology.filter_languages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.joint_counts"><code class="docutils literal notranslate"><span class="pre">Typology.joint_counts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.parameter_id"><code class="docutils literal notranslate"><span class="pre">Typology.parameter_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.parameter_names"><code class="docutils literal notranslate"><span class="pre">Typology.parameter_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.Typology.values_for"><code class="docutils literal notranslate"><span class="pre">Typology.values_for()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.load"><code class="docutils literal notranslate"><span class="pre">load()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.load_from_cldf_dir"><code class="docutils literal notranslate"><span class="pre">load_from_cldf_dir()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="typola/data_dir.html">typola.data_dir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/estimators.html">typola.estimators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/estimators/base.html">typola.estimators.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/estimators/smoothing.html">typola.estimators.smoothing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/models.html">typola.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/models/conditional.html">typola.models.conditional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/models/distribution.html">typola.models.distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/models/marginal.html">typola.models.marginal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/prep.html">typola.prep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/prep/canonical.html">typola.prep.canonical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/prep/cldf.html">typola.prep.cldf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/prep/loaders.html">typola.prep.loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/prep/stores.html">typola.prep.stores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/query.html">typola.query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/query/api.html">typola.query.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/sources.html">typola.sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/sources/base.html">typola.sources.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typola/sources/catalog.html">typola.sources.catalog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">typola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">typola</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/module_docs/typola.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-typola">
+<span id="typola"></span><h1>typola<a class="headerlink" href="#module-typola" title="Link to this heading"></a></h1>
+<p>typola: probabilistic models over linguistic typology source data.</p>
+<p>Public API organized in layers that can be used independently:</p>
+<ul class="simple">
+<li><p><cite>typola.sources</cite>   — describe and acquire raw typology datasets (WALS, Grambank, …)</p></li>
+<li><p><cite>typola.prep</cite>      — parse raw CLDF data into a canonical <cite>Typology</cite></p></li>
+<li><p><cite>typola.estimators</cite>— pluggable count-to-probability strategies (MLE, Laplace, Jeffreys, …)</p></li>
+<li><p><cite>typola.models</cite>    — probabilistic models: marginal, conditional, joint</p></li>
+<li><p><cite>typola.query</cite>     — high-level querying / drill-down API</p></li>
+</ul>
+<p>Typical usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typola</span><span class="w"> </span><span class="kn">import</span> <span class="n">load</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">estimators</span>
+
+<span class="n">wals</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;wals&quot;</span><span class="p">)</span>                       <span class="c1"># → Typology</span>
+<span class="n">dist</span> <span class="o">=</span> <span class="n">query</span><span class="p">(</span><span class="n">wals</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;81A&quot;</span><span class="p">,</span>          <span class="c1"># Order of Subject and Verb</span>
+             <span class="n">given</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;family&quot;</span><span class="p">:</span> <span class="s2">&quot;Austronesian&quot;</span><span class="p">},</span>
+             <span class="n">estimator</span><span class="o">=</span><span class="n">estimators</span><span class="o">.</span><span class="n">laplace</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="n">dist</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>                           <span class="c1"># DataFrame of (code, name, prob)</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="typola.Conditional">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typola.</span></span><span class="sig-name descname"><span class="pre">Conditional</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typology</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="typola/prep/canonical.html#typola.prep.canonical.Typology" title="typola.prep.canonical.Typology"><span class="pre">Typology</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">given</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="typola/estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/typola/models/conditional.html#Conditional"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Conditional" title="Link to this definition"></a></dt>
+<dd><p>CPT for P(target | given), over languages of the typology.</p>
+<p>Each row is a value of the <code class="docutils literal notranslate"><span class="pre">given</span></code> parameter; the row is a
+<cite>Distribution</cite> over values of the <code class="docutils literal notranslate"><span class="pre">target</span></code> parameter, built from
+the joint count table by applying the estimator row-wise.</p>
+<p>The matrix form is also exposed as a DataFrame via <cite>.as_matrix()</cite>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typola</span><span class="w"> </span><span class="kn">import</span> <span class="n">load</span><span class="p">,</span> <span class="n">estimators</span>            
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typola.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Conditional</span>          
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wals</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;wals&quot;</span><span class="p">)</span>                            
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cpt</span> <span class="o">=</span> <span class="n">Conditional</span><span class="p">(</span><span class="n">wals</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s2">&quot;83A&quot;</span><span class="p">,</span> <span class="n">given</span><span class="o">=</span><span class="s2">&quot;82A&quot;</span><span class="p">,</span>  
+<span class="gp">... </span>                  <span class="n">estimator</span><span class="o">=</span><span class="n">estimators</span><span class="o">.</span><span class="n">laplace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cpt</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>         <span class="c1"># rows = 82A codes, cols = 83A codes  </span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cpt</span><span class="o">.</span><span class="n">p_given</span><span class="p">(</span><span class="s2">&quot;82A-1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">top_k</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># distribution over 83A when 82A=82A-1  </span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.Conditional.as_matrix">
+<span class="sig-name descname"><span class="pre">as_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/typola/models/conditional.html#Conditional.as_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Conditional.as_matrix" title="Link to this definition"></a></dt>
+<dd><p>CPT as a DataFrame (rows = given code, cols = target code).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.Conditional.mutual_information">
+<span class="sig-name descname"><span class="pre">mutual_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="../_modules/typola/models/conditional.html#Conditional.mutual_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Conditional.mutual_information" title="Link to this definition"></a></dt>
+<dd><p>Pointwise MI I(target; given) in bits.</p>
+<p>Computed from the estimator-smoothed joint via row-normalized CPT and
+the corresponding marginal over <code class="docutils literal notranslate"><span class="pre">given</span></code>. Useful for ranking which
+parameter pairs actually co-vary.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.Conditional.p_given">
+<span class="sig-name descname"><span class="pre">p_given</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">given_value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="typola/models/distribution.html#typola.models.distribution.Distribution" title="typola.models.distribution.Distribution"><span class="pre">Distribution</span></a></span></span><a class="reference internal" href="../_modules/typola/models/conditional.html#Conditional.p_given"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Conditional.p_given" title="Link to this definition"></a></dt>
+<dd><p>Distribution over target values given <code class="docutils literal notranslate"><span class="pre">given_value</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="typola.Marginal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typola.</span></span><span class="sig-name descname"><span class="pre">Marginal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typology</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="typola/prep/canonical.html#typola.prep.canonical.Typology" title="typola.prep.canonical.Typology"><span class="pre">Typology</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="typola/estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/typola/models/marginal.html#Marginal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Marginal" title="Link to this definition"></a></dt>
+<dd><p>Build a <cite>Distribution</cite> over one parameter’s values.</p>
+<p>This is the entry point for <code class="docutils literal notranslate"><span class="pre">P(parameter</span> <span class="pre">value</span> <span class="pre">|</span> <span class="pre">condition)</span></code>. The
+condition is any filter on language metadata columns (see
+<cite>Typology.filter_languages</cite>). The count→probability strategy is
+specified by <code class="docutils literal notranslate"><span class="pre">estimator</span></code>.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typola</span><span class="w"> </span><span class="kn">import</span> <span class="n">load</span><span class="p">,</span> <span class="n">estimators</span>            
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">typola.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Marginal</span>             
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wals</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s2">&quot;wals&quot;</span><span class="p">)</span>                            
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">Marginal</span><span class="p">(</span>                               
+<span class="gp">... </span>    <span class="n">wals</span><span class="p">,</span> <span class="s2">&quot;81A&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">condition</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Family&quot;</span><span class="p">:</span> <span class="s2">&quot;Austronesian&quot;</span><span class="p">},</span>
+<span class="gp">... </span>    <span class="n">estimator</span><span class="o">=</span><span class="n">estimators</span><span class="o">.</span><span class="n">laplace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">)</span><span class="o">.</span><span class="n">distribution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span><span class="o">.</span><span class="n">top_k</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>                                  
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="typola.Typology">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typola.</span></span><span class="sig-name descname"><span class="pre">Typology</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">languages:</span> <span class="pre">~pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters:</span> <span class="pre">~pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codes:</span> <span class="pre">~pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values:</span> <span class="pre">~pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citation:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata:</span> <span class="pre">dict</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/typola/prep/canonical.html#Typology"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Typology" title="Link to this definition"></a></dt>
+<dd><p>A categorical typology dataset in canonical form.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.Typology.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#typola.Typology.name" title="Link to this definition"></a></dt>
+<dd><p>Short identifier like <code class="docutils literal notranslate"><span class="pre">&quot;wals&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;grambank&quot;</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.Typology.languages">
+<span class="sig-name descname"><span class="pre">languages</span></span><a class="headerlink" href="#typola.Typology.languages" title="Link to this definition"></a></dt>
+<dd><p>One row per language. Indexed by <code class="docutils literal notranslate"><span class="pre">Language_ID</span></code>. Expected columns include
+<code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Macroarea</span></code>, <code class="docutils literal notranslate"><span class="pre">Latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">Longitude</span></code>, <code class="docutils literal notranslate"><span class="pre">Glottocode</span></code>, <code class="docutils literal notranslate"><span class="pre">Family</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.Typology.parameters">
+<span class="sig-name descname"><span class="pre">parameters</span></span><a class="headerlink" href="#typola.Typology.parameters" title="Link to this definition"></a></dt>
+<dd><p>One row per parameter (grammatical feature). Indexed by <code class="docutils literal notranslate"><span class="pre">Parameter_ID</span></code>.
+Expected columns: <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Description</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.Typology.codes">
+<span class="sig-name descname"><span class="pre">codes</span></span><a class="headerlink" href="#typola.Typology.codes" title="Link to this definition"></a></dt>
+<dd><p>One row per possible value for a parameter. Indexed by <code class="docutils literal notranslate"><span class="pre">Code_ID</span></code>.
+Expected columns: <code class="docutils literal notranslate"><span class="pre">Parameter_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Description</span></code>, <code class="docutils literal notranslate"><span class="pre">Number</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.Typology.values">
+<span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#typola.Typology.values" title="Link to this definition"></a></dt>
+<dd><p>Long-format observations: one row per (language, parameter) with the observed
+value. Columns: <code class="docutils literal notranslate"><span class="pre">Language_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Parameter_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Value</span></code>, <code class="docutils literal notranslate"><span class="pre">Code_ID</span></code>, and any
+source/comment columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.Typology.citation">
+<span class="sig-name descname"><span class="pre">citation</span></span><a class="headerlink" href="#typola.Typology.citation" title="Link to this definition"></a></dt>
+<dd><p>A bibliographic citation string for the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.Typology.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#typola.Typology.metadata" title="Link to this definition"></a></dt>
+<dd><p>Any additional metadata (CLDF metadata JSON, download info, etc.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.Typology.code_labels">
+<span class="sig-name descname"><span class="pre">code_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/typola/prep/canonical.html#Typology.code_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Typology.code_labels" title="Link to this definition"></a></dt>
+<dd><p>Series mapping Code_ID → human-readable name for a parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.Typology.counts">
+<span class="sig-name descname"><span class="pre">counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../_modules/typola/prep/canonical.html#Typology.counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Typology.counts" title="Link to this definition"></a></dt>
+<dd><p>Count languages by code for a parameter, optionally conditioned.</p>
+<p>Returns a Series indexed by <code class="docutils literal notranslate"><span class="pre">Code_ID</span></code> (for parameters that use codes)
+or by raw <code class="docutils literal notranslate"><span class="pre">Value</span></code> (when no codes are defined), with integer counts.
+Codes present in the parameter’s code table but not observed are
+included with count 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameter</strong> (<em>str</em>) – Parameter ID or name (via <cite>parameter_id</cite>).</p></li>
+<li><p><strong>condition</strong> (<em>mapping</em><em>, </em><em>optional</em>) – Filter on <code class="docutils literal notranslate"><span class="pre">languages</span></code> columns, see <cite>filter_languages</cite>.</p></li>
+<li><p><strong>parameter_conditions</strong> (<em>mapping</em><em>, </em><em>optional</em>) – Filter to languages whose other-parameter values match, see
+<cite>filter_languages</cite>.</p></li>
+<li><p><strong>drop_missing</strong> (<em>bool</em>) – If True, ignore rows with NaN / missing / “?” values (common in Grambank).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.Typology.filter_languages">
+<span class="sig-name descname"><span class="pre">filter_languages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Index</span></span></span><a class="reference internal" href="../_modules/typola/prep/canonical.html#Typology.filter_languages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Typology.filter_languages" title="Link to this definition"></a></dt>
+<dd><p>Return Language_IDs matching language-metadata AND parameter-value conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>condition</strong> (<em>mapping</em><em>, </em><em>optional</em>) – <p>Filter on <code class="docutils literal notranslate"><span class="pre">languages</span></code> columns, <code class="docutils literal notranslate"><span class="pre">{column:</span> <span class="pre">value_or_iterable_or_callable}</span></code>:</p>
+<ul>
+<li><p>scalar (str / int / bool) → exact match</p></li>
+<li><p>list/tuple/set → membership</p></li>
+<li><p>callable → predicate applied to the column value</p></li>
+</ul>
+</p></li>
+<li><p><strong>parameter_conditions</strong> (<em>mapping</em><em>, </em><em>optional</em>) – <p>Filter to languages whose values for given parameters match.
+Keys are parameter IDs or names; values can be a single code ID,
+a Value, or an iterable of acceptable codes/values. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter_conditions</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;83A&quot;</span><span class="p">:</span> <span class="s2">&quot;83A-2&quot;</span><span class="p">}</span>            <span class="c1"># OV order</span>
+<span class="n">parameter_conditions</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;81A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;81A-1&quot;</span><span class="p">,</span> <span class="s2">&quot;81A-2&quot;</span><span class="p">]}</span> <span class="c1"># SOV or SVO</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>IDs.</strong> (<em>An empty/None condition + empty parameter_conditions → all language</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.Typology.joint_counts">
+<span class="sig-name descname"><span class="pre">joint_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/typola/prep/canonical.html#Typology.joint_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Typology.joint_counts" title="Link to this definition"></a></dt>
+<dd><p>Co-occurrence count table for two parameters.</p>
+<p>Rows = codes of <code class="docutils literal notranslate"><span class="pre">param_a</span></code>, columns = codes of <code class="docutils literal notranslate"><span class="pre">param_b</span></code>. Counts are
+over languages that have non-missing values for both parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.Typology.parameter_id">
+<span class="sig-name descname"><span class="pre">parameter_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/typola/prep/canonical.html#Typology.parameter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Typology.parameter_id" title="Link to this definition"></a></dt>
+<dd><p>Resolve a parameter by ID or by (case-insensitive) name prefix.</p>
+<p>Raises KeyError if nothing matches.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="typola.Typology.parameter_names">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parameter_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Series</span></em><a class="headerlink" href="#typola.Typology.parameter_names" title="Link to this definition"></a></dt>
+<dd><p>Series mapping Parameter_ID → Name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.Typology.values_for">
+<span class="sig-name descname"><span class="pre">values_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../_modules/typola/prep/canonical.html#Typology.values_for"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.Typology.values_for" title="Link to this definition"></a></dt>
+<dd><p>Return the values DataFrame filtered to a single parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.load">
+<span class="sig-prename descclassname"><span class="pre">typola.</span></span><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name_or_spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="typola/sources/base.html#typola.sources.base.SourceSpec" title="typola.sources.base.SourceSpec"><span class="pre">SourceSpec</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">local_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">download_if_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="typola/prep/canonical.html#typola.prep.canonical.Typology" title="typola.prep.canonical.Typology"><span class="pre">Typology</span></a></span></span><a class="reference internal" href="../_modules/typola/prep/loaders.html#load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.load" title="Link to this definition"></a></dt>
+<dd><p>Load a typology by name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name_or_spec</strong> (<em>str</em><em> or </em><a class="reference internal" href="typola/sources.html#typola.sources.SourceSpec" title="typola.sources.SourceSpec"><em>SourceSpec</em></a>) – The registered name (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;wals&quot;</span></code>) or a spec object.</p></li>
+<li><p><strong>local_path</strong> (<em>path-like</em><em>, </em><em>optional</em>) – If given, skip download/cache and load from this directory instead.
+The path can point at the CLDF directory or any ancestor up to the
+dataset root.</p></li>
+<li><p><strong>download_if_missing</strong> (<em>bool</em>) – If False and the source is not cached, raise instead of downloading.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.load_from_cldf_dir">
+<span class="sig-prename descclassname"><span class="pre">typola.</span></span><span class="sig-name descname"><span class="pre">load_from_cldf_dir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="typola/prep/canonical.html#typola.prep.canonical.Typology" title="typola.prep.canonical.Typology"><span class="pre">Typology</span></a></span></span><a class="reference internal" href="../_modules/typola/prep/loaders.html#load_from_cldf_dir"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.load_from_cldf_dir" title="Link to this definition"></a></dt>
+<dd><p>Alias: load a typology from a local CLDF directory with no download.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.query">
+<span class="sig-prename descclassname"><span class="pre">typola.</span></span><span class="sig-name descname"><span class="pre">query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">typology</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="typola/prep/canonical.html#typola.prep.canonical.Typology" title="typola.prep.canonical.Typology"><span class="pre">Typology</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">given</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">given_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">estimator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="typola/estimators/base.html#typola.estimators.base.Estimator" title="typola.estimators.base.Estimator"><span class="pre">Estimator</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="typola/models/distribution.html#typola.models.distribution.Distribution" title="typola.models.distribution.Distribution"><span class="pre">Distribution</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="typola/models/conditional.html#typola.models.conditional.Conditional" title="typola.models.conditional.Conditional"><span class="pre">Conditional</span></a></span></span><a class="reference internal" href="../_modules/typola/query/api.html#query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.query" title="Link to this definition"></a></dt>
+<dd><p>Ask a probabilistic question about the typology.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>typology</strong> (<a class="reference internal" href="#typola.Typology" title="typola.Typology"><em>Typology</em></a>)</p></li>
+<li><p><strong>target</strong> (<em>str</em>) – Parameter ID or name to ask about.</p></li>
+<li><p><strong>given</strong> (<em>str</em><em>, </em><em>optional</em>) – Parameter ID or name to condition on. If given without <code class="docutils literal notranslate"><span class="pre">given_value</span></code>,
+the full CPT is returned. With <code class="docutils literal notranslate"><span class="pre">given_value</span></code>, the row distribution
+is returned.</p></li>
+<li><p><strong>given_value</strong> (<em>any</em><em>, </em><em>optional</em>) – A specific code/value of the <code class="docutils literal notranslate"><span class="pre">given</span></code> parameter.</p></li>
+<li><p><strong>condition</strong> (<em>mapping</em><em>, </em><em>optional</em>) – Filter on language metadata (see <cite>Typology.filter_languages</cite>).</p></li>
+<li><p><strong>estimator</strong> (<a class="reference internal" href="typola/estimators.html#typola.estimators.Estimator" title="typola.estimators.Estimator"><em>Estimator</em></a><em>, </em><em>optional</em>) – Count-to-probability strategy. Defaults to Jeffreys.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Distribution</em> – When <code class="docutils literal notranslate"><span class="pre">given</span></code> is None, or <code class="docutils literal notranslate"><span class="pre">given</span></code> and <code class="docutils literal notranslate"><span class="pre">given_value</span></code> are both set.</p></li>
+<li><p><em>Conditional</em> – When <code class="docutils literal notranslate"><span class="pre">given</span></code> is a parameter and <code class="docutils literal notranslate"><span class="pre">given_value</span></code> is omitted.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to typola’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="typola/data_dir.html" class="btn btn-neutral float-right" title="typola.data_dir" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

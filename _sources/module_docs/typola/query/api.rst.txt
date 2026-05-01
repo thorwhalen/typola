@@ -1,0 +1,4 @@
+typola.query.api
+================
+.. automodule:: typola.query.api
+   :members:

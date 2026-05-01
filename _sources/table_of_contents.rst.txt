@@ -1,0 +1,23 @@
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   module_docs/typola
+   module_docs/typola/data_dir
+   module_docs/typola/estimators
+   module_docs/typola/estimators/base
+   module_docs/typola/estimators/smoothing
+   module_docs/typola/models
+   module_docs/typola/models/conditional
+   module_docs/typola/models/distribution
+   module_docs/typola/models/marginal
+   module_docs/typola/prep
+   module_docs/typola/prep/canonical
+   module_docs/typola/prep/cldf
+   module_docs/typola/prep/loaders
+   module_docs/typola/prep/stores
+   module_docs/typola/query
+   module_docs/typola/query/api
+   module_docs/typola/sources
+   module_docs/typola/sources/base
+   module_docs/typola/sources/catalog

@@ -1,0 +1,4 @@
+typola.data_dir
+===============
+.. automodule:: typola.data_dir
+   :members:

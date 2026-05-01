@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>typola.query.api &mdash; typola 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=360bc84d"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            typola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola.html">typola</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/data_dir.html">typola.data_dir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/estimators.html">typola.estimators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/estimators/base.html">typola.estimators.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/estimators/smoothing.html">typola.estimators.smoothing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models.html">typola.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models/conditional.html">typola.models.conditional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models/distribution.html">typola.models.distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/models/marginal.html">typola.models.marginal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep.html">typola.prep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/canonical.html">typola.prep.canonical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/cldf.html">typola.prep.cldf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/loaders.html">typola.prep.loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/prep/stores.html">typola.prep.stores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/query.html">typola.query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/query/api.html">typola.query.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/sources.html">typola.sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/sources/base.html">typola.sources.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../module_docs/typola/sources/catalog.html">typola.sources.catalog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">typola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">typola.query.api</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for typola.query.api</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;High-level query and drill-down API.</span>
+
+<span class="sd">The `query` function is the everyday entry point. Pass a typology, a target</span>
+<span class="sd">parameter, and optionally a conditioning parameter or language filter. Get</span>
+<span class="sd">back a distribution or a full conditional probability table.</span>
+
+<span class="sd">Beyond individual queries, this module provides a small comparison layer so</span>
+<span class="sd">you can (a) try several estimators on the same question and (b) rank</span>
+<span class="sd">parameters by how informative they are about a target.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typola.estimators</span><span class="w"> </span><span class="kn">import</span> <span class="n">Estimator</span><span class="p">,</span> <span class="n">jeffreys</span><span class="p">,</span> <span class="n">held_out_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typola.models.conditional</span><span class="w"> </span><span class="kn">import</span> <span class="n">Conditional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typola.models.distribution</span><span class="w"> </span><span class="kn">import</span> <span class="n">Distribution</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typola.models.marginal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Marginal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typola.prep.canonical</span><span class="w"> </span><span class="kn">import</span> <span class="n">Typology</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># query</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="query">
+<a class="viewcode-back" href="../../../module_docs/typola/query/api.html#typola.query">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span>
+    <span class="n">typology</span><span class="p">:</span> <span class="n">Typology</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">given</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">given_value</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">condition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">parameter_conditions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">estimator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Estimator</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">drop_missing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Distribution</span><span class="p">,</span> <span class="n">Conditional</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ask a probabilistic question about the typology.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    typology : Typology</span>
+<span class="sd">    target : str</span>
+<span class="sd">        Parameter ID or name to ask about.</span>
+<span class="sd">    given : str, optional</span>
+<span class="sd">        Parameter ID or name to condition on. If given without ``given_value``,</span>
+<span class="sd">        the full CPT is returned. With ``given_value``, the row distribution</span>
+<span class="sd">        is returned.</span>
+<span class="sd">    given_value : any, optional</span>
+<span class="sd">        A specific code/value of the ``given`` parameter.</span>
+<span class="sd">    condition : mapping, optional</span>
+<span class="sd">        Filter on language metadata (see `Typology.filter_languages`).</span>
+<span class="sd">    estimator : Estimator, optional</span>
+<span class="sd">        Count-to-probability strategy. Defaults to Jeffreys.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Distribution</span>
+<span class="sd">        When ``given`` is None, or ``given`` and ``given_value`` are both set.</span>
+<span class="sd">    Conditional</span>
+<span class="sd">        When ``given`` is a parameter and ``given_value`` is omitted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span> <span class="ow">or</span> <span class="n">jeffreys</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">given</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Marginal</span><span class="p">(</span>
+            <span class="n">typology</span><span class="p">,</span>
+            <span class="n">target</span><span class="p">,</span>
+            <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span>
+            <span class="n">parameter_conditions</span><span class="o">=</span><span class="n">parameter_conditions</span><span class="p">,</span>
+            <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span>
+            <span class="n">drop_missing</span><span class="o">=</span><span class="n">drop_missing</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">distribution</span>
+
+    <span class="n">cpt</span> <span class="o">=</span> <span class="n">Conditional</span><span class="p">(</span>
+        <span class="n">typology</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">given</span><span class="o">=</span><span class="n">given</span><span class="p">,</span>
+        <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span>
+        <span class="n">parameter_conditions</span><span class="o">=</span><span class="n">parameter_conditions</span><span class="p">,</span>
+        <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span>
+        <span class="n">drop_missing</span><span class="o">=</span><span class="n">drop_missing</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">given_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">cpt</span>
+    <span class="k">return</span> <span class="n">cpt</span><span class="o">.</span><span class="n">p_given</span><span class="p">(</span><span class="n">given_value</span><span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># compare estimators on the same question</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="compare_estimators">
+<a class="viewcode-back" href="../../../module_docs/typola/query/api.html#typola.compare_estimators">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compare_estimators</span><span class="p">(</span>
+    <span class="n">typology</span><span class="p">:</span> <span class="n">Typology</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">estimators</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Estimator</span><span class="p">],</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">condition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a side-by-side DataFrame of P(value) under each estimator.</span>
+
+<span class="sd">    Columns are estimator names; rows are codes (with a ``name`` column).</span>
+<span class="sd">    Useful as a first-line sanity check when picking a smoothing strategy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">estimators</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">estimators</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;compare_estimators requires at least one estimator&quot;</span><span class="p">)</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">_unique_labels</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
+    <span class="c1"># Reference distribution for labels &amp; counts</span>
+    <span class="n">first</span> <span class="o">=</span> <span class="n">Marginal</span><span class="p">(</span>
+        <span class="n">typology</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">estimators</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">distribution</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;probability&quot;</span><span class="p">:</span> <span class="n">labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]})</span>
+    <span class="k">for</span> <span class="n">est</span><span class="p">,</span> <span class="n">lbl</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">estimators</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">labels</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">Marginal</span><span class="p">(</span><span class="n">typology</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">est</span><span class="p">)</span><span class="o">.</span><span class="n">distribution</span>
+        <span class="n">frame</span><span class="p">[</span><span class="n">lbl</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">probabilities</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">frame</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_unique_labels</span><span class="p">(</span><span class="n">estimators</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return display labels for a list of estimators, using repr() when names collide.&quot;&quot;&quot;</span>
+    <span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">estimators</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">names</span><span class="p">))</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">names</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">repr</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">estimators</span><span class="p">]</span>
+
+
+<div class="viewcode-block" id="cross_validate_estimators">
+<a class="viewcode-back" href="../../../module_docs/typola/query/api.html#typola.cross_validate_estimators">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">cross_validate_estimators</span><span class="p">(</span>
+    <span class="n">typology</span><span class="p">:</span> <span class="n">Typology</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">estimators</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Estimator</span><span class="p">],</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">n_folds</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">condition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cross-validated comparison: average held-out log-likelihood per fold.</span>
+
+<span class="sd">    Splits observed language IDs for ``target`` into ``n_folds``, holds each</span>
+<span class="sd">    fold out, fits each estimator on the rest, and scores on the fold.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+    <span class="n">estimators</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
+    <span class="n">pid</span> <span class="o">=</span> <span class="n">typology</span><span class="o">.</span><span class="n">parameter_id</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">typology</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">typology</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="s2">&quot;Parameter_ID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pid</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+        <span class="n">keep</span> <span class="o">=</span> <span class="n">typology</span><span class="o">.</span><span class="n">filter_languages</span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+        <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="n">vals</span><span class="p">[</span><span class="s2">&quot;Language_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">keep</span><span class="p">)]</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Code_ID&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="s2">&quot;Code_ID&quot;</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">columns</span> <span class="k">else</span> <span class="p">[</span><span class="s2">&quot;Value&quot;</span><span class="p">])</span>
+    <span class="n">use_code</span> <span class="o">=</span> <span class="s2">&quot;Code_ID&quot;</span> <span class="ow">in</span> <span class="n">vals</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">vals</span><span class="p">[</span><span class="s2">&quot;Code_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;Code_ID&quot;</span> <span class="k">if</span> <span class="n">use_code</span> <span class="k">else</span> <span class="s2">&quot;Value&quot;</span>
+    <span class="n">lang_code_pairs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="s2">&quot;Language_ID&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">vals</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lang_code_pairs</span><span class="p">))</span>
+    <span class="n">rng</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+    <span class="n">folds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array_split</span><span class="p">(</span><span class="n">order</span><span class="p">,</span> <span class="n">n_folds</span><span class="p">)</span>
+    <span class="n">codes_index</span> <span class="o">=</span> <span class="n">typology</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">typology</span><span class="o">.</span><span class="n">codes</span><span class="p">[</span><span class="s2">&quot;Parameter_ID&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pid</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_counts</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">c</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">])</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">codes_index</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">test_idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">folds</span><span class="p">):</span>
+        <span class="n">test_pairs</span> <span class="o">=</span> <span class="p">[</span><span class="n">lang_code_pairs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">test_idx</span><span class="p">]</span>
+        <span class="n">train_pairs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">lang_code_pairs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">order</span> <span class="k">if</span> <span class="n">j</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">test_idx</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+        <span class="p">]</span>
+        <span class="n">c_train</span> <span class="o">=</span> <span class="n">_counts</span><span class="p">(</span><span class="n">train_pairs</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+        <span class="n">c_test</span> <span class="o">=</span> <span class="n">_counts</span><span class="p">(</span><span class="n">test_pairs</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">est</span> <span class="ow">in</span> <span class="n">estimators</span><span class="p">:</span>
+            <span class="n">score</span> <span class="o">=</span> <span class="n">held_out_score</span><span class="p">(</span><span class="n">est</span><span class="p">,</span> <span class="n">c_train</span><span class="p">,</span> <span class="n">c_test</span><span class="p">)</span>
+            <span class="n">score</span><span class="p">[</span><span class="s2">&quot;fold&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="n">score</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span>
+                <span class="n">est</span>
+            <span class="p">)</span>  <span class="c1"># include params so distinct configs don&#39;t collapse</span>
+            <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)[[</span><span class="s2">&quot;log_likelihood&quot;</span><span class="p">,</span> <span class="s2">&quot;perplexity&quot;</span><span class="p">,</span> <span class="s2">&quot;kl_to_empirical&quot;</span><span class="p">]]</span>
+        <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;log_likelihood&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># rank associations: which parameters are most informative about target?</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="rank_associations">
+<a class="viewcode-back" href="../../../module_docs/typola/query/api.html#typola.rank_associations">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rank_associations</span><span class="p">(</span>
+    <span class="n">typology</span><span class="p">:</span> <span class="n">Typology</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">top_k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">estimator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Estimator</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">min_observations</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">condition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;For each other parameter X, compute MI(X; target) and rank.</span>
+
+<span class="sd">    Useful for &quot;what is most predictive of target parameter Y?&quot;. Slow for</span>
+<span class="sd">    large typologies (O(n_parameters)); consider restricting the parameter</span>
+<span class="sd">    set via ``typology.parameters`` pre-filtering in practice.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span> <span class="ow">or</span> <span class="n">jeffreys</span><span class="p">()</span>
+    <span class="n">target_id</span> <span class="o">=</span> <span class="n">typology</span><span class="o">.</span><span class="n">parameter_id</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">pid</span> <span class="ow">in</span> <span class="n">typology</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pid</span> <span class="o">==</span> <span class="n">target_id</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cpt</span> <span class="o">=</span> <span class="n">Conditional</span><span class="p">(</span>
+                <span class="n">typology</span><span class="p">,</span>
+                <span class="n">target</span><span class="o">=</span><span class="n">target_id</span><span class="p">,</span>
+                <span class="n">given</span><span class="o">=</span><span class="n">pid</span><span class="p">,</span>
+                <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span>
+                <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cpt</span><span class="o">.</span><span class="n">joint_counts</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="n">min_observations</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;parameter_id&quot;</span><span class="p">:</span> <span class="n">pid</span><span class="p">,</span>
+                <span class="s2">&quot;parameter_name&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">typology</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pid</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)),</span>
+                <span class="s2">&quot;mutual_information&quot;</span><span class="p">:</span> <span class="n">cpt</span><span class="o">.</span><span class="n">mutual_information</span><span class="p">(),</span>
+                <span class="s2">&quot;n_languages&quot;</span><span class="p">:</span> <span class="n">n</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;mutual_information&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_k</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># compare conditions: how does P(target) change across condition groups?</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+
+<div class="viewcode-block" id="compare_conditions">
+<a class="viewcode-back" href="../../../module_docs/typola/query/api.html#typola.compare_conditions">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">compare_conditions</span><span class="p">(</span>
+    <span class="n">typology</span><span class="p">:</span> <span class="n">Typology</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">conditions</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">estimator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Estimator</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Show P(target) under each of several named conditions.</span>
+
+<span class="sd">    ``conditions`` maps a label → a condition dict. Returns a wide DataFrame:</span>
+<span class="sd">    rows are codes; one column per condition label, plus ``name`` and a global</span>
+<span class="sd">    unconditioned baseline.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">estimator</span> <span class="ow">or</span> <span class="n">jeffreys</span><span class="p">()</span>
+    <span class="c1"># global baseline</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Marginal</span><span class="p">(</span><span class="n">typology</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">)</span><span class="o">.</span><span class="n">distribution</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">base</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;probability&quot;</span><span class="p">:</span> <span class="s2">&quot;overall&quot;</span><span class="p">})</span>
+        <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">conditions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">Marginal</span><span class="p">(</span><span class="n">typology</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">cond</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">)</span><span class="o">.</span><span class="n">distribution</span>
+        <span class="n">frame</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">probabilities</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">frame</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

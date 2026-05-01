@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>typola.sources.base &mdash; typola 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=360bc84d"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="typola.sources.catalog" href="catalog.html" />
+    <link rel="prev" title="typola.sources" href="../sources.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            typola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../typola.html">typola</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_dir.html">typola.data_dir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimators.html">typola.estimators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimators/base.html">typola.estimators.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimators/smoothing.html">typola.estimators.smoothing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">typola.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/conditional.html">typola.models.conditional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/distribution.html">typola.models.distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/marginal.html">typola.models.marginal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep.html">typola.prep</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/canonical.html">typola.prep.canonical</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/cldf.html">typola.prep.cldf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/loaders.html">typola.prep.loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep/stores.html">typola.prep.stores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query.html">typola.query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/api.html">typola.query.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sources.html">typola.sources</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">typola.sources.base</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#typola.sources.base.SourceSpec"><code class="docutils literal notranslate"><span class="pre">SourceSpec</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#typola.sources.base.SourceSpec.name"><code class="docutils literal notranslate"><span class="pre">SourceSpec.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.sources.base.SourceSpec.url"><code class="docutils literal notranslate"><span class="pre">SourceSpec.url</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.sources.base.SourceSpec.citation"><code class="docutils literal notranslate"><span class="pre">SourceSpec.citation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.sources.base.SourceSpec.license"><code class="docutils literal notranslate"><span class="pre">SourceSpec.license</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.sources.base.SourceSpec.archive_type"><code class="docutils literal notranslate"><span class="pre">SourceSpec.archive_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.sources.base.SourceSpec.strip_components"><code class="docutils literal notranslate"><span class="pre">SourceSpec.strip_components</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.sources.base.SourceSpec.download"><code class="docutils literal notranslate"><span class="pre">SourceSpec.download()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#typola.sources.base.register_source"><code class="docutils literal notranslate"><span class="pre">register_source()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="catalog.html">typola.sources.catalog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">typola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">typola.sources.base</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/module_docs/typola/sources/base.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-typola.sources.base">
+<span id="typola-sources-base"></span><h1>typola.sources.base<a class="headerlink" href="#module-typola.sources.base" title="Link to this heading"></a></h1>
+<p>Source specification &amp; registry.</p>
+<p>A source is a handle for one typology dataset — enough metadata to
+download it, cite it, and load it, but no data.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="typola.sources.base.SourceSpec">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typola.sources.base.</span></span><span class="sig-name descname"><span class="pre">SourceSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">url</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">license</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">archive_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strip_components</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loader</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/typola/sources/base.html#SourceSpec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.sources.base.SourceSpec" title="Link to this definition"></a></dt>
+<dd><p>Describe a typology dataset that can be loaded into a <cite>Typology</cite>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.sources.base.SourceSpec.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#typola.sources.base.SourceSpec.name" title="Link to this definition"></a></dt>
+<dd><p>Short identifier used everywhere else (<code class="docutils literal notranslate"><span class="pre">&quot;wals&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;grambank&quot;</span></code>, …).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.sources.base.SourceSpec.url">
+<span class="sig-name descname"><span class="pre">url</span></span><a class="headerlink" href="#typola.sources.base.SourceSpec.url" title="Link to this definition"></a></dt>
+<dd><p>Direct download URL for a zip/tarball.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.sources.base.SourceSpec.citation">
+<span class="sig-name descname"><span class="pre">citation</span></span><a class="headerlink" href="#typola.sources.base.SourceSpec.citation" title="Link to this definition"></a></dt>
+<dd><p>Citation string to include with derived outputs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.sources.base.SourceSpec.license">
+<span class="sig-name descname"><span class="pre">license</span></span><a class="headerlink" href="#typola.sources.base.SourceSpec.license" title="Link to this definition"></a></dt>
+<dd><p>License of the dataset (e.g. “CC-BY-NC-4.0”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.sources.base.SourceSpec.archive_type">
+<span class="sig-name descname"><span class="pre">archive_type</span></span><a class="headerlink" href="#typola.sources.base.SourceSpec.archive_type" title="Link to this definition"></a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">&quot;zip&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;tar.gz&quot;</span></code>. Auto-detected from URL if left as <code class="docutils literal notranslate"><span class="pre">&quot;auto&quot;</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.sources.base.SourceSpec.strip_components">
+<span class="sig-name descname"><span class="pre">strip_components</span></span><a class="headerlink" href="#typola.sources.base.SourceSpec.strip_components" title="Link to this definition"></a></dt>
+<dd><p>Top-level directory entries to strip after extraction (for archives
+that wrap everything in a single dir named after the release).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.sources.base.SourceSpec.download">
+<span class="sig-name descname"><span class="pre">download</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">force</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Path</span></span></span><a class="reference internal" href="../../../_modules/typola/sources/base.html#SourceSpec.download"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.sources.base.SourceSpec.download" title="Link to this definition"></a></dt>
+<dd><p>Download &amp; extract the source archive. Returns the extraction root.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="typola.sources.base.register_source">
+<span class="sig-prename descclassname"><span class="pre">typola.sources.base.</span></span><span class="sig-name descname"><span class="pre">register_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#typola.sources.base.SourceSpec" title="typola.sources.base.SourceSpec"><span class="pre">SourceSpec</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#typola.sources.base.SourceSpec" title="typola.sources.base.SourceSpec"><span class="pre">SourceSpec</span></a></span></span><a class="reference internal" href="../../../_modules/typola/sources/base.html#register_source"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.sources.base.register_source" title="Link to this definition"></a></dt>
+<dd><p>Register a source so <cite>get_source</cite> and <cite>load(name)</cite> can find it.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../sources.html" class="btn btn-neutral float-left" title="typola.sources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="catalog.html" class="btn btn-neutral float-right" title="typola.sources.catalog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>typola.prep.canonical &mdash; typola 0.1.3 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=360bc84d"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/toggleprompt.js?v=d7ede5d2"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="typola.prep.cldf" href="cldf.html" />
+    <link rel="prev" title="typola.prep" href="../prep.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            typola
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../typola.html">typola</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_dir.html">typola.data_dir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimators.html">typola.estimators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimators/base.html">typola.estimators.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../estimators/smoothing.html">typola.estimators.smoothing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models.html">typola.models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/conditional.html">typola.models.conditional</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/distribution.html">typola.models.distribution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/marginal.html">typola.models.marginal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prep.html">typola.prep</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">typola.prep.canonical</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#typola.prep.canonical.Typology"><code class="docutils literal notranslate"><span class="pre">Typology</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.name"><code class="docutils literal notranslate"><span class="pre">Typology.name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.languages"><code class="docutils literal notranslate"><span class="pre">Typology.languages</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.parameters"><code class="docutils literal notranslate"><span class="pre">Typology.parameters</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.codes"><code class="docutils literal notranslate"><span class="pre">Typology.codes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.values"><code class="docutils literal notranslate"><span class="pre">Typology.values</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.citation"><code class="docutils literal notranslate"><span class="pre">Typology.citation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.metadata"><code class="docutils literal notranslate"><span class="pre">Typology.metadata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.code_labels"><code class="docutils literal notranslate"><span class="pre">Typology.code_labels()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.counts"><code class="docutils literal notranslate"><span class="pre">Typology.counts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.filter_languages"><code class="docutils literal notranslate"><span class="pre">Typology.filter_languages()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.joint_counts"><code class="docutils literal notranslate"><span class="pre">Typology.joint_counts()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.parameter_id"><code class="docutils literal notranslate"><span class="pre">Typology.parameter_id()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.parameter_names"><code class="docutils literal notranslate"><span class="pre">Typology.parameter_names</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#typola.prep.canonical.Typology.values_for"><code class="docutils literal notranslate"><span class="pre">Typology.values_for()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cldf.html">typola.prep.cldf</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loaders.html">typola.prep.loaders</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stores.html">typola.prep.stores</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query.html">typola.query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../query/api.html">typola.query.api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sources.html">typola.sources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/base.html">typola.sources.base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/catalog.html">typola.sources.catalog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">typola</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">typola.prep.canonical</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/module_docs/typola/prep/canonical.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-typola.prep.canonical">
+<span id="typola-prep-canonical"></span><h1>typola.prep.canonical<a class="headerlink" href="#module-typola.prep.canonical" title="Link to this heading"></a></h1>
+<p>Canonical representation of a typology dataset.</p>
+<p>A <cite>Typology</cite> is four pandas DataFrames plus a little metadata.
+The four-table structure mirrors the CLDF StructureDataset spec, which is
+the common ground between WALS, Grambank, APiCS, SAILS, and many others.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">typola.prep.canonical.</span></span><span class="sig-name descname"><span class="pre">Typology</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">languages:</span> <span class="pre">~pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters:</span> <span class="pre">~pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">codes:</span> <span class="pre">~pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values:</span> <span class="pre">~pandas.core.frame.DataFrame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">citation:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata:</span> <span class="pre">dict</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/typola/prep/canonical.html#Typology"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.prep.canonical.Typology" title="Link to this definition"></a></dt>
+<dd><p>A categorical typology dataset in canonical form.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#typola.prep.canonical.Typology.name" title="Link to this definition"></a></dt>
+<dd><p>Short identifier like <code class="docutils literal notranslate"><span class="pre">&quot;wals&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;grambank&quot;</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.languages">
+<span class="sig-name descname"><span class="pre">languages</span></span><a class="headerlink" href="#typola.prep.canonical.Typology.languages" title="Link to this definition"></a></dt>
+<dd><p>One row per language. Indexed by <code class="docutils literal notranslate"><span class="pre">Language_ID</span></code>. Expected columns include
+<code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Macroarea</span></code>, <code class="docutils literal notranslate"><span class="pre">Latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">Longitude</span></code>, <code class="docutils literal notranslate"><span class="pre">Glottocode</span></code>, <code class="docutils literal notranslate"><span class="pre">Family</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.parameters">
+<span class="sig-name descname"><span class="pre">parameters</span></span><a class="headerlink" href="#typola.prep.canonical.Typology.parameters" title="Link to this definition"></a></dt>
+<dd><p>One row per parameter (grammatical feature). Indexed by <code class="docutils literal notranslate"><span class="pre">Parameter_ID</span></code>.
+Expected columns: <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Description</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.codes">
+<span class="sig-name descname"><span class="pre">codes</span></span><a class="headerlink" href="#typola.prep.canonical.Typology.codes" title="Link to this definition"></a></dt>
+<dd><p>One row per possible value for a parameter. Indexed by <code class="docutils literal notranslate"><span class="pre">Code_ID</span></code>.
+Expected columns: <code class="docutils literal notranslate"><span class="pre">Parameter_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Description</span></code>, <code class="docutils literal notranslate"><span class="pre">Number</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.values">
+<span class="sig-name descname"><span class="pre">values</span></span><a class="headerlink" href="#typola.prep.canonical.Typology.values" title="Link to this definition"></a></dt>
+<dd><p>Long-format observations: one row per (language, parameter) with the observed
+value. Columns: <code class="docutils literal notranslate"><span class="pre">Language_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Parameter_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Value</span></code>, <code class="docutils literal notranslate"><span class="pre">Code_ID</span></code>, and any
+source/comment columns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.citation">
+<span class="sig-name descname"><span class="pre">citation</span></span><a class="headerlink" href="#typola.prep.canonical.Typology.citation" title="Link to this definition"></a></dt>
+<dd><p>A bibliographic citation string for the dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><a class="headerlink" href="#typola.prep.canonical.Typology.metadata" title="Link to this definition"></a></dt>
+<dd><p>Any additional metadata (CLDF metadata JSON, download info, etc.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.code_labels">
+<span class="sig-name descname"><span class="pre">code_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../../../_modules/typola/prep/canonical.html#Typology.code_labels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.prep.canonical.Typology.code_labels" title="Link to this definition"></a></dt>
+<dd><p>Series mapping Code_ID → human-readable name for a parameter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.counts">
+<span class="sig-name descname"><span class="pre">counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Series</span></span></span><a class="reference internal" href="../../../_modules/typola/prep/canonical.html#Typology.counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.prep.canonical.Typology.counts" title="Link to this definition"></a></dt>
+<dd><p>Count languages by code for a parameter, optionally conditioned.</p>
+<p>Returns a Series indexed by <code class="docutils literal notranslate"><span class="pre">Code_ID</span></code> (for parameters that use codes)
+or by raw <code class="docutils literal notranslate"><span class="pre">Value</span></code> (when no codes are defined), with integer counts.
+Codes present in the parameter’s code table but not observed are
+included with count 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameter</strong> (<em>str</em>) – Parameter ID or name (via <cite>parameter_id</cite>).</p></li>
+<li><p><strong>condition</strong> (<em>mapping</em><em>, </em><em>optional</em>) – Filter on <code class="docutils literal notranslate"><span class="pre">languages</span></code> columns, see <cite>filter_languages</cite>.</p></li>
+<li><p><strong>parameter_conditions</strong> (<em>mapping</em><em>, </em><em>optional</em>) – Filter to languages whose other-parameter values match, see
+<cite>filter_languages</cite>.</p></li>
+<li><p><strong>drop_missing</strong> (<em>bool</em>) – If True, ignore rows with NaN / missing / “?” values (common in Grambank).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.filter_languages">
+<span class="sig-name descname"><span class="pre">filter_languages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Index</span></span></span><a class="reference internal" href="../../../_modules/typola/prep/canonical.html#Typology.filter_languages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.prep.canonical.Typology.filter_languages" title="Link to this definition"></a></dt>
+<dd><p>Return Language_IDs matching language-metadata AND parameter-value conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>condition</strong> (<em>mapping</em><em>, </em><em>optional</em>) – <p>Filter on <code class="docutils literal notranslate"><span class="pre">languages</span></code> columns, <code class="docutils literal notranslate"><span class="pre">{column:</span> <span class="pre">value_or_iterable_or_callable}</span></code>:</p>
+<ul>
+<li><p>scalar (str / int / bool) → exact match</p></li>
+<li><p>list/tuple/set → membership</p></li>
+<li><p>callable → predicate applied to the column value</p></li>
+</ul>
+</p></li>
+<li><p><strong>parameter_conditions</strong> (<em>mapping</em><em>, </em><em>optional</em>) – <p>Filter to languages whose values for given parameters match.
+Keys are parameter IDs or names; values can be a single code ID,
+a Value, or an iterable of acceptable codes/values. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parameter_conditions</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;83A&quot;</span><span class="p">:</span> <span class="s2">&quot;83A-2&quot;</span><span class="p">}</span>            <span class="c1"># OV order</span>
+<span class="n">parameter_conditions</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;81A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;81A-1&quot;</span><span class="p">,</span> <span class="s2">&quot;81A-2&quot;</span><span class="p">]}</span> <span class="c1"># SOV or SVO</span>
+</pre></div>
+</div>
+</p></li>
+<li><p><strong>IDs.</strong> (<em>An empty/None condition + empty parameter_conditions → all language</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.joint_counts">
+<span class="sig-name descname"><span class="pre">joint_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_conditions</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drop_missing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../../../_modules/typola/prep/canonical.html#Typology.joint_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.prep.canonical.Typology.joint_counts" title="Link to this definition"></a></dt>
+<dd><p>Co-occurrence count table for two parameters.</p>
+<p>Rows = codes of <code class="docutils literal notranslate"><span class="pre">param_a</span></code>, columns = codes of <code class="docutils literal notranslate"><span class="pre">param_b</span></code>. Counts are
+over languages that have non-missing values for both parameters.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.parameter_id">
+<span class="sig-name descname"><span class="pre">parameter_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../_modules/typola/prep/canonical.html#Typology.parameter_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.prep.canonical.Typology.parameter_id" title="Link to this definition"></a></dt>
+<dd><p>Resolve a parameter by ID or by (case-insensitive) name prefix.</p>
+<p>Raises KeyError if nothing matches.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.parameter_names">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parameter_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Series</span></em><a class="headerlink" href="#typola.prep.canonical.Typology.parameter_names" title="Link to this definition"></a></dt>
+<dd><p>Series mapping Parameter_ID → Name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="typola.prep.canonical.Typology.values_for">
+<span class="sig-name descname"><span class="pre">values_for</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="reference internal" href="../../../_modules/typola/prep/canonical.html#Typology.values_for"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#typola.prep.canonical.Typology.values_for" title="Link to this definition"></a></dt>
+<dd><p>Return the values DataFrame filtered to a single parameter.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../prep.html" class="btn btn-neutral float-left" title="typola.prep" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="cldf.html" class="btn btn-neutral float-right" title="typola.prep.cldf" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright NO COPYRIGHT.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
