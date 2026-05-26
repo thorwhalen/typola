@@ -3,9 +3,11 @@ import react from "@vitejs/plugin-react";
 import path from "node:path";
 
 // VITE_PUBLIC_BASE is read as the build-time `base` so the same repo can
-// produce a bundle mountable at any URL prefix. Default "/" for standalone
-// dev / pure-root deployments.
-const PUBLIC_BASE = process.env.VITE_PUBLIC_BASE || "/";
+// produce a bundle mountable at any URL prefix. Default "./" (relative)
+// makes a single build work both at root (HF Space at /) AND under any
+// reverse-proxy mount (e.g. apps.thorwhalen.com/typola/) without rebuilding.
+// Override only if you need an absolute prefix baked in at build time.
+const PUBLIC_BASE = process.env.VITE_PUBLIC_BASE || "./";
 
 export default defineConfig({
   base: PUBLIC_BASE,

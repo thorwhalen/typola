@@ -3,13 +3,19 @@
  * All functions return zod-validated objects.
  *
  * The API base URL is read from the build-time env var `VITE_API_BASE`
- * (default `/api`). This lets the same SPA be mounted at any URL prefix:
+ * (default `api`, relative). A *relative* default lets a single build
+ * work at any mount point: fetch resolves the URL against
+ * `document.baseURI`, so the request lands at `<mount>/api/...`
+ * automatically.
  *
- *   - Local dev (Vite proxies):        VITE_API_BASE unset → `/api`
- *   - Enlace at /api/{name}:           VITE_API_BASE=/api/typola
- *   - Standalone under custom prefix:  VITE_API_BASE=/whatever
+ *   - Local dev (Vite proxies):           unset → `api` → `/api/...`   (proxy strips it)
+ *   - HF Space at root:                   unset → `api` → `/api/...`   (backend handles)
+ *   - tw_platform proxy at /typola/:      unset → `api` → `/typola/api/...` (proxied to HF Space `/api/...`)
+ *   - Override with absolute path if you need it baked in at build time.
  *
- * No deployment path is hard-coded in the app.
+ * Note: this assumes no client-side routing via pushState (typola has
+ * none). If routing is added later, switch to an absolute API_BASE
+ * derived at startup, or add a `<base href>` to index.html.
  */
 import {
   CompareEstimatorsResult,
@@ -23,7 +29,7 @@ import {
   TypologySummary,
 } from "./schemas";
 
-const API_BASE = (import.meta.env.VITE_API_BASE || "/api").replace(/\/$/, "");
+const API_BASE = (import.meta.env.VITE_API_BASE || "api").replace(/\/$/, "");
 
 async function json<T>(path: string, init?: RequestInit): Promise<T> {
   const url = API_BASE + (path.startsWith("/") ? path : `/${path}`);
