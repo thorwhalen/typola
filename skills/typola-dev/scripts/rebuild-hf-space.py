@@ -50,7 +50,7 @@ def ensure_token() -> str:
         check=True,
     ).stdout
     if not out:
-        sys.exit(f"~/.keys does not export HF_WRITE_TOKEN.")
+        sys.exit("~/.keys does not export HF_WRITE_TOKEN.")
     os.environ["HF_WRITE_TOKEN"] = out
     return out
 

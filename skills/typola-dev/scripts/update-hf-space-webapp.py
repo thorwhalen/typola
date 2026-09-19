@@ -212,7 +212,7 @@ def main() -> None:
 
     if not args.no_restart:
         restart(token, args.space)
-        print(f"\nWatch progress: scripts/rebuild-hf-space.py --no-wait (or polling)")
+        print("\nWatch progress: scripts/rebuild-hf-space.py --no-wait (or polling)")
 
 
 if __name__ == "__main__":
