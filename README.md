@@ -174,6 +174,17 @@ Every `Typology` carries a `.citation` string. Cite it in any downstream output.
 - **WALS** requires attribution (CC BY-NC 4.0), no commercial use.
 - **Grambank** is CC BY 4.0.
 
+## Maintainer skill
+
+`skills/typola-dev/` is an AI-agent skill holding the operational know-how for
+maintaining typola: publishing a version to PyPI, refreshing or updating the
+Hugging Face Space, the Dockerfile pin convention, and the CLDF source URL
+pattern. Its `scripts/` are runnable on their own. It is a maintainer skill, not
+something a user of the package needs.
+
+`.claude/skills/typola-dev` is a relative symlink to it, so Claude Code finds it
+when working in this repository; `gh skill` finds the real files under `skills/`.
+
 ## License
 
 MIT.
