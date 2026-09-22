@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -29,7 +28,7 @@ class Distribution:
 
     probabilities: pd.Series
     counts: pd.Series
-    support_labels: Optional[pd.Series] = None
+    support_labels: pd.Series | None = None
     estimator_name: str = ""
     metadata: dict = field(default_factory=dict)
 
@@ -102,7 +101,7 @@ class Distribution:
 
     # ----- sampling -----------------------------------------------------------
 
-    def sample(self, n: int = 1, rng: Optional[np.random.Generator] = None) -> list:
+    def sample(self, n: int = 1, rng: np.random.Generator | None = None) -> list:
         """Sample n outcomes from the distribution."""
         if rng is None:
             rng = np.random.default_rng()
@@ -115,7 +114,7 @@ class Distribution:
 
     # ----- information-theoretic comparisons ---------------------------------
 
-    def kl_divergence(self, other: "Distribution", *, eps: float = 1e-12) -> float:
+    def kl_divergence(self, other: Distribution, *, eps: float = 1e-12) -> float:
         """KL(self || other), requires compatible supports."""
         from typola.estimators.base import kl_divergence
 

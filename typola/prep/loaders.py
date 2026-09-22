@@ -7,7 +7,6 @@ you can use this module in isolation as a CLDF-to-pandas toolkit.
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Optional
 
 from typola.prep.canonical import Typology
 from typola.prep.cldf import read_cldf_structure_dataset
@@ -24,7 +23,7 @@ def available_sources() -> list[str]:
 def load(
     name_or_spec: str | SourceSpec,
     *,
-    local_path: Optional[str | Path] = None,
+    local_path: str | Path | None = None,
     download_if_missing: bool = True,
     verbose: bool = True,
 ) -> Typology:
@@ -61,7 +60,7 @@ def load(
 
 
 def load_from_cldf_dir(
-    path: str | Path, *, name: Optional[str] = None, citation: str = ""
+    path: str | Path, *, name: str | None = None, citation: str = ""
 ) -> Typology:
     """Alias: load a typology from a local CLDF directory with no download."""
     return read_cldf_structure_dataset(path, name=name, citation=citation)

@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Optional
+from collections.abc import Mapping
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -38,9 +39,9 @@ class Conditional:
         target: str,
         given: str,
         *,
-        condition: Optional[Mapping[str, Any]] = None,
-        parameter_conditions: Optional[Mapping[str, Any]] = None,
-        estimator: Optional[Estimator] = None,
+        condition: Mapping[str, Any] | None = None,
+        parameter_conditions: Mapping[str, Any] | None = None,
+        estimator: Estimator | None = None,
         drop_missing: bool = True,
     ):
         self.typology = typology
