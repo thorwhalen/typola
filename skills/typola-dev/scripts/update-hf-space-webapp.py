@@ -40,8 +40,7 @@ import sys
 # This script lives at <repo>/skills/typola-dev/scripts/, so the repo root is
 # three levels up. Override with TYPOLA_REPO_DIR when running it from elsewhere.
 REPO_DIR = pathlib.Path(
-    os.environ.get("TYPOLA_REPO_DIR")
-    or pathlib.Path(__file__).resolve().parents[3]
+    os.environ.get("TYPOLA_REPO_DIR") or pathlib.Path(__file__).resolve().parents[3]
 )
 STAGING_DIR = pathlib.Path("/tmp/typola-space")
 DEFAULT_SPACE = "thorwhalen/typola"
@@ -56,7 +55,9 @@ def ensure_token() -> str:
         sys.exit(f"HF_WRITE_TOKEN not set and {KEYS_FILE} does not exist.")
     out = subprocess.run(
         ["bash", "-c", f"source {KEYS_FILE} && printf '%s' \"$HF_WRITE_TOKEN\""],
-        capture_output=True, text=True, check=True,
+        capture_output=True,
+        text=True,
+        check=True,
     ).stdout
     if not out:
         sys.exit("~/.keys does not export HF_WRITE_TOKEN.")
@@ -83,7 +84,9 @@ def stage(dockerfile_pin: str | None) -> None:
     if not api_src.is_dir():
         sys.exit(f"Missing source: {api_src}")
     if not dist_src.is_dir():
-        sys.exit(f"Missing build output: {dist_src} (run with build, or rebuild manually).")
+        sys.exit(
+            f"Missing build output: {dist_src} (run with build, or rebuild manually)."
+        )
 
     STAGING_DIR.mkdir(exist_ok=True)
     (STAGING_DIR / "webapp").mkdir(exist_ok=True)
@@ -110,6 +113,7 @@ def stage(dockerfile_pin: str | None) -> None:
         # Update the pin in place.
         text = dockerfile.read_text()
         import re
+
         new_text = re.sub(
             r'"typola\[web\][^"]*"',
             f'"typola[web]{dockerfile_pin}"',
@@ -170,6 +174,7 @@ Probabilistic models over linguistic typology data (WALS, Grambank, ...).
 
 def upload(token: str, space: str, message: str) -> None:
     from huggingface_hub import HfApi
+
     api = HfApi(token=token)
     print(f"Uploading {STAGING_DIR} to space {space} ...")
     api.upload_folder(
@@ -184,6 +189,7 @@ def upload(token: str, space: str, message: str) -> None:
 
 def restart(token: str, space: str) -> None:
     from huggingface_hub import HfApi
+
     api = HfApi(token=token)
     print(f"Triggering factory reboot of {space} ...")
     api.restart_space(space, factory_reboot=True)
@@ -193,13 +199,24 @@ def restart(token: str, space: str) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--space", default=DEFAULT_SPACE)
-    ap.add_argument("--skip-build", action="store_true",
-                    help="Don't rebuild dist/; use what's already there.")
-    ap.add_argument("--no-restart", action="store_true",
-                    help="Upload only; skip the factory reboot.")
-    ap.add_argument("--pin", help='Override the Dockerfile typola pin (e.g. "~=0.2.0").')
-    ap.add_argument("--message", default="Update webapp source",
-                    help="Commit message for the Space repo.")
+    ap.add_argument(
+        "--skip-build",
+        action="store_true",
+        help="Don't rebuild dist/; use what's already there.",
+    )
+    ap.add_argument(
+        "--no-restart",
+        action="store_true",
+        help="Upload only; skip the factory reboot.",
+    )
+    ap.add_argument(
+        "--pin", help='Override the Dockerfile typola pin (e.g. "~=0.2.0").'
+    )
+    ap.add_argument(
+        "--message",
+        default="Update webapp source",
+        help="Commit message for the Space repo.",
+    )
     args = ap.parse_args()
 
     token = ensure_token()

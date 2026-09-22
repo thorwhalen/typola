@@ -58,10 +58,17 @@ def ensure_token() -> str:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--repo", default=DEFAULT_REPO)
-    ap.add_argument("--no-wait", action="store_true",
-                    help="Fire the rebuild and return without polling.")
-    ap.add_argument("--timeout", type=int, default=900,
-                    help="Max seconds to wait for build (default: 900).")
+    ap.add_argument(
+        "--no-wait",
+        action="store_true",
+        help="Fire the rebuild and return without polling.",
+    )
+    ap.add_argument(
+        "--timeout",
+        type=int,
+        default=900,
+        help="Max seconds to wait for build (default: 900).",
+    )
     args = ap.parse_args()
 
     try:
