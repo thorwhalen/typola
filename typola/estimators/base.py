@@ -8,13 +8,13 @@ build an evaluation harness that compares strategies.
 
 from __future__ import annotations
 
+from collections.abc import Callable, Mapping, Sequence
 from dataclasses import dataclass, field
-from typing import Callable, Mapping, Sequence, Union
 
 import numpy as np
 import pandas as pd
 
-ArrayLike = Union[np.ndarray, pd.Series, Sequence[float]]
+ArrayLike = np.ndarray | pd.Series | Sequence[float]
 
 
 # ---------------------------------------------------------------------------

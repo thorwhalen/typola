@@ -8,7 +8,8 @@ other dol-based pipelines.
 
 from __future__ import annotations
 
-from typing import Any, Iterator, Mapping, Optional
+from collections.abc import Iterator, Mapping
+from typing import Any
 
 import pandas as pd
 
@@ -32,7 +33,7 @@ class TypologyStore(Mapping[str, Typology]):
     >>> 'wals' in ts                                   # doctest: +SKIP
     """
 
-    def __init__(self, *, local_paths: Optional[Mapping[str, str]] = None):
+    def __init__(self, *, local_paths: Mapping[str, str] | None = None):
         self._cache: dict[str, Typology] = {}
         self._local_paths = dict(local_paths or {})
 
@@ -73,7 +74,7 @@ class CountsStore(Mapping[str, pd.Series]):
         self,
         typology: Typology,
         *,
-        condition: Optional[Mapping[str, Any]] = None,
+        condition: Mapping[str, Any] | None = None,
         drop_missing: bool = True,
     ):
         self.typology = typology

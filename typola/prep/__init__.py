@@ -7,16 +7,16 @@ tool you like.
 """
 
 from typola.prep.canonical import Typology
-from typola.prep.loaders import load, load_from_cldf_dir, available_sources
 from typola.prep.cldf import read_cldf_structure_dataset
-from typola.prep.stores import TypologyStore, CountsStore
+from typola.prep.loaders import available_sources, load, load_from_cldf_dir
+from typola.prep.stores import CountsStore, TypologyStore
 
 __all__ = [
+    "CountsStore",
     "Typology",
+    "TypologyStore",
+    "available_sources",
     "load",
     "load_from_cldf_dir",
-    "available_sources",
     "read_cldf_structure_dataset",
-    "TypologyStore",
-    "CountsStore",
 ]

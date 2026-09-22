@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from typing import Any, Mapping, Optional
+from collections.abc import Mapping
+from typing import Any
 
 from typola.estimators import Estimator, jeffreys
 from typola.models.distribution import Distribution
@@ -35,9 +36,9 @@ class Marginal:
         typology: Typology,
         parameter: str,
         *,
-        condition: Optional[Mapping[str, Any]] = None,
-        parameter_conditions: Optional[Mapping[str, Any]] = None,
-        estimator: Optional[Estimator] = None,
+        condition: Mapping[str, Any] | None = None,
+        parameter_conditions: Mapping[str, Any] | None = None,
+        estimator: Estimator | None = None,
         drop_missing: bool = True,
     ):
         self.typology = typology

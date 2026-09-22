@@ -16,8 +16,8 @@ so it stays light and portable.
 from __future__ import annotations
 
 import json
+import logging
 from pathlib import Path
-from typing import Optional
 
 import pandas as pd
 
@@ -29,7 +29,7 @@ CLDF_TABLES = ("languages", "parameters", "codes", "values")
 def read_cldf_structure_dataset(
     path: str | Path,
     *,
-    name: Optional[str] = None,
+    name: str | None = None,
     citation: str = "",
 ) -> Typology:
     """Load a CLDF StructureDataset directory into a `Typology`.
@@ -92,6 +92,8 @@ def _read_metadata(cldf_dir: Path) -> dict:
         if f.exists():
             try:
                 return json.loads(f.read_text(encoding="utf-8"))
-            except Exception:
-                pass
+            except (json.JSONDecodeError, OSError, UnicodeDecodeError) as e:
+                logging.getLogger(__name__).debug(
+                    "Could not read CLDF metadata from %s: %s", f, e
+                )
     return {}

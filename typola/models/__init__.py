@@ -11,8 +11,8 @@ Components
   a `Distribution` over a "target" parameter.
 """
 
+from typola.models.conditional import Conditional
 from typola.models.distribution import Distribution
 from typola.models.marginal import Marginal
-from typola.models.conditional import Conditional
 
-__all__ = ["Distribution", "Marginal", "Conditional"]
+__all__ = ["Conditional", "Distribution", "Marginal"]

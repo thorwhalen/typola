@@ -11,9 +11,9 @@ import io
 import shutil
 import tarfile
 import zipfile
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Optional
 
 from typola import data_dir
 
@@ -47,7 +47,7 @@ class SourceSpec:
     strip_components: int = 0
 
     # runtime-only; optional override. Not frozen-breaking because dataclass is frozen.
-    loader: Optional[Callable] = None
+    loader: Callable | None = None
 
     def cache_root(self) -> Path:
         return data_dir.cache_dir() / self.name
@@ -97,7 +97,7 @@ class SourceSpec:
         url = self.url.lower()
         if url.endswith(".zip"):
             return "zip"
-        if url.endswith(".tar.gz") or url.endswith(".tgz"):
+        if url.endswith((".tar.gz", ".tgz")):
             return "tar.gz"
         raise ValueError(
             f"Could not auto-detect archive type for {self.url}; "

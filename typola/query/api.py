@@ -11,16 +11,17 @@ parameters by how informative they are about a target.
 
 from __future__ import annotations
 
-from typing import Any, Iterable, Mapping, Optional, Union
+import logging
+from collections.abc import Iterable, Mapping
+from typing import Any
 
 import pandas as pd
 
-from typola.estimators import Estimator, jeffreys, held_out_score
+from typola.estimators import Estimator, held_out_score, jeffreys
 from typola.models.conditional import Conditional
 from typola.models.distribution import Distribution
 from typola.models.marginal import Marginal
 from typola.prep.canonical import Typology
-
 
 # ---------------------------------------------------------------------------
 # query
@@ -31,13 +32,13 @@ def query(
     typology: Typology,
     target: str,
     *,
-    given: Optional[str] = None,
-    given_value: Optional[Any] = None,
-    condition: Optional[Mapping[str, Any]] = None,
-    parameter_conditions: Optional[Mapping[str, Any]] = None,
-    estimator: Optional[Estimator] = None,
+    given: str | None = None,
+    given_value: Any | None = None,
+    condition: Mapping[str, Any] | None = None,
+    parameter_conditions: Mapping[str, Any] | None = None,
+    estimator: Estimator | None = None,
     drop_missing: bool = True,
-) -> Union[Distribution, Conditional]:
+) -> Distribution | Conditional:
     """Ask a probabilistic question about the typology.
 
     Parameters
@@ -99,7 +100,7 @@ def compare_estimators(
     target: str,
     estimators: Iterable[Estimator],
     *,
-    condition: Optional[Mapping[str, Any]] = None,
+    condition: Mapping[str, Any] | None = None,
 ) -> pd.DataFrame:
     """Return a side-by-side DataFrame of P(value) under each estimator.
 
@@ -136,8 +137,8 @@ def cross_validate_estimators(
     estimators: Iterable[Estimator],
     *,
     n_folds: int = 5,
-    condition: Optional[Mapping[str, Any]] = None,
-    random_state: Optional[int] = None,
+    condition: Mapping[str, Any] | None = None,
+    random_state: int | None = None,
 ) -> pd.DataFrame:
     """Cross-validated comparison: average held-out log-likelihood per fold.
 
@@ -200,9 +201,9 @@ def rank_associations(
     target: str,
     *,
     top_k: int = 20,
-    estimator: Optional[Estimator] = None,
+    estimator: Estimator | None = None,
     min_observations: int = 30,
-    condition: Optional[Mapping[str, Any]] = None,
+    condition: Mapping[str, Any] | None = None,
 ) -> pd.DataFrame:
     """For each other parameter X, compute MI(X; target) and rank.
 
@@ -224,7 +225,12 @@ def rank_associations(
                 condition=condition,
                 estimator=estimator,
             )
-        except Exception:
+        except Exception as e:  # noqa: BLE001 -- best-effort skip of parameters
+            # that can't form a valid conditional (e.g. incompatible dtypes,
+            # missing data); ranking must not abort on one bad parameter.
+            logging.getLogger(__name__).debug(
+                "Skipping parameter %r in rank_associations: %s", pid, e
+            )
             continue
         n = int(cpt.joint_counts.to_numpy().sum())
         if n < min_observations:
@@ -255,7 +261,7 @@ def compare_conditions(
     target: str,
     conditions: Mapping[str, Mapping[str, Any]],
     *,
-    estimator: Optional[Estimator] = None,
+    estimator: Estimator | None = None,
 ) -> pd.DataFrame:
     """Show P(target) under each of several named conditions.
 

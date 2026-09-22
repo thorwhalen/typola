@@ -7,8 +7,9 @@ the common ground between WALS, Grambank, APiCS, SAILS, and many others.
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
-from typing import Any, Mapping, Optional
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -99,9 +100,9 @@ class Typology:
 
     def filter_languages(
         self,
-        condition: Optional[Mapping[str, Any]] = None,
+        condition: Mapping[str, Any] | None = None,
         *,
-        parameter_conditions: Optional[Mapping[str, Any]] = None,
+        parameter_conditions: Mapping[str, Any] | None = None,
     ) -> pd.Index:
         """Return Language_IDs matching language-metadata AND parameter-value conditions.
 
@@ -166,8 +167,8 @@ class Typology:
         self,
         parameter: str,
         *,
-        condition: Optional[Mapping[str, Any]] = None,
-        parameter_conditions: Optional[Mapping[str, Any]] = None,
+        condition: Mapping[str, Any] | None = None,
+        parameter_conditions: Mapping[str, Any] | None = None,
         drop_missing: bool = True,
     ) -> pd.Series:
         """Count languages by code for a parameter, optionally conditioned.
@@ -218,8 +219,8 @@ class Typology:
         param_a: str,
         param_b: str,
         *,
-        condition: Optional[Mapping[str, Any]] = None,
-        parameter_conditions: Optional[Mapping[str, Any]] = None,
+        condition: Mapping[str, Any] | None = None,
+        parameter_conditions: Mapping[str, Any] | None = None,
         drop_missing: bool = True,
     ) -> pd.DataFrame:
         """Co-occurrence count table for two parameters.

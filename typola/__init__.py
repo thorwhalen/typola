@@ -19,9 +19,9 @@ Typical usage::
     dist.to_frame()                           # DataFrame of (code, name, prob)
 """
 
+from typola import sources
 from typola.prep.canonical import Typology
 from typola.prep.loaders import load, load_from_cldf_dir
-from typola import sources
 
 __all__ = [
     "Typology",
@@ -40,10 +40,10 @@ except ImportError:
     pass
 
 try:
-    from typola.query.api import query  # noqa: F401
-    from typola.models.marginal import Marginal  # noqa: F401
-    from typola.models.conditional import Conditional  # noqa: F401
+    from typola.models.conditional import Conditional
+    from typola.models.marginal import Marginal
+    from typola.query.api import query
 
-    __all__ += ["query", "Marginal", "Conditional"]
+    __all__ += ["Conditional", "Marginal", "query"]
 except ImportError:
     pass

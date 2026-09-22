@@ -22,32 +22,32 @@ preserve the index of a Series. They all have a ``.name`` attribute and a
 
 from typola.estimators.base import (
     Estimator,
-    normalize,
+    held_out_score,
     kl_divergence,
     log_likelihood,
-    held_out_score,
+    normalize,
 )
 from typola.estimators.smoothing import (
-    mle,
-    laplace,
-    jeffreys,
     dirichlet,
     empirical_bayes,
-    uniform,
+    jeffreys,
+    laplace,
     mix,
+    mle,
+    uniform,
 )
 
 __all__ = [
     "Estimator",
-    "normalize",
-    "kl_divergence",
-    "log_likelihood",
-    "held_out_score",
-    "mle",
-    "laplace",
-    "jeffreys",
     "dirichlet",
     "empirical_bayes",
-    "uniform",
+    "held_out_score",
+    "jeffreys",
+    "kl_divergence",
+    "laplace",
+    "log_likelihood",
     "mix",
+    "mle",
+    "normalize",
+    "uniform",
 ]
