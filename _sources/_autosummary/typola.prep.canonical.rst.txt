@@ -1,0 +1,12 @@
+typola.prep.canonical
+=====================
+
+.. automodule:: typola.prep.canonical
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Typology
+   

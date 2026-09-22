@@ -1,0 +1,13 @@
+typola.data\_dir
+================
+
+.. automodule:: typola.data_dir
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      cache_dir
+      data_dir
+   

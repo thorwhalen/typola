@@ -1,0 +1,14 @@
+typola.prep.loaders
+===================
+
+.. automodule:: typola.prep.loaders
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      available_sources
+      load
+      load_from_cldf_dir
+   

@@ -1,0 +1,23 @@
+typola.models
+=============
+
+.. automodule:: typola.models
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Conditional
+      Distribution
+      Marginal
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   conditional
+   distribution
+   marginal

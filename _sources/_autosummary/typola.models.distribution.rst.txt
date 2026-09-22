@@ -1,0 +1,12 @@
+typola.models.distribution
+==========================
+
+.. automodule:: typola.models.distribution
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Distribution
+   

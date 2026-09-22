@@ -1,0 +1,18 @@
+typola.estimators.smoothing
+===========================
+
+.. automodule:: typola.estimators.smoothing
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      dirichlet
+      empirical_bayes
+      jeffreys
+      laplace
+      mix
+      mle
+      uniform
+   

@@ -1,0 +1,28 @@
+# typola
+
+> Probabilistic models over linguistic typology source data (WALS, Grambank, ...) with pluggable count-to-probability estimators.
+
+
+## Pages in this subsection
+
+- [typola](typola.html.md): typola: probabilistic models over linguistic typology source data.
+- [typola.sources](typola.sources.html.md): Descriptors and downloaders for typology datasets.
+- [typola.sources.base](typola.sources.base.html.md): Source specification &amp; registry.
+- [typola.sources.catalog](typola.sources.catalog.html.md): Catalog of known typology data sources.
+- [typola.estimators](typola.estimators.html.md): Pluggable count-to-probability estimators.
+- [typola.estimators.base](typola.estimators.base.html.md): Estimator base class + evaluation utilities.
+- [typola.estimators.smoothing](typola.estimators.smoothing.html.md): Concrete count-to-probability estimators.
+- [typola.data_dir](typola.data_dir.html.md): User-data directory resolution.
+- [typola.models](typola.models.html.md): Probabilistic models over a &#96;Typology&#96;.
+- [typola.models.conditional](typola.models.conditional.html.md): Conditional distribution: P(target parameter | given parameter).
+- [typola.models.distribution](typola.models.distribution.html.md): A categorical distribution over a known support, with introspection.
+- [typola.models.marginal](typola.models.marginal.html.md): Marginal distribution over a parameter’s support, under a condition.
+- [typola.prep](typola.prep.html.md): Data preparation: raw source → canonical &#96;Typology&#96;.
+- [typola.prep.canonical](typola.prep.canonical.html.md): Canonical representation of a typology dataset.
+- [typola.prep.cldf](typola.prep.cldf.html.md): Parse a CLDF StructureDataset directory into a &#96;Typology&#96;.
+- [typola.prep.loaders](typola.prep.loaders.html.md): High-level &#96;load()&#96; function tying sources ↔ canonical typology.
+- [typola.prep.stores](typola.prep.stores.html.md): dol-backed stores for convenient access to prepped data.
+
+## Optional
+
+- [Top-level llms.txt](../llms.txt): Complete documentation index.

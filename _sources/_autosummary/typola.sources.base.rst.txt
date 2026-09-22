@@ -1,0 +1,20 @@
+typola.sources.base
+===================
+
+.. automodule:: typola.sources.base
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      get_source
+      list_sources
+      register_source
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      SourceSpec
+   

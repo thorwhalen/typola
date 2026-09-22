@@ -1,0 +1,33 @@
+typola.prep
+===========
+
+.. automodule:: typola.prep
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      available_sources
+      load
+      load_from_cldf_dir
+      read_cldf_structure_dataset
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      CountsStore
+      Typology
+      TypologyStore
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   canonical
+   cldf
+   loaders
+   stores

@@ -1,4 +1,0 @@
-typola.sources.base
-===================
-.. automodule:: typola.sources.base
-   :members:

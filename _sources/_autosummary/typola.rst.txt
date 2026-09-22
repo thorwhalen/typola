@@ -1,0 +1,33 @@
+﻿typola
+======
+
+.. automodule:: typola
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      load
+      load_from_cldf_dir
+      query
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Typology
+      Conditional
+      Marginal
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   sources
+   estimators
+   data_dir
+   models
+   prep

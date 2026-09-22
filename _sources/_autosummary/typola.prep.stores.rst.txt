@@ -1,0 +1,13 @@
+typola.prep.stores
+==================
+
+.. automodule:: typola.prep.stores
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      CountsStore
+      TypologyStore
+   

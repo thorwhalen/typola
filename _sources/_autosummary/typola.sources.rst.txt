@@ -1,0 +1,28 @@
+typola.sources
+==============
+
+.. automodule:: typola.sources
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      get_source
+      list_sources
+      register_source
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      SourceSpec
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   base
+   catalog

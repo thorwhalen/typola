@@ -1,0 +1,36 @@
+typola.estimators
+=================
+
+.. automodule:: typola.estimators
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      dirichlet
+      empirical_bayes
+      held_out_score
+      jeffreys
+      kl_divergence
+      laplace
+      log_likelihood
+      mix
+      mle
+      normalize
+      uniform
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Estimator
+   
+.. rubric:: Modules
+
+.. autosummary::
+   :toctree:
+   :recursive:
+
+   base
+   smoothing

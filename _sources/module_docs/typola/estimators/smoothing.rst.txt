@@ -1,4 +1,0 @@
-typola.estimators.smoothing
-===========================
-.. automodule:: typola.estimators.smoothing
-   :members:

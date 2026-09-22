@@ -1,4 +1,0 @@
-typola.prep.canonical
-=====================
-.. automodule:: typola.prep.canonical
-   :members:

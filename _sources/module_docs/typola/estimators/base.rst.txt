@@ -1,4 +1,0 @@
-typola.estimators.base
-======================
-.. automodule:: typola.estimators.base
-   :members:

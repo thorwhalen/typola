@@ -1,0 +1,12 @@
+typola.prep.cldf
+================
+
+.. automodule:: typola.prep.cldf
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      read_cldf_structure_dataset
+   

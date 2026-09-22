@@ -1,0 +1,12 @@
+typola.models.marginal
+======================
+
+.. automodule:: typola.models.marginal
+
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Marginal
+   

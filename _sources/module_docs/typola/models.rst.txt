@@ -1,4 +1,0 @@
-typola.models
-=============
-.. automodule:: typola.models
-   :members:

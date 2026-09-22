@@ -1,0 +1,21 @@
+typola.estimators.base
+======================
+
+.. automodule:: typola.estimators.base
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      held_out_score
+      kl_divergence
+      log_likelihood
+      normalize
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Estimator
+   
