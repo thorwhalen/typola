@@ -1,4 +1,4 @@
-> built 2026-09-22 13:43 UTC from 63ff808 (main) · typola 0.1.7. Details: build_info.json
+> built 2026-09-22 14:20 UTC from fa34fb5 (main) · typola 0.1.8. Details: build_info.json
 
 # index.html.md
 
@@ -48,7 +48,11 @@ See `webapp/README.md` for details.
 
 ```python
 from typola import load, query, estimators
-from typola.query import compare_estimators, cross_validate_estimators, rank_associations
+from typola.query import (
+    compare_estimators,
+    cross_validate_estimators,
+    rank_associations,
+)
 
 # 1. Load a typology. Downloaded & cached on first call.
 wals = load("wals")
@@ -72,25 +76,35 @@ query(wals, target="81A", condition={"Family": "Niger-Congo"}).top_k(3)
 
 # 4. Full conditional P(target | given) — a CPT.
 cpt = query(wals, target="83A", given="81A", estimator=estimators.laplace(0.5))
-cpt.as_matrix()          # DataFrame, rows sum to 1
-cpt.p_given("81A-2")     # row distribution when subject–verb order is SVO
-cpt.mutual_information() # bits
+cpt.as_matrix()  # DataFrame, rows sum to 1
+cpt.p_given("81A-2")  # row distribution when subject–verb order is SVO
+cpt.mutual_information()  # bits
 
 # 5. Compare estimators on the same question.
 compare_estimators(
-    wals, target="81A",
+    wals,
+    target="81A",
     condition={"Family": "Austronesian"},
-    estimators=[estimators.mle(), estimators.jeffreys(),
-                estimators.empirical_bayes(wals.counts("81A").values, strength=20)],
+    estimators=[
+        estimators.mle(),
+        estimators.jeffreys(),
+        estimators.empirical_bayes(wals.counts("81A").values, strength=20),
+    ],
 )
 
 # 6. Actually test which estimator is best — cross-validated log-likelihood.
 cross_validate_estimators(
-    wals, target="81A",
-    estimators=[estimators.mle(), estimators.laplace(0.1),
-                estimators.laplace(0.5), estimators.laplace(1.0),
-                estimators.empirical_bayes(wals.counts("81A").values, strength=20)],
-    n_folds=5, random_state=0,
+    wals,
+    target="81A",
+    estimators=[
+        estimators.mle(),
+        estimators.laplace(0.1),
+        estimators.laplace(0.5),
+        estimators.laplace(1.0),
+        estimators.empirical_bayes(wals.counts("81A").values, strength=20),
+    ],
+    n_folds=5,
+    random_state=0,
     condition={"Family": "Austronesian"},
 )
 #                                                             log_likelihood  perplexity
@@ -138,14 +152,17 @@ Register more with:
 
 ```python
 from typola.sources import register_source, SourceSpec
-register_source(SourceSpec(
-    name="apics",
-    url="https://github.com/cldf-datasets/apics/archive/refs/heads/master.zip",
-    citation="...",
-    license="CC-BY-4.0",
-    archive_type="zip",
-    strip_components=1,
-))
+
+register_source(
+    SourceSpec(
+        name="apics",
+        url="https://github.com/cldf-datasets/apics/archive/refs/heads/master.zip",
+        citation="...",
+        license="CC-BY-4.0",
+        archive_type="zip",
+        strip_components=1,
+    )
+)
 ```
 
 The loader handles any CLDF StructureDataset that provides `languages.csv`, `parameters.csv`, `codes.csv`, `values.csv`.
@@ -159,6 +176,7 @@ from dataclasses import dataclass, field
 from typola.estimators import Estimator
 import numpy as np
 
+
 @dataclass(frozen=True, repr=False)
 class _HaldaneMix(Estimator):
     name: str = "haldane_mix"
@@ -168,6 +186,7 @@ class _HaldaneMix(Estimator):
         a = self.params["alpha"]
         smoothed = counts + a
         return smoothed / smoothed.sum()
+
 
 estimators_under_test = [_HaldaneMix(), estimators.jeffreys(), ...]
 ```
@@ -1999,18 +2018,16 @@ Register a source so `get_source` and `load(name)` can find it.
 
 # About this build
 
-This documentation was built on **2026-09-22 13:43 UTC** from commit <a href="https://github.com/thorwhalen/typola/commit/63ff808a323ca77ef2759b8f1dcfe8f939d21101"><code>63ff808</code></a> on branch <code>main</code>, for **typola 0.1.7** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-09-22 14:20 UTC** from commit <a href="https://github.com/thorwhalen/typola/commit/fa34fb528b9013466e3ada13bd2a2b2a02744ef5"><code>fa34fb5</code></a> on branch <code>main</code>, for **typola 0.1.8** (from <code>pyproject.toml</code>).
 
-#### WARNING
-The documentation and the package may be misaligned:
-
-- The documented version (0.1.7) is behind the latest release on PyPI (0.1.8): `pip install typola` gives newer code than these docs describe.
+#### NOTE
+Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
 
 ## Source
 
 |                     |                                                                                                                                                          |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/thorwhalen/typola/commit/63ff808a323ca77ef2759b8f1dcfe8f939d21101"><code>63ff808a323ca77ef2759b8f1dcfe8f939d21101</code></a> |
+| Commit              | <a href="https://github.com/thorwhalen/typola/commit/fa34fb528b9013466e3ada13bd2a2b2a02744ef5"><code>fa34fb528b9013466e3ada13bd2a2b2a02744ef5</code></a> |
 | Branch              | <code>main</code>                                                                                                                                        |
 | Tags at this commit | none                                                                                                                                                     |
 | Working tree        | clean                                                                                                                                                    |
@@ -2021,9 +2038,9 @@ The documentation and the package may be misaligned:
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>thorwhalen/typola</code>                                                             |
-| Run          | <a href="https://github.com/thorwhalen/typola/actions/runs/35735173963">35735173963</a>    |
+| Run          | <a href="https://github.com/thorwhalen/typola/actions/runs/35739417029">35739417029</a>    |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>63ff808a323ca77ef2759b8f1dcfe8f939d21101</code> (in the history of the built commit) |
+| Event commit | <code>fa34fb528b9013466e3ada13bd2a2b2a02744ef5</code> (in the history of the built commit) |
 
 ## Tools
 
@@ -2048,13 +2065,13 @@ The documentation and the package may be misaligned:
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/typola/0.1.8/">0.1.8</a>, newer than the documented version (0.1.7).
+Latest release: <a href="https://pypi.org/project/typola/0.1.8/">0.1.8</a>, the same as the documented version.
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/thorwhalen/typola && cd typola
-git checkout 63ff808a323ca77ef2759b8f1dcfe8f939d21101
+git checkout fa34fb528b9013466e3ada13bd2a2b2a02744ef5
 pip install "epythet==0.2.12"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
@@ -2085,6 +2102,12 @@ gh skill install thorwhalen/typola typola-dev --agent claude-code
 ```
 
 Source: [`skills/typola-dev`](https://github.com/thorwhalen/typola/tree/HEAD/skills/typola-dev).
+
+## Instruction files
+
+Files agents read before working in this repository.
+
+- [`.claude/CLAUDE.md`](https://github.com/thorwhalen/typola/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
 
 ## Machine-readable documentation
 

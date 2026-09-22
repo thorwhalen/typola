@@ -25,7 +25,7 @@
 - [typola.prep.loaders](_autosummary/typola.prep.loaders.html.md): High-level &#96;load()&#96; function tying sources ↔ canonical typology.
 - [typola.prep.stores](_autosummary/typola.prep.stores.html.md): dol-backed stores for convenient access to prepped data.
 - [For AI agents](ai-agents.html.md): &#96;typola&#96; ships artifacts for coding agents alongside its code. This page lists
-- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-09-22 13:43 UTC&#42;&#42; from commit &lt;a href="https://github.com/tho...
+- [About this build](about-this-build.html.md): This documentation was built on &#42;&#42;2026-09-22 14:20 UTC&#42;&#42; from commit &lt;a href="https://github.com/tho...
 
 ## Optional
 

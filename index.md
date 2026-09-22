@@ -44,7 +44,11 @@ See `webapp/README.md` for details.
 
 ```python
 from typola import load, query, estimators
-from typola.query import compare_estimators, cross_validate_estimators, rank_associations
+from typola.query import (
+    compare_estimators,
+    cross_validate_estimators,
+    rank_associations,
+)
 
 # 1. Load a typology. Downloaded & cached on first call.
 wals = load("wals")
@@ -68,25 +72,35 @@ query(wals, target="81A", condition={"Family": "Niger-Congo"}).top_k(3)
 
 # 4. Full conditional P(target | given) — a CPT.
 cpt = query(wals, target="83A", given="81A", estimator=estimators.laplace(0.5))
-cpt.as_matrix()          # DataFrame, rows sum to 1
-cpt.p_given("81A-2")     # row distribution when subject–verb order is SVO
-cpt.mutual_information() # bits
+cpt.as_matrix()  # DataFrame, rows sum to 1
+cpt.p_given("81A-2")  # row distribution when subject–verb order is SVO
+cpt.mutual_information()  # bits
 
 # 5. Compare estimators on the same question.
 compare_estimators(
-    wals, target="81A",
+    wals,
+    target="81A",
     condition={"Family": "Austronesian"},
-    estimators=[estimators.mle(), estimators.jeffreys(),
-                estimators.empirical_bayes(wals.counts("81A").values, strength=20)],
+    estimators=[
+        estimators.mle(),
+        estimators.jeffreys(),
+        estimators.empirical_bayes(wals.counts("81A").values, strength=20),
+    ],
 )
 
 # 6. Actually test which estimator is best — cross-validated log-likelihood.
 cross_validate_estimators(
-    wals, target="81A",
-    estimators=[estimators.mle(), estimators.laplace(0.1),
-                estimators.laplace(0.5), estimators.laplace(1.0),
-                estimators.empirical_bayes(wals.counts("81A").values, strength=20)],
-    n_folds=5, random_state=0,
+    wals,
+    target="81A",
+    estimators=[
+        estimators.mle(),
+        estimators.laplace(0.1),
+        estimators.laplace(0.5),
+        estimators.laplace(1.0),
+        estimators.empirical_bayes(wals.counts("81A").values, strength=20),
+    ],
+    n_folds=5,
+    random_state=0,
     condition={"Family": "Austronesian"},
 )
 #                                                             log_likelihood  perplexity
@@ -134,14 +148,17 @@ Register more with:
 
 ```python
 from typola.sources import register_source, SourceSpec
-register_source(SourceSpec(
-    name="apics",
-    url="https://github.com/cldf-datasets/apics/archive/refs/heads/master.zip",
-    citation="...",
-    license="CC-BY-4.0",
-    archive_type="zip",
-    strip_components=1,
-))
+
+register_source(
+    SourceSpec(
+        name="apics",
+        url="https://github.com/cldf-datasets/apics/archive/refs/heads/master.zip",
+        citation="...",
+        license="CC-BY-4.0",
+        archive_type="zip",
+        strip_components=1,
+    )
+)
 ```
 
 The loader handles any CLDF StructureDataset that provides `languages.csv`, `parameters.csv`, `codes.csv`, `values.csv`.
@@ -155,6 +172,7 @@ from dataclasses import dataclass, field
 from typola.estimators import Estimator
 import numpy as np
 
+
 @dataclass(frozen=True, repr=False)
 class _HaldaneMix(Estimator):
     name: str = "haldane_mix"
@@ -164,6 +182,7 @@ class _HaldaneMix(Estimator):
         a = self.params["alpha"]
         smoothed = counts + a
         return smoothed / smoothed.sum()
+
 
 estimators_under_test = [_HaldaneMix(), estimators.jeffreys(), ...]
 ```

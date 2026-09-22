@@ -20,6 +20,12 @@ gh skill install thorwhalen/typola typola-dev --agent claude-code
 
 Source: [`skills/typola-dev`](https://github.com/thorwhalen/typola/tree/HEAD/skills/typola-dev).
 
+## Instruction files
+
+Files agents read before working in this repository.
+
+- [`.claude/CLAUDE.md`](https://github.com/thorwhalen/typola/tree/HEAD/.claude/CLAUDE.md): read by Claude Code
+
 ## Machine-readable documentation
 
 This site publishes the same documentation in forms that fit an agent’s context window:
