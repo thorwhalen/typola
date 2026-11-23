@@ -1,4 +1,4 @@
-> built 2026-09-22 14:20 UTC from fa34fb5 (main) · typola 0.1.8. Details: build_info.json
+> built 2026-11-23 05:37 UTC from 8ed1b77 (main) · typola 0.1.9. Details: build_info.json
 
 # index.html.md
 
@@ -270,7 +270,7 @@ build an evaluation harness that compares strategies.
 | [`Estimator`](_autosummary/typola.estimators.base.html.md#typola.estimators.base.Estimator)([name, params])   | Callable that maps count vectors to probability vectors.   |
 |------------------------------------------------------------------------------|------------------------------------------------------------|
 
-### *class* typola.estimators.base.Estimator(name='estimator', params=<factory>)
+### *class* typola.estimators.base.Estimator(name='estimator', params=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
@@ -363,7 +363,7 @@ preserve the index of a Series. They all have a `.name` attribute and a
 | [`Estimator`](_autosummary/typola.estimators.html.md#typola.estimators.Estimator)([name, params])   | Callable that maps count vectors to probability vectors.   |
 |------------------------------------------------------------------------------|------------------------------------------------------------|
 
-### *class* typola.estimators.Estimator(name='estimator', params=<factory>)
+### *class* typola.estimators.Estimator(name='estimator', params=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
@@ -714,7 +714,7 @@ specified by `estimator`.
 >>> dist.top_k(3)
 ```
 
-### *class* typola.Typology(name, languages, parameters, codes, values, citation='', metadata=<factory>)
+### *class* typola.Typology(name, languages, parameters, codes, values, citation='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
@@ -974,7 +974,7 @@ A categorical distribution over a known support, with introspection.
 | [`Distribution`](_autosummary/typola.models.distribution.html.md#typola.models.distribution.Distribution)(probabilities, counts[, ...])   | A categorical probability distribution with provenance.   |
 |-----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 
-### *class* typola.models.distribution.Distribution(probabilities, counts, support_labels=None, estimator_name='', metadata=<factory>)
+### *class* typola.models.distribution.Distribution(probabilities, counts, support_labels=None, estimator_name='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
@@ -1133,7 +1133,7 @@ Distribution over target values given `given_value`.
 * **Return type:**
   [`Distribution`](_autosummary/typola.models.distribution.html.md#typola.models.distribution.Distribution)
 
-### *class* typola.models.Distribution(probabilities, counts, support_labels=None, estimator_name='', metadata=<factory>)
+### *class* typola.models.Distribution(probabilities, counts, support_labels=None, estimator_name='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
@@ -1305,7 +1305,7 @@ the common ground between WALS, Grambank, APiCS, SAILS, and many others.
 | [`Typology`](_autosummary/typola.prep.canonical.html.md#typola.prep.canonical.Typology)(name, languages, parameters, codes, ...)   | A categorical typology dataset in canonical form.   |
 |------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
 
-### *class* typola.prep.canonical.Typology(name, languages, parameters, codes, values, citation='', metadata=<factory>)
+### *class* typola.prep.canonical.Typology(name, languages, parameters, codes, values, citation='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
@@ -1517,7 +1517,7 @@ Read-only mapping: parameter_id → count Series (for one typology).
 Useful when you want to iterate over all parameters, or feed counts into
 a batch estimator comparison.
 
-### *class* typola.prep.Typology(name, languages, parameters, codes, values, citation='', metadata=<factory>)
+### *class* typola.prep.Typology(name, languages, parameters, codes, values, citation='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
@@ -2018,16 +2018,18 @@ Register a source so `get_source` and `load(name)` can find it.
 
 # About this build
 
-This documentation was built on **2026-09-22 14:20 UTC** from commit <a href="https://github.com/thorwhalen/typola/commit/fa34fb528b9013466e3ada13bd2a2b2a02744ef5"><code>fa34fb5</code></a> on branch <code>main</code>, for **typola 0.1.8** (from <code>pyproject.toml</code>).
+This documentation was built on **2026-11-23 05:37 UTC** from commit <a href="https://github.com/thorwhalen/typola/commit/8ed1b774544acaf471d3dd8d0cde14c1c6a36a59"><code>8ed1b77</code></a> on branch <code>main</code>, for **typola 0.1.9** (from <code>pyproject.toml</code>).
 
-#### NOTE
-Nothing suggests a mismatch: the tree was clean at the commit above, and the documented version is the one on PyPI.
+#### WARNING
+The documentation and the package may be misaligned:
+
+- The documented version (0.1.9) is behind the latest release on PyPI (0.1.10): `pip install typola` gives newer code than these docs describe.
 
 ## Source
 
 |                     |                                                                                                                                                          |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Commit              | <a href="https://github.com/thorwhalen/typola/commit/fa34fb528b9013466e3ada13bd2a2b2a02744ef5"><code>fa34fb528b9013466e3ada13bd2a2b2a02744ef5</code></a> |
+| Commit              | <a href="https://github.com/thorwhalen/typola/commit/8ed1b774544acaf471d3dd8d0cde14c1c6a36a59"><code>8ed1b774544acaf471d3dd8d0cde14c1c6a36a59</code></a> |
 | Branch              | <code>main</code>                                                                                                                                        |
 | Tags at this commit | none                                                                                                                                                     |
 | Working tree        | clean                                                                                                                                                    |
@@ -2038,18 +2040,18 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 |              |                                                                                            |
 |--------------|--------------------------------------------------------------------------------------------|
 | Repository   | <code>thorwhalen/typola</code>                                                             |
-| Run          | <a href="https://github.com/thorwhalen/typola/actions/runs/35739417029">35739417029</a>    |
+| Run          | <a href="https://github.com/thorwhalen/typola/actions/runs/45118796834">45118796834</a>    |
 | Ref          | <code>refs/heads/main</code>                                                               |
-| Event commit | <code>fa34fb528b9013466e3ada13bd2a2b2a02744ef5</code> (in the history of the built commit) |
+| Event commit | <code>8ed1b774544acaf471d3dd8d0cde14c1c6a36a59</code> (in the history of the built commit) |
 
 ## Tools
 
 |          |         |
 |----------|---------|
-| epythet  | 0.2.12  |
-| Sphinx   | 9.1.0   |
+| epythet  | 0.2.23  |
+| Sphinx   | 9.1.1   |
 | docutils | 0.22.4  |
-| Python   | 3.12.14 |
+| Python   | 3.12.16 |
 
 ## Configuration as resolved
 
@@ -2065,14 +2067,14 @@ Nothing suggests a mismatch: the tree was clean at the commit above, and the doc
 
 ## Package on PyPI
 
-Latest release: <a href="https://pypi.org/project/typola/0.1.8/">0.1.8</a>, the same as the documented version.
+Latest release: <a href="https://pypi.org/project/typola/0.1.10/">0.1.10</a>, newer than the documented version (0.1.9).
 
 ## Reproduce
 
 ```bash
 git clone https://github.com/thorwhalen/typola && cd typola
-git checkout fa34fb528b9013466e3ada13bd2a2b2a02744ef5
-pip install "epythet==0.2.12"
+git checkout 8ed1b774544acaf471d3dd8d0cde14c1c6a36a59
+pip install "epythet==0.2.23"
 epythet quickstart . --ignore tests/ scrap/ examples/
 ```
 

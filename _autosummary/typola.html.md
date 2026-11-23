@@ -110,7 +110,7 @@ specified by `estimator`.
 >>> dist.top_k(3)
 ```
 
-### *class* typola.Typology(name, languages, parameters, codes, values, citation='', metadata=<factory>)
+### *class* typola.Typology(name, languages, parameters, codes, values, citation='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 

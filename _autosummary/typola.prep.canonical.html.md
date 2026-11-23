@@ -11,7 +11,7 @@ the common ground between WALS, Grambank, APiCS, SAILS, and many others.
 | [`Typology`](#typola.prep.canonical.Typology)(name, languages, parameters, codes, ...)   | A categorical typology dataset in canonical form.   |
 |------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
 
-### *class* typola.prep.canonical.Typology(name, languages, parameters, codes, values, citation='', metadata=<factory>)
+### *class* typola.prep.canonical.Typology(name, languages, parameters, codes, values, citation='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 

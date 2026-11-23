@@ -7,7 +7,7 @@ A categorical distribution over a known support, with introspection.
 | [`Distribution`](#typola.models.distribution.Distribution)(probabilities, counts[, ...])   | A categorical probability distribution with provenance.   |
 |-----------------------------------------------------------------------------------------------|-----------------------------------------------------------|
 
-### *class* typola.models.distribution.Distribution(probabilities, counts, support_labels=None, estimator_name='', metadata=<factory>)
+### *class* typola.models.distribution.Distribution(probabilities, counts, support_labels=None, estimator_name='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 

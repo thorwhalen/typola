@@ -1,39 +1,39 @@
 {
   "schema_version": 1,
-  "built_at": "2026-09-22T14:20:32Z",
+  "built_at": "2026-11-23T05:37:54Z",
   "package": {
     "name": "typola",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "display_name": "typola",
     "source": "pyproject.toml"
   },
   "git": {
     "available": true,
-    "commit": "fa34fb528b9013466e3ada13bd2a2b2a02744ef5",
-    "short_commit": "fa34fb5",
+    "commit": "8ed1b774544acaf471d3dd8d0cde14c1c6a36a59",
+    "short_commit": "8ed1b77",
     "branch": "main",
     "tags": [],
     "dirty": false,
     "remote_url": "https://github.com/thorwhalen/typola",
-    "commit_url": "https://github.com/thorwhalen/typola/commit/fa34fb528b9013466e3ada13bd2a2b2a02744ef5",
+    "commit_url": "https://github.com/thorwhalen/typola/commit/8ed1b774544acaf471d3dd8d0cde14c1c6a36a59",
     "error": null
   },
   "ci": {
     "provider": "github",
     "repository": "thorwhalen/typola",
-    "sha": "fa34fb528b9013466e3ada13bd2a2b2a02744ef5",
+    "sha": "8ed1b774544acaf471d3dd8d0cde14c1c6a36a59",
     "sha_in_history": true,
     "ref": "refs/heads/main",
     "ref_name": "main",
-    "run_id": "35739417029",
-    "run_url": "https://github.com/thorwhalen/typola/actions/runs/35739417029",
+    "run_id": "45118796834",
+    "run_url": "https://github.com/thorwhalen/typola/actions/runs/45118796834",
     "server_url": "https://github.com"
   },
   "tools": {
-    "epythet": "0.2.12",
-    "sphinx": "9.1.0",
+    "epythet": "0.2.23",
+    "sphinx": "9.1.1",
     "docutils": "0.22.4",
-    "python": "3.12.14"
+    "python": "3.12.16"
   },
   "config": {
     "theme": "auto",
@@ -60,14 +60,16 @@
   },
   "pypi": {
     "checked": true,
-    "latest": "0.1.8",
-    "relation": "same",
+    "latest": "0.1.10",
+    "relation": "behind",
     "error": null
   },
-  "reproduce": "git clone https://github.com/thorwhalen/typola && cd typola\ngit checkout fa34fb528b9013466e3ada13bd2a2b2a02744ef5\npip install \"epythet==0.2.12\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
+  "reproduce": "git clone https://github.com/thorwhalen/typola && cd typola\ngit checkout 8ed1b774544acaf471d3dd8d0cde14c1c6a36a59\npip install \"epythet==0.2.23\"\nepythet quickstart . --ignore tests/ scrap/ examples/",
   "warnings": [],
   "alignment": {
-    "aligned": true,
-    "notes": []
+    "aligned": false,
+    "notes": [
+      "The documented version (0.1.9) is behind the latest release on PyPI (0.1.10): `pip install typola` gives newer code than these docs describe."
+    ]
   }
 }

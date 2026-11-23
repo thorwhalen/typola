@@ -40,7 +40,7 @@ preserve the index of a Series. They all have a `.name` attribute and a
 | [`Estimator`](#typola.estimators.Estimator)([name, params])   | Callable that maps count vectors to probability vectors.   |
 |------------------------------------------------------------------------------|------------------------------------------------------------|
 
-### *class* typola.estimators.Estimator(name='estimator', params=<factory>)
+### *class* typola.estimators.Estimator(name='estimator', params=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 

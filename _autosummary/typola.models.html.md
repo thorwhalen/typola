@@ -67,7 +67,7 @@ Distribution over target values given `given_value`.
 * **Return type:**
   [`Distribution`](typola.models.distribution.html.md#typola.models.distribution.Distribution)
 
-### *class* typola.models.Distribution(probabilities, counts, support_labels=None, estimator_name='', metadata=<factory>)
+### *class* typola.models.Distribution(probabilities, counts, support_labels=None, estimator_name='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 

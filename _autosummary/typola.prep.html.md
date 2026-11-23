@@ -31,7 +31,7 @@ Read-only mapping: parameter_id → count Series (for one typology).
 Useful when you want to iterate over all parameters, or feed counts into
 a batch estimator comparison.
 
-### *class* typola.prep.Typology(name, languages, parameters, codes, values, citation='', metadata=<factory>)
+### *class* typola.prep.Typology(name, languages, parameters, codes, values, citation='', metadata=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 

@@ -20,7 +20,7 @@ build an evaluation harness that compares strategies.
 | [`Estimator`](#typola.estimators.base.Estimator)([name, params])   | Callable that maps count vectors to probability vectors.   |
 |------------------------------------------------------------------------------|------------------------------------------------------------|
 
-### *class* typola.estimators.base.Estimator(name='estimator', params=<factory>)
+### *class* typola.estimators.base.Estimator(name='estimator', params=dict())
 
 Bases: [`object`](https://docs.python.org/3/builtins/functions.html#object)
 
